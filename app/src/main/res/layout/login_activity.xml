@@ -1,29 +1,30 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/imgBackgroundTop"
-        android:layout_width="490dp"
-        android:layout_height="490dp"
-        android:layout_marginTop="140dp"
+        android:layout_width="330dp"
+        android:layout_height="330dp"
+        android:layout_marginTop="112dp"
         android:background="@drawable/image_border"
         android:contentDescription="Fondo superior"
         android:padding="8dp"
         android:scaleType="centerCrop"
         android:src="@drawable/fondo_superior"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintHorizontal_bias="0.746"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgBackgroundBottom"
-        android:layout_width="490dp"
-        android:layout_height="490dp"
+        android:layout_width="330dp"
+        android:layout_height="330dp"
         android:background="@drawable/image_border"
         android:contentDescription="Fondo inferior"
         android:padding="6dp"
@@ -31,15 +32,15 @@
         android:src="@drawable/fondo_inferior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.32"
+        app:layout_constraintHorizontal_bias="0.197"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgBackgroundTop"
-        app:layout_constraintVertical_bias="0.537" />
+        app:layout_constraintVertical_bias="0.391" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="424dp"
-        android:layout_height="82dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="353dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/border_shape"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,8 +49,8 @@
 
         <TextView
             android:id="@+id/tvTitle"
-            android:layout_width="283dp"
-            android:layout_height="69dp"
+            android:layout_width="231dp"
+            android:layout_height="66dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
@@ -78,7 +79,5 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.428" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Aquí puedes agregar más elementos como los campos de login, botones, etc. -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
