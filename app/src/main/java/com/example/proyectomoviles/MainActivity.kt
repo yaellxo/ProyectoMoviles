@@ -6,6 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login_activity) // Referencia al archivo XML de la actividad
+        setContentView(R.layout.login_activity)
     }
 }
