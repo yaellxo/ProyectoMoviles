@@ -110,8 +110,8 @@
 
         <ImageView
             android:id="@+id/imgBackgroundBottom"
-            android:layout_width="273dp"
-            android:layout_height="125dp"
+            android:layout_width="420dp"
+            android:layout_height="556dp"
             android:layout_marginBottom="16dp"
             android:contentDescription="Fondo inferior"
             android:scaleType="centerCrop"
