@@ -1,4 +1,4 @@
-package com.example.proyectomoviles
+package com.example.mangahub
 
 import org.junit.Test
 

@@ -1,0 +1,6 @@
+User.kt: Modelo para clientes y administradores, incluye atributos como email, password, name, isAdmin, etc.
+Manga.kt: Modelo para los mangas, incluye id, title, author, genre, price, stock, etc.
+Event.kt: Modelo para eventos, incluye id, name, date, description, registeredUsers, etc.
+Order.kt: Modelo para pedidos, con id, userId, items, status, etc.
+Review.kt: Modelo para reseñas, con userId, mangaId, rating, comment, etc.
+Payment.kt: Modelo para pagos, con orderId, amount, method, status, etc.

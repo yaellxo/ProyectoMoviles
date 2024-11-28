@@ -1,0 +1,10 @@
+Servicios para manejar la lógica de negocio:
+AuthService.kt: Registro y login de usuarios y administradores.
+CatalogService.kt: Permite consultar y buscar mangas en el catálogo.
+CartService.kt: Maneja la lógica del carrito de compras.
+OrderService.kt: Procesa pedidos y permite su seguimiento.
+EventService.kt: Gestión de eventos para clientes y administradores.
+ReviewService.kt: Permite agregar y consultar reseñas.
+InventoryService.kt: Agrega, modifica y elimina mangas del inventario.
+ReportService.kt: Genera reportes para el administrador.
+PaymentService.kt: Procesa pagos y maneja métodos de pago.

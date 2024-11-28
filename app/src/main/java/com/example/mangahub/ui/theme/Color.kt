@@ -1,4 +1,4 @@
-package com.example.proyectomoviles.ui.theme
+package com.example.mangahub.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

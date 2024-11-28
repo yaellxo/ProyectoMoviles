@@ -1,0 +1,5 @@
+Clases auxiliares para validación, procesamiento y utilidades:
+DataValidator.kt: Verifica que los datos ingresados por el usuario sean válidos.
+Constants.kt: Contiene constantes como tipos de pago, roles, etc.
+PaymentProcessor.kt: Simula la integración de métodos de pago.
+SocialMediaSharing.kt: Lógica para compartir productos en redes sociales.

@@ -1,0 +1,5 @@
+Repositorios para almacenar y gestionar los datos utilizando estructuras como listas o mapas:
+UserRepository.kt: Maneja registros, login y datos de usuarios.
+MangaRepository.kt: Almacena y gestiona información de mangas.
+EventRepository.kt: Administra los eventos.
+OrderRepository.kt: Gestiona pedidos.

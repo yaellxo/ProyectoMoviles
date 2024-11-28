@@ -19,6 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ProyectoMoviles"
+rootProject.name = "MangaHub"
 include(":app")
- 
