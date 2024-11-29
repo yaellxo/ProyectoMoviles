@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#FFFFFF">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                 android:text="MangaHub"
                 android:textSize="36sp"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/sawarabi"
                 android:textColor="@color/black"
                 android:layout_marginRight="8dp" />
 
@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/sawarabi"
                 android:text="Registro"
                 android:textColor="@color/black"
                 android:textSize="24sp"
@@ -70,16 +70,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/sawarabi"
                 android:text="Nombre:"
                 android:textColor="@color/black1" />
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="71dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/border_layout"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/sawarabi"
                 android:hint="Escribe tu verdadero nombre, héroe."
                 android:padding="8dp" />
 
@@ -89,6 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:text="Correo:"
+                android:fontFamily="@font/sawarabi"
                 android:textColor="@color/black1" />
 
             <EditText
@@ -96,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/border_layout"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/sawarabi"
                 android:hint="Tu búho mensajero necesita una dirección"
                 android:padding="8dp" />
 
@@ -113,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/border_layout"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/sawarabi"
                 android:hint="Tu nombre de batalla en este mundo."
                 android:padding="8dp" />
 
@@ -123,12 +124,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:text="Edad:"
+                android:fontFamily="@font/sawarabi"
                 android:textColor="@color/black1" />
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:fontFamily="@font/sawarabi"
                 android:background="@drawable/border_layout" />
 
             <!-- Campo de Contraseña -->
@@ -137,6 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:text="Contraseña:"
+                android:fontFamily="@font/sawarabi"
                 android:textColor="@color/black1" />
 
             <EditText
@@ -144,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/border_layout"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/sawarabi"
                 android:hint="Protege tus secretos como un ninja."
                 android:inputType="textPassword"
                 android:padding="8dp" />
@@ -163,7 +167,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/sawarabi"
                 android:text="Al unirte a esta batalla, aceptas las reglas del juego. ¡El destino está en tus manos!"
                 android:textAlignment="center"
                 android:textColor="#000000"
@@ -177,7 +181,7 @@
             android:text="Abortar misión, capitán"
             android:textColor="#000000"
             android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif" />
+            android:fontFamily="@font/sawarabi" />
 
         <!-- Texto final -->
         <TextView
@@ -187,6 +191,7 @@
             android:textSize="12sp"
             android:textColor="#000000"
             android:gravity="center"
+            android:fontFamily="@font/sawarabi"
             android:layout_marginTop="16dp" />
     </LinearLayout>
 </ScrollView>
