@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">ProyectoMoviles</string>
     <string name="logo_description">MangaHub</string>
+    <string name="Titulo">MangaHub</string>
+    <string name="iniciar_sesi_n">Iniciar Sesión</string>
+    <string name="escribe_tu_alias_shinobi">Escribe tu alias shinobi.</string>
+    <string name="inserta_tu_clave_de_maestro_pok_mon">Inserta tu clave de maestro Pokémon.</string>
+    <string name="perdiste_tu_pergamino_secreto">¿Perdiste tu pergamino secreto?</string>
+    <string name="es_hora_de_la_acci_n">¡Es hora de la acción!</string>
+    <string name="RegistroText">Crea tu cuenta y desbloquea todo un universo de historias.</string>
 </resources>
