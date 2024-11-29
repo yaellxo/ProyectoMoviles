@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <!-- Encabezado con título y logo -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingBottom="16dp">
+
+            <!-- Título -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MangaHub"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/black"
+                android:layout_marginRight="8dp" />
+
+            <!-- Logo -->
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/logo"
+                android:contentDescription="Logo MangaHub" />
+        </LinearLayout>
+
+        <!-- Caja de Registro -->
+
+        <!-- Botón Secundario -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/border_layout"
+            android:cornerRadius="8dp"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="sans-serif"
+                android:text="Registro"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <!-- Campo de Nombre -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif"
+                android:text="Nombre:"
+                android:textColor="@color/black1" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/border_layout"
+                android:fontFamily="sans-serif"
+                android:hint="Escribe tu verdadero nombre, héroe."
+                android:padding="8dp" />
+
+            <!-- Campo de Correo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Correo:"
+                android:textColor="@color/black1" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/border_layout"
+                android:fontFamily="sans-serif"
+                android:hint="Tu búho mensajero necesita una dirección"
+                android:padding="8dp" />
+
+            <!-- Campo de Alias -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Alias:"
+                android:textColor="@color/black1" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/border_layout"
+                android:fontFamily="sans-serif"
+                android:hint="Tu nombre de batalla en este mundo."
+                android:padding="8dp" />
+
+            <!-- Campo de Edad -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Edad:"
+                android:textColor="@color/black1" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/border_layout" />
+
+            <!-- Campo de Contraseña -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Contraseña:"
+                android:textColor="@color/black1" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/border_layout"
+                android:fontFamily="sans-serif"
+                android:hint="Protege tus secretos como un ninja."
+                android:inputType="textPassword"
+                android:padding="8dp" />
+
+            <!-- Botón de Registro -->
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#000000"
+                android:text="¡Únete a la sociedad de almas!"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <!-- Texto de aceptación -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="Al unirte a esta batalla, aceptas las reglas del juego. ¡El destino está en tus manos!"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#B0B0B0"
+            android:text="Abortar misión, capitán"
+            android:textColor="#000000"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif" />
+
+        <!-- Texto final -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="¡No te preocupes! Si estás perdido, un héroe siempre tiene un camino hacia la solución."
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</ScrollView>
