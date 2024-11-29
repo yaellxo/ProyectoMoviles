@@ -13,4 +13,7 @@
     <color name="yellow">#D9C005</color>
     <color name="blue">#0047DF</color>
     <color name="purple">#C842F4</color>
+    <color name="normal_color">#FF000000</color>
+    <color name="pressed_color">#4B4B4B</color>
+
 </resources>
