@@ -27,7 +27,8 @@
         <activity
             android:name="com.example.proyectomoviles.client.RegisterScreen"
             android:theme="@style/Theme.ProyectoMoviles" />
+        <activity android:name="com.example.proyectomoviles.client.LoginScreen"
+            android:theme="@style/Theme.ProyectoMoviles"/>
 
     </application>
-
 </manifest>
