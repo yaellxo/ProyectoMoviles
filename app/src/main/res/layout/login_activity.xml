@@ -109,7 +109,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <EditText
-            android:id="@+id/etAlias"
+            android:id="@+id/etAliasLogin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -125,7 +125,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
         <EditText
-            android:id="@+id/etClave"
+            android:id="@+id/etClaveLogin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -139,10 +139,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etAlias" />
+            app:layout_constraintTop_toBottomOf="@id/etAliasLogin" />
 
         <TextView
-            android:id="@+id/tvRecover"
+            android:id="@+id/tvCondiciones"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -152,7 +152,7 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etClave" />
+            app:layout_constraintTop_toBottomOf="@id/etClaveLogin" />
 
         <Button
             android:id="@+id/btnInicioSesion"
@@ -168,7 +168,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.507"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvRecover" />
+            app:layout_constraintTop_toBottomOf="@id/tvCondiciones" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
