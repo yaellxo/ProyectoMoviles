@@ -20,7 +20,7 @@ class LoginScreen : AppCompatActivity() {
         val btnInicioSesion: Button = findViewById(R.id.btnInicioSesion)
         val btnRegistro: Button = findViewById(R.id.btnRegistro)
 
-        // Inicializar SharedPreferences (Es el que maneja las contraseñas)
+        // Inicializar SharedPreferences (Es el que maneja las contraseñas) creo que es lo mejor JAJAJAJAJJA
         val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
 
         btnInicioSesion.setOnClickListener {

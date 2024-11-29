@@ -9,7 +9,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Se inicia el Login
         val intent = Intent(this, LoginScreen::class.java)
         startActivity(intent)
         finish()

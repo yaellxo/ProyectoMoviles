@@ -51,7 +51,7 @@ class RegisterScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Generación de un id personalizado
+            // Generación de un id personalizado JIJIJA
             val userId = generateCustomUserId(alias)
 
             // Se guardan los datos
