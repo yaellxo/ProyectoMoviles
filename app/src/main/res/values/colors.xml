@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="grey">#878787</color>
-    <color name="grey1">#707070</color>
-    <color name="grey2">#4B4B4B</color>
-    <color name="black2">#2F2F2F</color>
-    <color name="black1">#1C1C1C</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="green">#0E7435</color>
-    <color name="red">#DF0000</color>
-    <color name="orange">#FF7700</color>
-    <color name="yellow">#D9C005</color>
-    <color name="blue">#0047DF</color>
-    <color name="purple">#C842F4</color>
-    <color name="normal_color">#FF000000</color>
-    <color name="pressed_color">#4B4B4B</color>
+    <!-- Colores de texto -->
+    <color name="color_font_principal">#FF000000</color>
+    <color name="color_font_principal_blanco">#FFFFFF</color>
+    <color name="color_font_secundario_gris_bajo">#878787</color>
+    <color name="color_font_secundario_gris_medio">#707070</color>
+    <color name="color_font_secundario_gris_claro">#4B4B4B</color>
+
+    <!-- Colores de fondo -->
+    <color name="background">#FFFFFFFF</color>
+
+    <!-- Colores para acciones -->
+    <color name="opcion_agregar">#0E7435</color>
+    <color name="opcion_eliminar">#DF0000</color>
+    <color name="opcion_modificar">#D9C005</color>
+    <color name="opcion_reporte">#0047DF</color>
+    <color name="opcion_inventario">#C842F4</color>
+
+    <!-- Colores de botones -->
+    <color name="boton_compra">#FF7700</color>
+    <color name="boton_normal_color">#FF000000</color>
+    <color name="boton_pressed_color">#4B4B4B</color>
+
+    <!-- Colores  xdddd-->
+    <color name="negro_color">#FF000000</color>
+    <color name="gris_color">#4B4B4B</color>
 
 </resources>

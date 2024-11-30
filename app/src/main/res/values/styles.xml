@@ -1,11 +1,12 @@
 <resources>
-
-    <!-- Tema sin ActionBar -->
-    <style name="Theme.ProyectoMoviles" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Puedes agregar otros atributos aquí si es necesario -->
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+    <style name="Theme.ProyectoMoviles" parent="Theme.AppCompat.DayNight">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
     </style>
+
+        <style name="BottomNavBarStyle">
+            <item name="itemIconTint">@color/color_font_principal_blanco</item>
+            <item name="itemTextColor">@color/color_font_principal_blanco</item>
+        </style>
 
 </resources>

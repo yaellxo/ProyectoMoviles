@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.proyectomoviles.MainActivity
 import com.example.proyectomoviles.R
 
 class LoginScreen : AppCompatActivity() {
@@ -20,29 +21,24 @@ class LoginScreen : AppCompatActivity() {
         val btnInicioSesion: Button = findViewById(R.id.btnInicioSesion)
         val btnRegistro: Button = findViewById(R.id.btnRegistro)
 
-        // Inicializar SharedPreferences (Es el que maneja las contraseñas) creo que es lo mejor JAJAJAJAJJA
         val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
 
         btnInicioSesion.setOnClickListener {
             val aliasLogin = etAliasLogin.text.toString()
             val claveLogin = etClaveLogin.text.toString()
 
-            // Validaciones de campos vacíos
             if (aliasLogin.isEmpty() || claveLogin.isEmpty()) {
                 Toast.makeText(this, "Por favor, ingrese todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Obtienen los datos de sharedPreferences
             val storedAlias = sharedPreferences.getString("alias", null)
             val storedClave = sharedPreferences.getString("clave", null)
 
-            // Validación de credenciales
             if (storedAlias == aliasLogin && storedClave == claveLogin) {
                 Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
 
-                // Redirigir al menu
-                val intent = Intent(this, CatalogScreen::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
