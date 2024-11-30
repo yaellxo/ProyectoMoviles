@@ -9,9 +9,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.R
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class RegisterScreen : AppCompatActivity() {
 
@@ -31,9 +28,6 @@ class RegisterScreen : AppCompatActivity() {
             getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
-        val registeredEmails =
-            sharedPreferences.getStringSet("emails", mutableSetOf()) ?: mutableSetOf()
-
         btnCrearCuenta.setOnClickListener {
             val nombre = etNombreRegistro.text.toString()
             val alias = etAliasRegistro.text.toString()
@@ -42,47 +36,36 @@ class RegisterScreen : AppCompatActivity() {
             val clave = etClaveRegistro.text.toString()
 
             if (nombre.isEmpty() || alias.isEmpty() || correo.isEmpty() || edadString.isEmpty() || clave.isEmpty()) {
-                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             val edad = edadString.toIntOrNull()
             if (edad == null || edad < 12 || edad > 80) {
-                Toast.makeText(
-                    this,
-                    "Por favor, ingrese una edad válida entre 12 y 80 años",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this, "Por favor, ingrese una edad válida entre 12 y 80 años", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (registeredEmails.contains(correo)) {
-                Toast.makeText(this, "Este correo ya está registrado", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            val storedAlias = sharedPreferences.getString("alias", "")
-            if (alias == storedAlias) {
+            // Verificar si el alias ya está registrado
+            val storedAliases = sharedPreferences.getStringSet("aliases", mutableSetOf()) ?: mutableSetOf()
+            if (storedAliases.contains(alias)) {
                 Toast.makeText(this, "Este alias ya está registrado", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val userId = generateCustomUserId(alias)
-
-            editor.putString("userId", userId)
-            editor.putString("nombre", nombre)
-            editor.putString("alias", alias)
-            editor.putString("correo", correo)
-            editor.putString("edad", edadString)
-            editor.putString("clave", clave)
-            registeredEmails.add(correo)
-            editor.putStringSet("emails", registeredEmails)
+            // Guardar datos del usuario
+            storedAliases.add(alias)
+            editor.putStringSet("aliases", storedAliases)
+            editor.putString("nombre_$alias", nombre)
+            editor.putString("correo_$alias", correo)
+            editor.putString("edad_$alias", edadString)
+            editor.putString("clave_$alias", clave)
+            editor.putString("userType_$alias", "user")
             editor.apply()
 
-            Toast.makeText(this, "Registro exitoso. ID asignado: $userId", Toast.LENGTH_SHORT)
-                .show()
+            Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
 
+            // Redirigir al LoginScreen después del registro
             val intent = Intent(this, LoginScreen::class.java)
             startActivity(intent)
             finish()
@@ -94,10 +77,4 @@ class RegisterScreen : AppCompatActivity() {
             finish()
         }
     }
-
-    private fun generateCustomUserId(alias: String): String? {
-        val currentDate = SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault()).format(Date())
-        return "USR-${alias.uppercase()}-$currentDate"
-    }
-
 }

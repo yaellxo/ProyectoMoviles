@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".client.PerfilScreenFragment">
+    tools:context=".admin.AdminDashboard">
 
     <TextView
-        android:id="@+id/tvUserWelcome"
+        android:id="@+id/tvAdminWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bienvenido, Usuario"
+        android:text="Bienvenido, Admin"
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,11 +18,11 @@
         android:layout_marginTop="32dp" />
 
     <Button
-        android:id="@+id/btnLogoutUser"
+        android:id="@+id/btnLogoutAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cerrar Sesión"
-        app:layout_constraintTop_toBottomOf="@+id/tvUserWelcome"
+        app:layout_constraintTop_toBottomOf="@+id/tvAdminWelcome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />

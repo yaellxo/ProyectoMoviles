@@ -1,17 +1,22 @@
 package com.example.proyectomoviles
 
+import android.content.Context
+import android.content.Intent
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.RotateAnimation
 import androidx.core.view.forEach
 import androidx.navigation.NavController
+import com.example.proyectomoviles.admin.AdminActivity
+import com.example.proyectomoviles.admin.PerfilActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BottomNavHelper {
 
     fun setupBottomNavigationView(
         bottomNavigationView: BottomNavigationView,
-        navController: NavController // Añadido el parámetro NavController
+        navController: NavController,
+        userType: String // Recibe el tipo de usuario
     ) {
         bottomNavigationView.menu.forEach { menuItem ->
             menuItem.title = menuItem.title
@@ -48,26 +53,20 @@ class BottomNavHelper {
         }
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            bottomNavigationView.menu.forEach { menuItem ->
-                menuItem.title = menuItem.title
-
-                when (menuItem.itemId) {
-                    R.id.menu_hot -> menuItem.icon = bottomNavigationView.context.getDrawable(R.drawable.ic_hot)
-                    R.id.menu_eventos -> menuItem.icon = bottomNavigationView.context.getDrawable(R.drawable.ic_eventos)
-                    R.id.menu_busqueda -> menuItem.icon = bottomNavigationView.context.getDrawable(R.drawable.ic_busqueda)
-                    R.id.menu_carrito -> menuItem.icon = bottomNavigationView.context.getDrawable(R.drawable.ic_carrito)
-                    R.id.menu_perfil -> menuItem.icon = bottomNavigationView.context.getDrawable(R.drawable.ic_perfil)
-                }
-            }
-
             when (item.itemId) {
+                R.id.menu_perfil -> {
+                    val intent = if (userType == "admin") {
+                        Intent(bottomNavigationView.context, AdminActivity::class.java)
+                    } else {
+                        Intent(bottomNavigationView.context, PerfilActivity::class.java)
+                    }
+                    bottomNavigationView.context.startActivity(intent)
+                }
                 R.id.menu_hot -> navController.navigate(R.id.menu_hot)
                 R.id.menu_eventos -> navController.navigate(R.id.menu_eventos)
                 R.id.menu_busqueda -> navController.navigate(R.id.menu_busqueda)
                 R.id.menu_carrito -> navController.navigate(R.id.menu_carrito)
-                R.id.menu_perfil -> navController.navigate(R.id.menu_perfil)
             }
-
             true
         }
     }

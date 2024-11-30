@@ -32,5 +32,9 @@
         <activity android:name="com.example.proyectomoviles.client.LoginScreen"
             android:theme="@style/Theme.ProyectoMoviles"/>
 
+        <activity android:name=".admin.AdminActivity" />
+        <activity android:name=".admin.AdminDashboard"/>
+        <activity android:name=".admin.PerfilActivity" />
+
     </application>
 </manifest>
