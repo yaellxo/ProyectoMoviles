@@ -18,4 +18,16 @@
     <string name="no_te_preocupes_si_est_s_perdido_un_h_roe_siempre_tiene_un_camino_hacia_la_soluci_n">¡No te preocupes! Si estás perdido, un héroe siempre tiene un camino hacia la solución.</string>
     <string name="abortar_misi_n_capit_n">Abortar misión, capitán</string>
     <string name="al_unirte_a_esta_batalla_aceptas_las_reglas_del_juego_el_destino_est_en_tus_manos">Al unirte a esta batalla, aceptas las reglas del juego. ¡El destino está en tus manos!</string>
+
+    //Eliminar ------------------------------------------
+    <string name="titulo_eliminar">Eliminar</string>
+
+    <string name="eliminiar_text_manga">Eliminia los restos que no te sirvan para la aventura</string>
+    <string name="eliminiar_text_evento">Vuelve al pasado y enmienda los errores cometidos</string>
+    <string name="eliminiar_text_usuario">Preparate para eliminar a un soldado</string>
+
+    <string name="boton_eliminar_usuario">Confirmar aniquilación</string>
+    <string name="boton_eliminar_evento">Confirmar viaje al pasado</string>
+    <string name="boton_eliminar_manga">Confirmar eliminación de restos</string>
+    //----------------------------------------------------
 </resources>
