@@ -1,0 +1,27 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/menu_hot"
+    android:id="@+id/nav_graph"
+    android:graph="@navigation/nav_graph">
+
+<fragment
+        android:id="@+id/menu_hot"
+        android:name="com.example.proyectomoviles.client.HotScreenFragment"
+        android:label="Hot" />
+    <fragment
+        android:id="@+id/menu_eventos"
+        android:name="com.example.proyectomoviles.client.EventScreenFragment"
+        android:label="Event" />
+    <fragment
+        android:id="@+id/menu_busqueda"
+        android:name="com.example.proyectomoviles.client.BuscarScreenFragment"
+        android:label="Search" />
+    <fragment
+        android:id="@+id/menu_carrito"
+        android:name="com.example.proyectomoviles.client.CarritoScreenFragment"
+        android:label="Order" />
+    <fragment
+        android:id="@+id/menu_perfil"
+        android:name="com.example.proyectomoviles.client.PerfilScreenFragment"
+        android:label="Profile" />
+</navigation>

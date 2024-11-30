@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.proyectomoviles.MainActivity
 import com.example.proyectomoviles.R
 
 class LoginScreen : AppCompatActivity() {
@@ -42,7 +43,7 @@ class LoginScreen : AppCompatActivity() {
                 Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
 
                 // Redirigir al menu
-                val intent = Intent(this, CatalogScreen::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
