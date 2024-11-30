@@ -1,8 +1,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:startDestination="@id/menu_hot"
-    android:id="@+id/nav_graph"
-    android:graph="@navigation/nav_graph">
+    android:id="@+id/nav_graph">
 
 <fragment
         android:id="@+id/menu_hot"

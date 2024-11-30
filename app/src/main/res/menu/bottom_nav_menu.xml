@@ -1,22 +1,28 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_hot"
         android:icon="@drawable/ic_hot"
-        android:title="Hot" />
+        android:title="Hot"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_eventos"
         android:icon="@drawable/ic_eventos"
-        android:title="Eventos" />
+        android:title="Eventos"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_busqueda"
         android:icon="@drawable/ic_busqueda"
-        android:title="Busqueda" />
+        android:title="Busqueda"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_carrito"
         android:icon="@drawable/ic_carrito"
-        android:title="Carrito" />
+        android:title="Carrito"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_perfil"
         android:icon="@drawable/ic_perfil"
-        android:title="Perfil" />
+        android:title="Perfil"
+        app:showAsAction="ifRoom" />
 </menu>
