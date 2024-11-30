@@ -3,10 +3,4 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
     </style>
-
-        <style name="BottomNavBarStyle">
-            <item name="itemIconTint">@color/color_font_principal_blanco</item>
-            <item name="itemTextColor">@color/color_font_principal_blanco</item>
-        </style>
-
 </resources>
