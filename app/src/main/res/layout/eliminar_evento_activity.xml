@@ -23,7 +23,6 @@
             android:layout_width="53dp"
             android:layout_height="41dp"
             android:layout_marginEnd="200dp"
-            android:contentDescription="@string/logo_description"
             android:src="@drawable/icon_eliminar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +34,7 @@
             android:layout_width="235dp"
             android:layout_height="41dp"
             android:layout_marginTop="192dp"
-            android:background="@android:color/red"
+            android:background="@color/opcion_eliminar"
             android:fontFamily="@font/sawarabi"
             android:text="@string/boton_eliminar_evento"
             android:textAllCaps="false"
@@ -55,7 +54,7 @@
             android:fontFamily="@font/sawarabi"
             android:gravity="center"
             android:text="@string/eliminiar_text_evento"
-            android:textColor="@color/black"
+            android:textColor="@color/color_font_principal"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -99,8 +98,8 @@
             android:fontFamily="@font/sawarabi"
             android:hint="Ingresa el ID"
             android:padding="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/grey"
+            android:textColor="@color/color_font_principal"
+            android:textColorHint="@color/color_font_secundario_gris_medio"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -113,7 +112,6 @@
             android:layout_height="30dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="6dp"
-            android:contentDescription="@string/logo_description"
             android:src="@drawable/icon_lupa"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -144,6 +142,7 @@
             android:textStyle="bold"
             tools:layout_editor_absoluteX="58dp"
             tools:layout_editor_absoluteY="38dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
