@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.MainActivity
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.models.AdminConstants
+import org.json.JSONArray
 
 class LoginScreen : AppCompatActivity() {
 
@@ -44,20 +45,44 @@ class LoginScreen : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } else {
-                val storedAlias = sharedPreferences.getString("userAlias", null)
-                val storedClave = sharedPreferences.getString("userClave", null)
+                val usersJson = sharedPreferences.getString("users", "[]") // Default empty list
+                val users = JSONArray(usersJson)
 
-                if (storedAlias == aliasLogin && storedClave == claveLogin) {
-                    val editor = sharedPreferences.edit()
-                    editor.putString("userType", "user")
-                    editor.putString("alias", aliasLogin)
-                    editor.apply()
+                var userFound = false
 
-                    Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
+                for (i in 0 until users.length()) {
+                    val user = users.getJSONObject(i)
+                    if (user.getString("alias") == aliasLogin && user.getString("clave") == claveLogin) {
+                        val editor = sharedPreferences.edit()
+                        editor.putString("userType", "user")
+                        editor.putString("alias", aliasLogin)
+                        editor.putString("nombre", user.getString("nombre"))
+                        editor.putString("correo", user.getString("correo"))
+                        editor.putString("edad", user.getString("edad"))
+                        editor.putString("userId", user.optString("userId", null))
+                        editor.apply()
+
+                        val photoUriString = user.optString("photoUri", "")
+                        editor.putString("userPhotoUri", photoUriString)
+                        editor.apply()
+
+                        val mensaje = "Inicio de sesión exitoso\n" +
+                                "Nombre: ${user.getString("nombre")}\n" +
+                                "Alias: ${user.getString("alias")}\n" +
+                                "Correo: ${user.getString("correo")}\n" +
+                                "Edad: ${user.getString("edad")}"
+                        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
+
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+
+                        userFound = true
+                        break
+                    }
+                }
+
+                if (!userFound) {
                     Toast.makeText(this, "Alias o clave incorrectos", Toast.LENGTH_SHORT).show()
                 }
             }

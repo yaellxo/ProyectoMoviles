@@ -9,6 +9,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.R
+import org.json.JSONArray
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -27,8 +29,7 @@ class RegisterScreen : AppCompatActivity() {
         val btnCrearCuenta: Button = findViewById(R.id.btnCrearCuenta)
         val btnRegresar: Button = findViewById(R.id.btnRegresar)
 
-        val sharedPreferences: SharedPreferences =
-            getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
         val registeredEmails =
@@ -46,38 +47,51 @@ class RegisterScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if (edadString.length < 1 || edadString.length > 3) {
+            if (edadString.toIntOrNull() == null || edadString.toInt() !in 1..150) {
                 Toast.makeText(this, "Por favor, ingrese una edad válida", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (registeredEmails.contains(correo)) {
-                Toast.makeText(this, "Este correo ya está registrado", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+            val usersJson = sharedPreferences.getString("users", "[]")
+            val users = JSONArray(usersJson)
 
-            val storedAlias = sharedPreferences.getString("userAlias", "")
-            if (alias == storedAlias) {
-                Toast.makeText(this, "Este alias ya está registrado", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            for (i in 0 until users.length()) {
+                val user = users.getJSONObject(i)
+                if (user.getString("correo") == correo) {
+                    Toast.makeText(this, "Este correo ya está registrado", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                if (user.getString("alias") == alias) {
+                    Toast.makeText(this, "Este alias ya está registrado", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
             }
 
             val userId = generateCustomUserId(alias)
 
-            editor.putString("userId", userId)
-            editor.putString("userNombre", nombre)
-            editor.putString("userAlias", alias)
-            editor.putString("userCorreo", correo)
-            editor.putString("userEdad", edadString)
-            editor.putString("userClave", clave)
-            registeredEmails.add(correo)
-            editor.putStringSet("emails", registeredEmails)
+            val newUser = JSONObject().apply {
+                put("userId", userId)
+                put("nombre", nombre)
+                put("alias", alias)
+                put("correo", correo)
+                put("edad", edadString)
+                put("clave", clave)
+                put("photoUri", "")
+            }
+
+            users.put(newUser)
+            editor.putString("users", users.toString())
             editor.apply()
 
-            Toast.makeText(this, "Registro exitoso. ID asignado: $userId", Toast.LENGTH_SHORT).show()
+            val mensaje = "Usuario registrado exitosamente:\n" +
+                    "Nombre: $nombre\n" +
+                    "Alias: $alias\n" +
+                    "Correo: $correo\n" +
+                    "Edad: $edadString\n" +
+                    "Clave: $clave"
+            Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
 
-            val intent = Intent(this, LoginScreen::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, LoginScreen::class.java))
             finish()
         }
 

@@ -18,6 +18,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.proyectomoviles.R
+import org.json.JSONArray
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -34,15 +35,21 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.d("PerfilScreenFragment", "onViewCreated: Fragment creado correctamente.")
+
         tvAlias = view.findViewById(R.id.tvAliasUser)
         tvEdad = view.findViewById(R.id.tvEdadUser)
         tvNombre = view.findViewById(R.id.tvNombreUser)
         ivUserPhoto = view.findViewById(R.id.ivUserPhoto)
         btnCerrarSesion = view.findViewById(R.id.btnCerrarSesion)
 
-        loadUserData()
+        val alias = arguments?.getString("alias")
+        val userType = arguments?.getString("userType")
 
-        loadProfilePhoto()
+        Log.d("PerfilScreenFragment", "Alias recibido: $alias, Tipo de usuario recibido: $userType")
+
+        loadUserData(alias)
+
         ivUserPhoto.setOnClickListener {
             getImageLauncher.launch("image/*")
         }
@@ -52,16 +59,35 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
         }
     }
 
-    private fun loadUserData() {
+
+
+    private fun loadUserData(alias: String?) {
         val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val usersJson = sharedPreferences.getString("users", "[]")
+        val users = JSONArray(usersJson)
 
-        val alias = sharedPreferences.getString("userAlias", "Usuario") ?: "Usuario"
-        val edad = sharedPreferences.getString("userEdad", "N/A") ?: "N/A"  // Edad como String
-        val nombre = sharedPreferences.getString("userNombre", "Nombre no disponible") ?: "Nombre no disponible"
+        if (alias != null) {
+            Log.d("PerfilScreenFragment", "Buscando usuario con alias: $alias")
+            for (i in 0 until users.length()) {
+                val user = users.getJSONObject(i)
+                if (user.getString("alias") == alias) {
+                    // Mostrar datos
+                    tvAlias.text = user.getString("alias")
+                    tvEdad.text = "Edad: ${user.getString("edad")}"
+                    tvNombre.text = "Nombre: ${user.getString("nombre")}"
 
-        tvAlias.text = "$alias"
-        tvEdad.text = "Edad: $edad"
-        tvNombre.text = "Nombre: $nombre"
+                    val photoUriString = user.optString("photoUri", "")
+                    if (photoUriString.isNotEmpty()) {
+                        loadProfilePhoto(Uri.parse(photoUriString))
+                    } else {
+                        ivUserPhoto.setImageResource(R.drawable.ic_perfil_negro) // Imagen predeterminada si no tiene foto
+                    }
+                    break
+                }
+            }
+        } else {
+            Log.d("PerfilScreenFragment", "Alias no encontrado en los argumentos.")
+        }
     }
 
     private fun getCircularBitmap(bitmap: Bitmap): Bitmap {
@@ -82,7 +108,6 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
 
         return output
     }
-
 
     private val getImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         if (uri != null) {
@@ -120,18 +145,25 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
 
     private fun saveProfilePhoto(imageUri: Uri) {
         val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putString("userPhotoUri", imageUri.toString())
-        editor.apply()
+        val usersJson = sharedPreferences.getString("users", "[]") ?: "[]"
+        val users = JSONArray(usersJson)
+
+        val activeAlias = sharedPreferences.getString("activeUserAlias", null)
+        if (activeAlias != null) {
+            for (i in 0 until users.length()) {
+                val user = users.getJSONObject(i)
+                if (user.getString("alias") == activeAlias) {
+                    user.put("photoUri", imageUri.toString()) // Asegúrate de que la URI se guarda correctamente
+                    break
+                }
+            }
+            sharedPreferences.edit().putString("users", users.toString()).apply()
+        }
     }
 
-    private fun loadProfilePhoto() {
-        val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-        val photoUriString = sharedPreferences.getString("userPhotoUri", null)
-
-        if (!photoUriString.isNullOrEmpty()) {
+    private fun loadProfilePhoto(uri: Uri?) {
+        if (uri != null) {
             try {
-                val uri = Uri.parse(photoUriString)
                 val inputStream = requireActivity().contentResolver.openInputStream(uri)
                 val bitmap = BitmapFactory.decodeStream(inputStream)
                 val circularBitmap = getCircularBitmap(bitmap)
@@ -144,7 +176,6 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
             ivUserPhoto.setImageResource(R.drawable.ic_perfil_user)
         }
     }
-
 
     private fun onCerrarSesionClick() {
         val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
