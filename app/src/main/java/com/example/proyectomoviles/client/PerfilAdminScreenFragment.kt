@@ -38,9 +38,9 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_activity_admin) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tvAlias = view.findViewById(R.id.tvAlias)
-        tvIdAdmin = view.findViewById(R.id.tvIdAdmin)
-        tvNombreAdmin = view.findViewById(R.id.tvNombreAdmin)
+        tvAlias = view.findViewById(R.id.tvAliasUser)
+        tvIdAdmin = view.findViewById(R.id.tvEdadUser)
+        tvNombreAdmin = view.findViewById(R.id.tvNombreUser)
         tvCorreoAdmin = view.findViewById(R.id.tvCorreoAdmin)
         tvAreaAdmin = view.findViewById(R.id.tvAreaAdmin)
         tvRangoAdmin = view.findViewById(R.id.tvRangoAdmin)
@@ -142,21 +142,25 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_activity_admin) {
                 val circularBitmap = getCircularBitmap(bitmap)
                 ivAdminPhoto.setImageBitmap(circularBitmap)
             } catch (e: Exception) {
-                Toast.makeText(requireContext(), "Error al cargar la imagen", Toast.LENGTH_SHORT).show()
+                ivAdminPhoto.setImageResource(R.drawable.ic_perfil_admin)
             }
         } else {
             ivAdminPhoto.setImageResource(R.drawable.ic_perfil_admin)
         }
     }
 
+
+
     private fun onCerrarSesionClick() {
         val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.clear()
+        editor.remove("userType")
         editor.apply()
         val intent = Intent(activity, LoginScreen::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
+
         Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show()
     }
+
 }

@@ -42,18 +42,12 @@ class RegisterScreen : AppCompatActivity() {
             val clave = etClaveRegistro.text.toString()
 
             if (nombre.isEmpty() || alias.isEmpty() || correo.isEmpty() || edadString.isEmpty() || clave.isEmpty()) {
-                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val edad = edadString.toIntOrNull()
-            if (edad == null || edad < 12 || edad > 80) {
-                Toast.makeText(
-                    this,
-                    "Por favor, ingrese una edad válida entre 12 y 80 años",
-                    Toast.LENGTH_SHORT
-                ).show()
+            if (edadString.length < 1 || edadString.length > 3) {
+                Toast.makeText(this, "Por favor, ingrese una edad válida", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -62,7 +56,7 @@ class RegisterScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val storedAlias = sharedPreferences.getString("alias", "")
+            val storedAlias = sharedPreferences.getString("userAlias", "")
             if (alias == storedAlias) {
                 Toast.makeText(this, "Este alias ya está registrado", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -71,17 +65,16 @@ class RegisterScreen : AppCompatActivity() {
             val userId = generateCustomUserId(alias)
 
             editor.putString("userId", userId)
-            editor.putString("nombre", nombre)
-            editor.putString("alias", alias)
-            editor.putString("correo", correo)
-            editor.putString("edad", edadString)
-            editor.putString("clave", clave)
+            editor.putString("userNombre", nombre)
+            editor.putString("userAlias", alias)
+            editor.putString("userCorreo", correo)
+            editor.putString("userEdad", edadString)
+            editor.putString("userClave", clave)
             registeredEmails.add(correo)
             editor.putStringSet("emails", registeredEmails)
             editor.apply()
 
-            Toast.makeText(this, "Registro exitoso. ID asignado: $userId", Toast.LENGTH_SHORT)
-                .show()
+            Toast.makeText(this, "Registro exitoso. ID asignado: $userId", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, LoginScreen::class.java)
             startActivity(intent)
@@ -99,5 +92,4 @@ class RegisterScreen : AppCompatActivity() {
         val currentDate = SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault()).format(Date())
         return "USR-${alias.uppercase()}-$currentDate"
     }
-
 }

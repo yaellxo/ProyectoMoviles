@@ -91,7 +91,7 @@
             app:layout_constraintTop_toTopOf="@id/ivAdminPhoto" />
 
         <TextView
-            android:id="@+id/tvAlias"
+            android:id="@+id/tvAliasUser"
             android:layout_width="197dp"
             android:layout_height="49dp"
             android:layout_marginTop="10dp"
@@ -107,7 +107,7 @@
             app:layout_constraintTop_toBottomOf="@id/ivAdminPhoto" />
 
         <TextView
-            android:id="@+id/tvIdAdmin"
+            android:id="@+id/tvEdadUser"
             android:layout_width="312dp"
             android:layout_height="42dp"
             android:layout_marginTop="10dp"
@@ -121,10 +121,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvAlias" />
+            app:layout_constraintTop_toBottomOf="@id/tvAliasUser" />
 
         <TextView
-            android:id="@+id/tvNombreAdmin"
+            android:id="@+id/tvNombreUser"
             android:layout_width="312dp"
             android:layout_height="42dp"
             android:layout_marginTop="10dp"
@@ -138,7 +138,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvIdAdmin" />
+            app:layout_constraintTop_toBottomOf="@id/tvEdadUser" />
 
         <TextView
             android:id="@+id/tvCorreoAdmin"
@@ -155,7 +155,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvNombreAdmin" />
+            app:layout_constraintTop_toBottomOf="@id/tvNombreUser" />
 
         <TextView
             android:id="@+id/tvAreaAdmin"
