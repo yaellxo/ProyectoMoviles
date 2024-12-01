@@ -29,10 +29,4 @@
     <string name="boton_eliminar_evento">Confirmar viaje al pasado</string>
     <string name="boton_eliminar_manga">Confirmar eliminación de restos</string>
     //----------------------------------------------------
-
-    //Agregar ------------------------------------------
-    <string name="titulo_agregar">Agregar</string>
-    
-    <string name="placeholder">Placeholder</string>
-    //----------------------------------------------------
 </resources>
