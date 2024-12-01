@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.MainActivity
 import com.example.proyectomoviles.R
+import com.example.proyectomoviles.models.AdminConstants
 
 class LoginScreen : AppCompatActivity() {
 
@@ -32,41 +33,45 @@ class LoginScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Manejar inicio de sesión del administrador
-            if (aliasLogin == "admin" && claveLogin == "admin") {
-                Toast.makeText(this, "Inicio de sesión como administrador exitoso", Toast.LENGTH_SHORT).show()
+            val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
 
-                // Redirigir a MainActivity como admin
+            if (aliasLogin == AdminConstants.ADMIN_ALIAS && claveLogin == AdminConstants.ADMIN_PASSWORD) {
+                editor.putString("userType", "admin")
+                editor.apply()
+
+                Toast.makeText(this, "Inicio de sesión exitoso como administrador", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
-                intent.putExtra("userType", "admin")
                 startActivity(intent)
                 finish()
-                return@setOnClickListener
-            }
+            } else {
+                val storedAlias = sharedPreferences.getString("alias", null)
+                val storedClave = sharedPreferences.getString("clave", null)
 
-            // Validar usuarios registrados
-            val storedAliases = sharedPreferences.getStringSet("aliases", mutableSetOf())
-            if (storedAliases?.contains(aliasLogin) == true) {
-                val storedClave = sharedPreferences.getString("clave_$aliasLogin", null)
-                if (storedClave == claveLogin) {
-                    val userType = sharedPreferences.getString("userType_$aliasLogin", "user")
+                if (storedAlias == aliasLogin && storedClave == claveLogin) {
+                    editor.putString("userType", "user")
+                    editor.apply()
 
-                    // Redirigir a MainActivity con el tipo de usuario
+                    Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, MainActivity::class.java)
-                    intent.putExtra("userType", userType)
                     startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(this, "Clave incorrecta", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Alias o clave incorrectos", Toast.LENGTH_SHORT).show()
                 }
-            } else {
-                Toast.makeText(this, "Alias no encontrado", Toast.LENGTH_SHORT).show()
             }
         }
+
 
         btnRegistro.setOnClickListener {
             val intent = Intent(this, RegisterScreen::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun saveUserType(sharedPreferences: android.content.SharedPreferences, userType: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString("userType", userType)
+        editor.apply()
     }
 }

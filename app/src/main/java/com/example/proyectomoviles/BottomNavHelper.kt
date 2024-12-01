@@ -1,22 +1,18 @@
 package com.example.proyectomoviles
 
 import android.content.Context
-import android.content.Intent
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.RotateAnimation
 import androidx.core.view.forEach
 import androidx.navigation.NavController
-import com.example.proyectomoviles.admin.AdminActivity
-import com.example.proyectomoviles.admin.PerfilActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BottomNavHelper {
 
     fun setupBottomNavigationView(
         bottomNavigationView: BottomNavigationView,
-        navController: NavController,
-        userType: String // Recibe el tipo de usuario
+        navController: NavController // Añadido el parámetro NavController
     ) {
         bottomNavigationView.menu.forEach { menuItem ->
             menuItem.title = menuItem.title
@@ -54,18 +50,22 @@ class BottomNavHelper {
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.menu_perfil -> {
-                    val intent = if (userType == "admin") {
-                        Intent(bottomNavigationView.context, AdminActivity::class.java)
-                    } else {
-                        Intent(bottomNavigationView.context, PerfilActivity::class.java)
-                    }
-                    bottomNavigationView.context.startActivity(intent)
-                }
                 R.id.menu_hot -> navController.navigate(R.id.menu_hot)
                 R.id.menu_eventos -> navController.navigate(R.id.menu_eventos)
                 R.id.menu_busqueda -> navController.navigate(R.id.menu_busqueda)
                 R.id.menu_carrito -> navController.navigate(R.id.menu_carrito)
+                R.id.menu_perfil -> {
+                    val sharedPreferences = bottomNavigationView.context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+                    val userType = sharedPreferences.getString("userType", "user")
+
+                    if (userType == "admin") {
+                        // Navegar al perfil del administrador
+                        navController.navigate(R.id.menu_admin)
+                    } else {
+                        // Navegar al perfil del usuario regular
+                        navController.navigate(R.id.menu_perfil)
+                    }
+                }
             }
             true
         }
