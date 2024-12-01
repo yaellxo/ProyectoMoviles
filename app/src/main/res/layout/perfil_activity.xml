@@ -81,8 +81,8 @@
             android:id="@+id/btnCerrarSesion"
             android:layout_width="257dp"
             android:layout_height="48dp"
-            android:layout_marginTop="576dp"
-            android:background="@drawable/button_eliminar_background_selector"
+            android:layout_marginTop="168dp"
+            android:background="@drawable/button_secundary_background_selector"
             android:gravity="center"
             android:text="Cerrar sesión User"
             android:textColor="@android:color/white"
@@ -98,7 +98,7 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center"
-            android:text="Admin"
+            android:text="User"
             android:textColor="@android:color/black"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -106,6 +106,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/ivUserPhoto" />
+
 
         <TextView
             android:id="@+id/tvEdadUser"

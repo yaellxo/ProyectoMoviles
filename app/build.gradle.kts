@@ -57,6 +57,7 @@ dependencies {
 
     // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
+    implementation ("com.getbase:floatingactionbutton:1.10.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
 
     // Material Components

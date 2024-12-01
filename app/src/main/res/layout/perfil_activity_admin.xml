@@ -7,9 +7,9 @@
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="392dp"
         android:layout_height="781dp"
-        android:layout_marginTop="4dp"
         android:gravity="center"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,20 +76,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btnCerrarSesion"
-            android:layout_width="257dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="576dp"
-            android:background="@drawable/button_eliminar_background_selector"
-            android:gravity="center"
-            android:text="Cerrar sesión Admin"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/ivAdminPhoto" />
-
         <TextView
             android:id="@+id/tvAliasUser"
             android:layout_width="197dp"
@@ -97,6 +83,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center"
+            android:padding="0dp"
             android:text="Admin"
             android:textColor="@android:color/black"
             android:textSize="30sp"
@@ -190,7 +177,75 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvAreaAdmin" />
 
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="172dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="568dp"
+            android:background="@drawable/button_secundary_background_selector"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Cerrar sesión Admin"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ivAdminPhoto" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fab_menu"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="45dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        app:srcCompat="@drawable/ic_perfil">
+
+        <!-- Floating Action Buttons -->
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_option_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_perfil" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_option_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_eventos" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_option_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_pencil" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_option_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_area" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_option_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_carrito" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_option_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_lupa" />
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
