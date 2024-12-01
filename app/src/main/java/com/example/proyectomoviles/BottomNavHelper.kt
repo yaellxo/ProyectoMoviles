@@ -12,7 +12,7 @@ class BottomNavHelper {
 
     fun setupBottomNavigationView(
         bottomNavigationView: BottomNavigationView,
-        navController: NavController // Añadido el parámetro NavController
+        navController: NavController
     ) {
         bottomNavigationView.menu.forEach { menuItem ->
             menuItem.title = menuItem.title
@@ -59,10 +59,8 @@ class BottomNavHelper {
                     val userType = sharedPreferences.getString("userType", "user")
 
                     if (userType == "admin") {
-                        // Navegar al perfil del administrador
                         navController.navigate(R.id.menu_admin)
                     } else {
-                        // Navegar al perfil del usuario regular
                         navController.navigate(R.id.menu_perfil)
                     }
                 }

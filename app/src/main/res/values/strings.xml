@@ -8,8 +8,8 @@
     <string name="es_hora_de_la_acci_n">¡Es hora de la acción!</string>
     <string name="RegistroText">Crea tu cuenta y desbloquea todo un universo de historias.</string>
     <string name="Registro">Crea tu cuenta</string>
-    <string name="escribe_tu_verdadero_nombre">Escribe tu verdadero nombre</string>
-    <string name="tu_b_ho_mensajero_necesita_una_direcci_n">Tu búho mensajero necesita una dirección</string>
+    <string name="escribe_tu_verdadero_nombre">Escribe tu verdadero nombre.</string>
+    <string name="tu_b_ho_mensajero_necesita_una_direcci_n">Tu búho mensajero necesita una dirección.</string>
     <string name="tu_nombre_de_batalla_en_este_mundo">Tu nombre de batalla en este mundo.</string>
     <string name="registra_tu_nivel_de_experiencia">Registra tu nivel de experiencia.</string>
     <string name="protege_tus_secretos_como_un_ninja">Protege tus secretos como un ninja.</string>
@@ -21,9 +21,9 @@
     //Eliminar ------------------------------------------
     <string name="titulo_eliminar">Eliminar</string>
 
-    <string name="eliminiar_text_manga">Eliminia los restos que no te sirvan para la aventura</string>
-    <string name="eliminiar_text_evento">Vuelve al pasado y enmienda los errores cometidos</string>
-    <string name="eliminiar_text_usuario">Preparate para eliminar a un soldado</string>
+    <string name="eliminiar_text_manga">Elimina los restos que no te sirvan para la aventura.</string>
+    <string name="eliminiar_text_evento">Vuelve al pasado y enmienda los errores cometidos.</string>
+    <string name="eliminiar_text_usuario">Preparate para eliminar a un soldado.</string>
 
     <string name="boton_eliminar_usuario">Confirmar aniquilación</string>
     <string name="boton_eliminar_evento">Confirmar viaje al pasado</string>

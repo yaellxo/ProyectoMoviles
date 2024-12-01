@@ -6,5 +6,5 @@ class User(
     var email: String,
     var contrasena: String,
     var alias: String,
-    var edad: Int
+    var edad: String
 )

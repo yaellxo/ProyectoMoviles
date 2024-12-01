@@ -9,6 +9,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.R
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class RegisterScreen : AppCompatActivity() {
 
@@ -28,6 +31,9 @@ class RegisterScreen : AppCompatActivity() {
             getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
+        val registeredEmails =
+            sharedPreferences.getStringSet("emails", mutableSetOf()) ?: mutableSetOf()
+
         btnCrearCuenta.setOnClickListener {
             val nombre = etNombreRegistro.text.toString()
             val alias = etAliasRegistro.text.toString()
@@ -40,32 +46,36 @@ class RegisterScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val edad = edadString.toIntOrNull()
-            if (edad == null || edad < 12 || edad > 80) {
-                Toast.makeText(this, "Por favor, ingrese una edad válida entre 12 y 80 años", Toast.LENGTH_SHORT).show()
+            if (edadString.length < 1 || edadString.length > 3) {
+                Toast.makeText(this, "Por favor, ingrese una edad válida", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Verificar si el alias ya está registrado
-            val storedAliases = sharedPreferences.getStringSet("aliases", mutableSetOf()) ?: mutableSetOf()
-            if (storedAliases.contains(alias)) {
+            if (registeredEmails.contains(correo)) {
+                Toast.makeText(this, "Este correo ya está registrado", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val storedAlias = sharedPreferences.getString("userAlias", "")
+            if (alias == storedAlias) {
                 Toast.makeText(this, "Este alias ya está registrado", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Guardar datos del usuario
-            storedAliases.add(alias)
-            editor.putStringSet("aliases", storedAliases)
-            editor.putString("nombre_$alias", nombre)
-            editor.putString("correo_$alias", correo)
-            editor.putString("edad_$alias", edadString)
-            editor.putString("clave_$alias", clave)
-            editor.putString("userType_$alias", "user")
+            val userId = generateCustomUserId(alias)
+
+            editor.putString("userId", userId)
+            editor.putString("userNombre", nombre)
+            editor.putString("userAlias", alias)
+            editor.putString("userCorreo", correo)
+            editor.putString("userEdad", edadString)
+            editor.putString("userClave", clave)
+            registeredEmails.add(correo)
+            editor.putStringSet("emails", registeredEmails)
             editor.apply()
 
-            Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Registro exitoso. ID asignado: $userId", Toast.LENGTH_SHORT).show()
 
-            // Redirigir al LoginScreen después del registro
             val intent = Intent(this, LoginScreen::class.java)
             startActivity(intent)
             finish()
@@ -76,5 +86,10 @@ class RegisterScreen : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun generateCustomUserId(alias: String): String? {
+        val currentDate = SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault()).format(Date())
+        return "USR-${alias.uppercase()}-$currentDate"
     }
 }

@@ -67,20 +67,20 @@
             android:layout_width="53dp"
             android:layout_height="41dp"
             android:layout_marginEnd="200dp"
-            android:src="@drawable/ic_manga"
+            android:src="@drawable/ic_eliminar_usuario"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.032" />
 
         <TextView
-            android:id="@+id/tvEliminarManga"
+            android:id="@+id/tvEliminarAdmin"
             android:layout_width="278dp"
             android:layout_height="42dp"
             android:layout_marginTop="60dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center"
-            android:text="@string/eliminiar_text_manga"
+            android:text="@string/eliminiar_text_usuario"
             android:textColor="@color/negro_color"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -116,10 +116,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.011"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvEliminarManga" />
+            app:layout_constraintTop_toBottomOf="@id/tvEliminarAdmin" />
 
         <EditText
-            android:id="@+id/etIdEliminarManga"
+            android:id="@+id/etIdAEliminar"
             android:layout_width="268dp"
             android:layout_height="43dp"
             android:layout_marginTop="10dp"
@@ -151,11 +151,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etIdEliminarManga" />
+            app:layout_constraintTop_toBottomOf="@+id/etIdAEliminar" />
 
 
         <Button
-            android:id="@+id/btnRegresarEliminarManga"
+            android:id="@+id/btnRegresarEliminar"
             android:layout_width="212dp"
             android:layout_height="40dp"
             android:layout_marginTop="40dp"

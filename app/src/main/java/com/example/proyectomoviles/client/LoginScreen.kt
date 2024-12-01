@@ -33,11 +33,10 @@ class LoginScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-
             if (aliasLogin == AdminConstants.ADMIN_ALIAS && claveLogin == AdminConstants.ADMIN_PASSWORD) {
+                val editor = sharedPreferences.edit()
                 editor.putString("userType", "admin")
+                editor.putString("alias", aliasLogin)
                 editor.apply()
 
                 Toast.makeText(this, "Inicio de sesión exitoso como administrador", Toast.LENGTH_SHORT).show()
@@ -45,11 +44,13 @@ class LoginScreen : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } else {
-                val storedAlias = sharedPreferences.getString("alias", null)
-                val storedClave = sharedPreferences.getString("clave", null)
+                val storedAlias = sharedPreferences.getString("userAlias", null)
+                val storedClave = sharedPreferences.getString("userClave", null)
 
                 if (storedAlias == aliasLogin && storedClave == claveLogin) {
+                    val editor = sharedPreferences.edit()
                     editor.putString("userType", "user")
+                    editor.putString("alias", aliasLogin)
                     editor.apply()
 
                     Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
@@ -62,16 +63,9 @@ class LoginScreen : AppCompatActivity() {
             }
         }
 
-
         btnRegistro.setOnClickListener {
             val intent = Intent(this, RegisterScreen::class.java)
             startActivity(intent)
         }
-    }
-
-    private fun saveUserType(sharedPreferences: android.content.SharedPreferences, userType: String) {
-        val editor = sharedPreferences.edit()
-        editor.putString("userType", userType)
-        editor.apply()
     }
 }
