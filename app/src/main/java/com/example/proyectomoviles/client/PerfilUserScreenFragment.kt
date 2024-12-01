@@ -8,9 +8,8 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.proyectomoviles.R
-import com.example.proyectomoviles.client.LoginScreen
 
-class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
+class PerfilUserScreenFragment : Fragment(R.layout.perfil_activity_user) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
