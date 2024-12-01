@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.proyectomoviles.R
 
-class PerfilUserScreenFragment : Fragment(R.layout.perfil_activity_user) {
+class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
