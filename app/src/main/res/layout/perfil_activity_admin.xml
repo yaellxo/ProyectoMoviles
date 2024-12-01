@@ -1,17 +1,196 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@android:color/white"
+    tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnCerrarSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cerrar sesión Admin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="392dp"
+        android:layout_height="781dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="337dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/border_shape"
+            android:gravity="center"
+            android:padding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/HeaderTitle"
+                android:layout_width="228dp"
+                android:layout_height="54dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/sawarabi"
+                android:gravity="center"
+                android:text="@string/Titulo"
+                android:textColor="@color/color_font_principal"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ivLogo"
+                app:layout_constraintHorizontal_bias="0.454"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.384" />
+
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="68dp"
+                android:layout_height="54dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.428" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/ivAdminPhoto"
+            android:layout_width="216dp"
+            android:layout_height="216dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="104dp"
+            android:background="@drawable/circular_border"
+            android:gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_perfil_admin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="257dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="576dp"
+            android:background="@drawable/button_eliminar_background_selector"
+            android:gravity="center"
+            android:text="Cerrar sesión Admin"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ivAdminPhoto" />
+
+        <TextView
+            android:id="@+id/tvAlias"
+            android:layout_width="197dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/sawarabi"
+            android:gravity="center"
+            android:text="Admin"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivAdminPhoto" />
+
+        <TextView
+            android:id="@+id/tvIdAdmin"
+            android:layout_width="312dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/sawarabi"
+            android:gravity="center_vertical"
+            android:text="ID:"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAlias" />
+
+        <TextView
+            android:id="@+id/tvNombreAdmin"
+            android:layout_width="312dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/sawarabi"
+            android:gravity="center_vertical"
+            android:text="Nombre:"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvIdAdmin" />
+
+        <TextView
+            android:id="@+id/tvCorreoAdmin"
+            android:layout_width="312dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/sawarabi"
+            android:gravity="center_vertical"
+            android:text="Correo:"
+            android:textColor="@color/boton_pressed_color"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNombreAdmin" />
+
+        <TextView
+            android:id="@+id/tvAreaAdmin"
+            android:layout_width="312dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/sawarabi"
+            android:gravity="center_vertical"
+            android:text="Area:"
+            android:textColor="@color/boton_pressed_color"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCorreoAdmin" />
+
+        <TextView
+            android:id="@+id/tvRangoAdmin"
+            android:layout_width="312dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/sawarabi"
+            android:gravity="center_vertical"
+            android:text="Rango:"
+            android:textColor="@color/boton_pressed_color"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAreaAdmin" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
