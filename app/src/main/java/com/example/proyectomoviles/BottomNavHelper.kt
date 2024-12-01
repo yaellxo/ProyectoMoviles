@@ -1,5 +1,6 @@
 package com.example.proyectomoviles
 
+import android.content.Context
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.RotateAnimation
@@ -48,26 +49,24 @@ class BottomNavHelper {
         }
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            bottomNavigationView.menu.forEach { menuItem ->
-                menuItem.title = menuItem.title
-
-                when (menuItem.itemId) {
-                    R.id.menu_hot -> menuItem.icon = bottomNavigationView.context.getDrawable(R.drawable.ic_hot)
-                    R.id.menu_eventos -> menuItem.icon = bottomNavigationView.context.getDrawable(R.drawable.ic_eventos)
-                    R.id.menu_busqueda -> menuItem.icon = bottomNavigationView.context.getDrawable(R.drawable.ic_busqueda)
-                    R.id.menu_carrito -> menuItem.icon = bottomNavigationView.context.getDrawable(R.drawable.ic_carrito)
-                    R.id.menu_perfil -> menuItem.icon = bottomNavigationView.context.getDrawable(R.drawable.ic_perfil)
-                }
-            }
-
             when (item.itemId) {
                 R.id.menu_hot -> navController.navigate(R.id.menu_hot)
                 R.id.menu_eventos -> navController.navigate(R.id.menu_eventos)
                 R.id.menu_busqueda -> navController.navigate(R.id.menu_busqueda)
                 R.id.menu_carrito -> navController.navigate(R.id.menu_carrito)
-                R.id.menu_perfil -> navController.navigate(R.id.menu_perfil)
-            }
+                R.id.menu_perfil -> {
+                    val sharedPreferences = bottomNavigationView.context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+                    val userType = sharedPreferences.getString("userType", "user")
 
+                    if (userType == "admin") {
+                        // Navegar al perfil del administrador
+                        navController.navigate(R.id.menu_admin)
+                    } else {
+                        // Navegar al perfil del usuario regular
+                        navController.navigate(R.id.menu_perfil)
+                    }
+                }
+            }
             true
         }
     }
