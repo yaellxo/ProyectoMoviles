@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -32,8 +33,13 @@ class RegisterScreen : AppCompatActivity() {
         val sharedPreferences: SharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
-        val registeredEmails =
-            sharedPreferences.getStringSet("emails", mutableSetOf()) ?: mutableSetOf()
+        val registeredEmails = sharedPreferences.getStringSet("emails", mutableSetOf()) ?: mutableSetOf()
+        Log.d("RegisterScreen", "Registered Emails: $registeredEmails")
+
+        val usersJson = sharedPreferences.getString("users", "[]")
+        Log.d("RegisterScreen", "Users JSON: $usersJson")
+
+        val users = JSONArray(usersJson)
 
         btnCrearCuenta.setOnClickListener {
             val nombre = etNombreRegistro.text.toString()
@@ -41,6 +47,8 @@ class RegisterScreen : AppCompatActivity() {
             val correo = etCorreoRegistro.text.toString()
             val edadString = etEdadRegistro.text.toString()
             val clave = etClaveRegistro.text.toString()
+
+            Log.d("RegisterScreen", "Datos de Registro: Nombre = $nombre, Alias = $alias, Correo = $correo, Edad = $edadString, Clave = $clave")
 
             if (nombre.isEmpty() || alias.isEmpty() || correo.isEmpty() || edadString.isEmpty() || clave.isEmpty()) {
                 Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
@@ -51,9 +59,6 @@ class RegisterScreen : AppCompatActivity() {
                 Toast.makeText(this, "Por favor, ingrese una edad válida", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
-            val usersJson = sharedPreferences.getString("users", "[]")
-            val users = JSONArray(usersJson)
 
             for (i in 0 until users.length()) {
                 val user = users.getJSONObject(i)
@@ -76,7 +81,7 @@ class RegisterScreen : AppCompatActivity() {
                 put("correo", correo)
                 put("edad", edadString)
                 put("clave", clave)
-                put("photoUri", "")
+                put("userPhotoUri", "")
             }
 
             users.put(newUser)
@@ -91,7 +96,12 @@ class RegisterScreen : AppCompatActivity() {
                     "Clave: $clave"
             Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
 
-            startActivity(Intent(this, LoginScreen::class.java))
+            // Crear el Intent y verificar los extras
+            val intent = Intent(this, LoginScreen::class.java)
+            // Si estás pasando datos con el Intent, agrega logs aquí:
+            intent.putExtra("usuario", newUser.toString()) // Por ejemplo, pasamos el usuario
+            Log.d("RegisterScreen", "Intent con datos: ${newUser.toString()}")
+            startActivity(intent)
             finish()
         }
 

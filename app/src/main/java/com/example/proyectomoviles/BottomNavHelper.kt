@@ -52,6 +52,15 @@ class BottomNavHelper {
         }
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            bottomNavigationView.menu.forEach { menuItem ->
+                val itemView = bottomNavigationView.findViewById<View>(menuItem.itemId)
+                if (menuItem.itemId == item.itemId) {
+                    itemView?.isSelected = true
+                } else {
+                    itemView?.isSelected = false
+                }
+            }
+
             when (item.itemId) {
                 R.id.menu_hot -> navController.navigate(R.id.menu_hot)
                 R.id.menu_eventos -> navController.navigate(R.id.menu_eventos)
@@ -60,26 +69,35 @@ class BottomNavHelper {
                 R.id.menu_perfil -> {
                     val sharedPreferences = bottomNavigationView.context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
 
-                    val alias = sharedPreferences.getString("alias", "No disponible")
+                    val storedAlias = sharedPreferences.getString("activeUserAlias", "No disponible")
                     val nombre = sharedPreferences.getString("nombre", "No disponible")
                     val correo = sharedPreferences.getString("correo", "No disponible")
                     val edad = sharedPreferences.getString("edad", "No disponible")
                     val userType = sharedPreferences.getString("userType", "No disponible")
-                    val photoUrl = sharedPreferences.getString("photoUrl", "")
+                    val photoBase64 = sharedPreferences.getString("photoBase64", "No disponible")
 
-                    Log.d("BottomNavHelper", "Alias: $alias, Nombre: $nombre, Correo: $correo, Edad: $edad, Tipo de usuario: $userType, Foto: $photoUrl")
+                    Log.d("BottomNavHelper", "Alias: $storedAlias, Nombre: $nombre, Correo: $correo, Edad: $edad, Tipo de usuario: $userType, Foto: $photoBase64")
 
-                    val mensaje = "Bienvenido $nombre ($alias)\nCorreo: $correo\nEdad: $edad\nTipo de usuario: $userType"
+                    val mensaje = "Bienvenido $nombre ($storedAlias)\nCorreo: $correo\nEdad: $edad\nTipo de usuario: $userType"
                     Toast.makeText(bottomNavigationView.context, mensaje, Toast.LENGTH_LONG).show()
 
                     val bundle = Bundle().apply {
-                        putString("alias", alias)
+                        putString("alias", storedAlias)
                         putString("nombre", nombre)
                         putString("correo", correo)
                         putString("edad", edad)
                         putString("userType", userType)
-                        putString("photoUrl", photoUrl)
+                        putString("photoBase64", photoBase64)
                     }
+
+                    // Log para imprimir el estado del Bundle antes de la navegación
+                    Log.d("BottomNavHelper", "Bundle creado con los siguientes valores:")
+                    Log.d("BottomNavHelper", "alias: ${bundle.getString("alias")}")
+                    Log.d("BottomNavHelper", "nombre: ${bundle.getString("nombre")}")
+                    Log.d("BottomNavHelper", "correo: ${bundle.getString("correo")}")
+                    Log.d("BottomNavHelper", "edad: ${bundle.getString("edad")}")
+                    Log.d("BottomNavHelper", "userType: ${bundle.getString("userType")}")
+                    Log.d("BottomNavHelper", "photoBase64: ${bundle.getString("photoBase64")}")
 
                     if (userType == "admin") {
                         Log.d("BottomNavHelper", "Navigating to admin menu")
