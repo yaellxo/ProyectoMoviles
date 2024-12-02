@@ -70,14 +70,12 @@ class LoginScreen : AppCompatActivity() {
                         editor.putString("userId", user.optString("userId", null))
                         editor.apply()
 
-                        // Obtener la URL de la foto de perfil
                         val photoUriString = user.optString("photoUri", "")
                         editor.putString("userPhotoUri", photoUriString)
                         editor.apply()
 
                         Log.d("LoginScreen", "URL de la imagen de perfil: $photoUriString")
 
-                        // Preparar el mensaje de bienvenida
                         val mensaje = if (photoUriString.isNotEmpty()) {
                             "URL de imagen de perfil: $photoUriString\nInicio de sesión exitoso\n" +
                                     "Nombre: ${user.getString("nombre")}\n" +
@@ -94,7 +92,6 @@ class LoginScreen : AppCompatActivity() {
 
                         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
 
-                        // Llamar a MainActivity con la información del usuario
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         finish()

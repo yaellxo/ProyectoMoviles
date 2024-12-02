@@ -38,7 +38,6 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_activity_admin) {
     private lateinit var fabMain: FloatingActionButton
     private lateinit var additionalButtons: List<FloatingActionButton>
 
-    // Íconos para el FAB principal
     private val fabOpenIcon = R.drawable.ic_plus_admin
     private val fabCloseIcon = R.drawable.ic_cerrar_admin
 
@@ -55,14 +54,13 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_activity_admin) {
         btnCerrarSesion = view.findViewById(R.id.btnCerrarSesion)
         fabMain = view.findViewById(R.id.fab)
 
-        // Inicialización de los botones adicionales
         additionalButtons = listOf(
-            view.findViewById(R.id.fab1),
-            view.findViewById(R.id.fab2),
-            view.findViewById(R.id.fab3),
-            view.findViewById(R.id.fab4),
-            view.findViewById(R.id.fab5),
-            view.findViewById(R.id.fab6)
+            view.findViewById(R.id.agregarAdmin),
+            view.findViewById(R.id.modificarAdmin),
+            view.findViewById(R.id.eliminarAdmin),
+            view.findViewById(R.id.agregarReporte),
+            view.findViewById(R.id.agregarManga),
+            view.findViewById(R.id.agregarEvento)
         )
 
         fabMain.setImageResource(fabOpenIcon)
@@ -71,10 +69,6 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_activity_admin) {
 
         fabMain.setOnClickListener {
             toggleAdditionalButtons()
-        }
-
-        additionalButtons[0].setOnClickListener {
-            hideAdditionalButtons()
         }
 
         loadAdminData()

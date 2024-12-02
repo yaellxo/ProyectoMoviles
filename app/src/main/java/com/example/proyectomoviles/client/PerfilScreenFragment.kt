@@ -19,10 +19,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.proyectomoviles.R
 import org.json.JSONArray
-import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
-import android.util.Base64
 import org.json.JSONException
 
 class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
@@ -47,7 +45,7 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
 
         if (storedAlias != null) {
             Log.d("PerfilScreenFragment", "Alias activo recuperado: $storedAlias")
-            loadUserData(storedAlias)  // Esto carga los datos y la imagen de perfil.
+            loadUserData(storedAlias)
         } else {
             Log.e("PerfilScreenFragment", "Alias no encontrado en los argumentos")
         }
@@ -81,13 +79,11 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
                 tvEdad.text = "Edad: ${user.getString("edad")}"
                 tvNombre.text = "Nombre: ${user.getString("nombre")}"
 
-                // Cargar la imagen de perfil desde la URI almacenada en SharedPreferences
                 val photoUriString = user.optString("photoUri", null)
                 if (!photoUriString.isNullOrEmpty()) {
                     val photoUri = Uri.parse(photoUriString)
                     val bitmap = BitmapFactory.decodeFile(photoUri.path)
 
-                    // Aplicar la función getCircularBitmap para redondear la imagen
                     val circularBitmap = getCircularBitmap(bitmap)
                     ivUserPhoto.setImageBitmap(circularBitmap)
                 } else {
@@ -203,7 +199,6 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
                 Log.d("PerfilScreenFragment", "Se encontró el usuario con el alias proporcionado: $storedAlias")
                 userFound = true
 
-                // Guardar la URI de la imagen en el objeto del usuario (o su nombre)
                 user.put("photoUri", imageUri.toString())
                 Log.d("PerfilScreenFragment", "Foto de perfil guardada para el usuario con alias: $storedAlias")
                 break
