@@ -7,9 +7,52 @@
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="310dp"
-        android:layout_height="806dp"
+        android:layout_width="354dp"
+        android:layout_height="78dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/border_shape"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/HeaderTitle"
+            android:layout_width="228dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/sawarabi"
+            android:gravity="center"
+            android:text="@string/Titulo"
+            android:textColor="@color/color_font_principal"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivLogo"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.384" />
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="74dp"
+            android:layout_height="58dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.428" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="317dp"
+        android:layout_height="710dp"
+        android:layout_marginTop="108dp"
         android:background="@drawable/border_shape"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +61,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvTitle"
+            android:id="@+id/tvTituloModificarEvento"
             android:layout_width="229dp"
             android:layout_height="45dp"
             android:fontFamily="@font/sawarabi"
@@ -52,10 +95,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.049"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+            app:layout_constraintTop_toBottomOf="@id/tvTituloModificarEvento" />
 
         <EditText
-            android:id="@+id/etIdAModificar"
+            android:id="@+id/etIdEventoAModificar"
             android:layout_width="276dp"
             android:layout_height="48dp"
             android:layout_marginTop="40dp"
@@ -69,19 +112,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+            app:layout_constraintTop_toBottomOf="@id/tvTituloModificarEvento" />
 
         <ImageView
             android:id="@+id/ivLupa"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="6dp"
             android:src="@drawable/icon_lupa"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.128" />
+            app:layout_constraintVertical_bias="0.146" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -93,10 +136,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.024"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etIdAModificar" />
+            app:layout_constraintTop_toBottomOf="@id/etIdEventoAModificar" />
 
         <EditText
-            android:id="@+id/etNombreModificar"
+            android:id="@+id/etNombreModificarEvento"
             android:layout_width="276dp"
             android:layout_height="48dp"
             android:layout_marginTop="48dp"
@@ -110,7 +153,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etIdAModificar" />
+            app:layout_constraintTop_toBottomOf="@id/etIdEventoAModificar" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -122,10 +165,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.024"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etNombreModificar" />
+            app:layout_constraintTop_toBottomOf="@id/etNombreModificarEvento" />
 
         <EditText
-            android:id="@+id/etFechaModificar"
+            android:id="@+id/etFechaEventoModificar"
             android:layout_width="276dp"
             android:layout_height="48dp"
             android:layout_marginTop="48dp"
@@ -138,7 +181,7 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etNombreModificar" />
+            app:layout_constraintTop_toBottomOf="@id/etNombreModificarEvento" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -150,10 +193,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.004"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etFechaModificar" />
+            app:layout_constraintTop_toBottomOf="@id/etFechaEventoModificar" />
 
         <EditText
-            android:id="@+id/etUbicacionModificar"
+            android:id="@+id/etUbicacionEventoModificar"
             android:layout_width="276dp"
             android:layout_height="48dp"
             android:layout_marginTop="44dp"
@@ -167,7 +210,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etFechaModificar" />
+            app:layout_constraintTop_toBottomOf="@id/etFechaEventoModificar" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -179,10 +222,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.01"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etUbicacionModificar" />
+            app:layout_constraintTop_toBottomOf="@id/etUbicacionEventoModificar" />
 
         <EditText
-            android:id="@+id/etDescripcionModificar"
+            android:id="@+id/etDescripcionEventoModificar"
             android:layout_width="276dp"
             android:layout_height="48dp"
             android:layout_marginTop="32dp"
@@ -196,10 +239,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etUbicacionModificar" />
+            app:layout_constraintTop_toBottomOf="@id/etUbicacionEventoModificar" />
 
         <Button
-            android:id="@+id/btnModificar"
+            android:id="@+id/btnModificarEvento"
             android:layout_width="235dp"
             android:layout_height="41dp"
             android:layout_marginTop="44dp"
@@ -213,10 +256,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.581"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etDescripcionModificar" />
+            app:layout_constraintTop_toBottomOf="@+id/etDescripcionEventoModificar" />
 
         <Button
-            android:id="@+id/btnRegresar2"
+            android:id="@+id/btnRegresarModificarEvento"
             android:layout_width="283dp"
             android:layout_height="48dp"
             android:layout_marginTop="40dp"
@@ -228,17 +271,17 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnModificar" />
+            app:layout_constraintTop_toBottomOf="@+id/btnModificarEvento" />
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="20dp"
             android:src="@drawable/icon_calendario"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.383" />
+            app:layout_constraintVertical_bias="0.439" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
