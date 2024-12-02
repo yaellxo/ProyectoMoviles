@@ -90,7 +90,6 @@ class BottomNavHelper {
                         putString("photoBase64", photoBase64)
                     }
 
-                    // Log para imprimir el estado del Bundle antes de la navegación
                     Log.d("BottomNavHelper", "Bundle creado con los siguientes valores:")
                     Log.d("BottomNavHelper", "alias: ${bundle.getString("alias")}")
                     Log.d("BottomNavHelper", "nombre: ${bundle.getString("nombre")}")

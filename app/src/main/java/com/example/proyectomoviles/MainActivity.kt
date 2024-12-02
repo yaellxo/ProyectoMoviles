@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
 
-        // Obtener y loggear todos los datos almacenados en SharedPreferences
         val storedAlias = sharedPreferences.getString("activeUserAlias", null)
         val userType = sharedPreferences.getString("userType", null)
         val nombre = sharedPreferences.getString("nombre", null)
@@ -26,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         val userId = sharedPreferences.getString("userId", null)
         val userPhotoUri = sharedPreferences.getString("userPhotoUri", null)
 
-        // Log para imprimir los datos almacenados
         Log.d("MainActivity", "storedAlias: $storedAlias")
         Log.d("MainActivity", "userType: $userType")
         Log.d("MainActivity", "nombre: $nombre")
@@ -42,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             setContentView(R.layout.main_activity)
 
-            // Log para verificar la carga de la vista
             Log.d("MainActivity", "User logged in, setting up the main activity layout")
 
             val navHostFragment =
@@ -57,7 +54,6 @@ class MainActivity : AppCompatActivity() {
 
             bottomNavigationView.selectedItemId = R.id.menu_hot
 
-            // Log para imprimir la ID del item seleccionado
             Log.d("MainActivity", "Selected bottom navigation item: menu_hot")
         }
     }
@@ -74,7 +70,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Log para verificar la creación del menú
         Log.d("MainActivity", "Options menu created")
         return true
     }

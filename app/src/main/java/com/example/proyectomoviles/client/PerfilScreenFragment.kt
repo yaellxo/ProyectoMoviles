@@ -24,8 +24,6 @@ import java.io.File
 import java.io.FileOutputStream
 import android.util.Base64
 import org.json.JSONException
-import java.io.IOException
-import java.io.InputStream
 
 class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
 
@@ -125,23 +123,18 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
             val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
             val storedAlias = sharedPreferences.getString("activeUserAlias", null)
 
-            // Verificamos que el alias no sea nulo antes de continuar
             if (storedAlias != null && storedAlias.isNotEmpty()) {
                 try {
-                    // Guardar la imagen en el almacenamiento interno
                     val savedUri = saveImageToInternalStorage(userPhotoUri, storedAlias)
 
-                    // Convertir la imagen seleccionada a Bitmap y actualizar el ImageView
                     val inputStream = requireActivity().contentResolver.openInputStream(userPhotoUri)
                     val bitmap = BitmapFactory.decodeStream(inputStream)
                     val circularBitmap = getCircularBitmap(bitmap)
 
-                    // Actualizar el ImageView en el hilo principal
                     activity?.runOnUiThread {
                         ivUserPhoto.setImageBitmap(circularBitmap)
                     }
 
-                    // Guardar la foto de perfil en el JSON
                     saveProfilePhoto(savedUri, storedAlias)
                     Toast.makeText(requireContext(), "Imagen actualizada correctamente", Toast.LENGTH_SHORT).show()
                 } catch (e: Exception) {
@@ -162,13 +155,11 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
         val inputStream = requireActivity().contentResolver.openInputStream(userPhotoUri)
         val bitmap = BitmapFactory.decodeStream(inputStream)
 
-        // Crear el directorio para almacenar las imágenes
         val directory = File(requireContext().filesDir, "profile_pics")
         if (!directory.exists()) directory.mkdir()
 
         Log.d("PerfilScreenFragment", "Directorio para almacenar imágenes: ${directory.absolutePath}")
 
-        // Crear el archivo para guardar la imagen con el alias del usuario
         val file = File(directory, "$storedAlias.jpg")
         val outputStream = FileOutputStream(file)
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
@@ -176,7 +167,6 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
         outputStream.flush()
         outputStream.close()
 
-        // Log para ver la ubicación de la imagen guardada
         Log.d("PerfilScreenFragment", "Imagen guardada en: ${file.absolutePath}")
 
         return Uri.fromFile(file)
@@ -189,7 +179,6 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
             return
         }
 
-        // Guardar la imagen en almacenamiento interno
         val imageUri = saveImageToInternalStorage(userPhotoUri, storedAlias)
 
         val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
@@ -227,32 +216,6 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
             sharedPreferences.edit().putString("users", users.toString()).apply()
             Log.d("PerfilScreenFragment", "Usuarios actualizados en SharedPreferences: ${users.toString()}")
         }
-    }
-
-
-    private fun scaleBitmap(bitmap: Bitmap, maxWidth: Int, maxHeight: Int): Bitmap {
-        val width = bitmap.width
-        val height = bitmap.height
-        val aspectRatio = width.toFloat() / height.toFloat()
-
-        val newWidth: Int
-        val newHeight: Int
-        if (width > height) {
-            newWidth = maxWidth
-            newHeight = (newWidth / aspectRatio).toInt()
-        } else {
-            newHeight = maxHeight
-            newWidth = (newHeight * aspectRatio).toInt()
-        }
-
-        return Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true)
-    }
-
-    private fun encodeImageToBase64(bitmap: Bitmap): String {
-        val outputStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream)
-        val byteArray = outputStream.toByteArray()
-        return Base64.encodeToString(byteArray, Base64.DEFAULT)
     }
 
     private fun onCerrarSesionClick() {

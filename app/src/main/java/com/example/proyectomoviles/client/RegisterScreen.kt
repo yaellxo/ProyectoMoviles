@@ -96,10 +96,8 @@ class RegisterScreen : AppCompatActivity() {
                     "Clave: $clave"
             Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
 
-            // Crear el Intent y verificar los extras
             val intent = Intent(this, LoginScreen::class.java)
-            // Si estás pasando datos con el Intent, agrega logs aquí:
-            intent.putExtra("usuario", newUser.toString()) // Por ejemplo, pasamos el usuario
+            intent.putExtra("usuario", newUser.toString())
             Log.d("RegisterScreen", "Intent con datos: ${newUser.toString()}")
             startActivity(intent)
             finish()
