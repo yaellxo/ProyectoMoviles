@@ -6,41 +6,86 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/ivbackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_admin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="310dp"
-        android:layout_height="806dp"
+        android:layout_width="354dp"
+        android:layout_height="78dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/border_shape"
-        android:padding="16dp"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="229dp"
-            android:layout_height="45dp"
+            android:id="@+id/HeaderTitle"
+            android:layout_width="228dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center"
-            android:text="@string/titulo_modificar"
+            android:text="@string/Titulo"
+            android:textColor="@color/color_font_principal"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivLogo"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.384" />
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="74dp"
+            android:layout_height="58dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.428" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="315dp"
+        android:layout_height="620dp"
+        android:layout_marginTop="108dp"
+        android:background="@drawable/border_shape"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/tvTitleModificar"
+            android:layout_width="229dp"
+            android:layout_height="45dp"
+            android:drawableStart="@drawable/ic_eventos_negro_40"
+            android:fontFamily="@font/sawarabi"
+            android:gravity="center"
+            android:text="Modificar"
             android:textColor="@color/color_font_principal"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/ivLogoModificar"
-            android:layout_width="49dp"
-            android:layout_height="54dp"
-            android:layout_marginEnd="212dp"
-            android:src="@drawable/ic_modificar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -52,16 +97,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.049"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+            app:layout_constraintTop_toBottomOf="@id/tvTitleModificar" />
 
         <EditText
-            android:id="@+id/etIdAModificar"
+            android:id="@+id/etNombreModificarEvento"
             android:layout_width="276dp"
             android:layout_height="48dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/border_layout"
+            android:drawableEnd="@drawable/ic_lupa_24"
             android:fontFamily="@font/sawarabi"
-            android:hint="@string/modificar_informacion"
+            android:hint="@string/escribe_tu_verdadero_nombre"
             android:padding="10dp"
             android:textColor="@color/color_font_principal"
             android:textColorHint="@color/color_font_secundario_gris_medio"
@@ -69,126 +115,28 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
-
-        <ImageView
-            android:id="@+id/ivLupa"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="6dp"
-            android:src="@drawable/icon_lupa"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.128" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Nombre:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.024"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etIdAModificar" />
-
-        <EditText
-            android:id="@+id/etNombreModificar"
-            android:layout_width="276dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/modificar_informacion"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etIdAModificar" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Fecha de Evento:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.024"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etNombreModificar" />
-
-        <EditText
-            android:id="@+id/etFechaModificar"
-            android:layout_width="276dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/modificar_informacion"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etNombreModificar" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Ubicacion:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.004"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etFechaModificar" />
-
-        <EditText
-            android:id="@+id/etUbicacionModificar"
-            android:layout_width="276dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="44dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/modificar_informacion"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etFechaModificar" />
+            app:layout_constraintTop_toBottomOf="@id/tvTitleModificar" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/sawarabi"
-            android:text="Descripcion:"
+            android:text="Nombre:"
             android:textColor="@color/color_font_principal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.01"
+            app:layout_constraintHorizontal_bias="0.044"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etUbicacionModificar" />
+            app:layout_constraintTop_toBottomOf="@id/etNombreModificarEvento" />
 
         <EditText
-            android:id="@+id/etDescripcionModificar"
+            android:id="@+id/etAliasRegistro"
             android:layout_width="276dp"
             android:layout_height="48dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/border_layout"
             android:fontFamily="@font/sawarabi"
-            android:hint="@string/modificar_informacion"
+            android:hint="@string/tu_nombre_de_batalla_en_este_mundo"
             android:padding="10dp"
             android:textColor="@color/color_font_principal"
             android:textColorHint="@color/color_font_secundario_gris_medio"
@@ -196,49 +144,130 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etUbicacionModificar" />
+            app:layout_constraintTop_toBottomOf="@id/etNombreModificarEvento" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/sawarabi"
+            android:text="Fecha de Evento:"
+            android:textColor="@color/color_font_principal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etAliasRegistro" />
+
+        <EditText
+            android:id="@+id/etCorreoRegistro"
+            android:layout_width="276dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/border_layout"
+            android:fontFamily="@font/sawarabi"
+            android:hint="@string/tu_b_ho_mensajero_necesita_una_direcci_n"
+            android:padding="10dp"
+            android:textColor="@color/color_font_principal"
+            android:textColorHint="@color/color_font_secundario_gris_medio"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etAliasRegistro" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/sawarabi"
+            android:text="Ubicación:"
+            android:textColor="@color/color_font_principal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.053"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etCorreoRegistro" />
+
+        <EditText
+            android:id="@+id/etEdadRegistro"
+            android:layout_width="276dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/border_layout"
+            android:fontFamily="@font/sawarabi"
+            android:hint="@string/registra_tu_nivel_de_experiencia"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textColor="@color/color_font_principal"
+            android:textColorHint="@color/color_font_secundario_gris_medio"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etCorreoRegistro" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/sawarabi"
+            android:text="Descripción:"
+            android:textColor="@color/color_font_principal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.053"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEdadRegistro" />
+
+        <EditText
+            android:id="@+id/etClaveRegistro"
+            android:layout_width="276dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/border_layout"
+            android:fontFamily="@font/sawarabi"
+            android:hint="@string/protege_tus_secretos_como_un_ninja"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="@color/color_font_principal"
+            android:textColorHint="@color/color_font_secundario_gris_medio"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEdadRegistro" />
 
         <Button
-            android:id="@+id/btnModificar"
+            android:id="@+id/btnCrearCuenta"
             android:layout_width="235dp"
             android:layout_height="41dp"
-            android:layout_marginTop="44dp"
-            android:background="@color/opcion_modificar"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_modificar_background_selector"
             android:fontFamily="@font/sawarabi"
-            android:text="@string/boton_modificar_evento"
+            android:text="Modificar"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
+            android:textColor="@color/color_font_principal_blanco"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.581"
+            app:layout_constraintHorizontal_bias="0.511"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etDescripcionModificar" />
+            app:layout_constraintTop_toBottomOf="@id/etClaveRegistro" />
 
         <Button
-            android:id="@+id/btnRegresar2"
-            android:layout_width="283dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
+            android:id="@+id/btnRegresar"
+            android:layout_width="210dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/button_secundary_background_selector"
             android:fontFamily="@font/sawarabi"
             android:text="@string/abortar_misi_n_capit_n"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
+            android:textColor="@color/color_font_principal_blanco"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnModificar" />
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/icon_calendario"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.383" />
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnCrearCuenta" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
