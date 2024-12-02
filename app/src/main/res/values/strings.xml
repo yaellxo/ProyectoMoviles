@@ -45,4 +45,6 @@
     <string name="boton_modificar_producto">Modificar Producto</string>
     <string name="boton_modificar_evento">Modificar Evento</string>
     <string name="boton_regreso">Volver!</string>
+    <string name="placeholder">placeholder</string>
+    <string name="titulo_agregar">Agregar</string>
 </resources>
