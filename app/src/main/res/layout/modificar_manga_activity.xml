@@ -6,397 +6,376 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/ivbackground"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/background4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="308dp"
-        android:layout_height="821dp"
+        android:layout_width="354dp"
+        android:layout_height="78dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/border_shape"
-        android:padding="16dp"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="217dp"
-            android:layout_height="37dp"
+            android:id="@+id/HeaderTitle"
+            android:layout_width="228dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/sawarabi"
-            android:drawableStart="@drawable/ic_modificar"
             android:gravity="center"
-            android:text="@string/titulo_modificar"
-            android:textColor="@color/negro_color"
-            android:textSize="30sp"
+            android:text="@string/Titulo"
+            android:textColor="@color/color_font_principal"
+            android:textSize="40sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivLogo"
+            app:layout_constraintHorizontal_bias="0.454"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="ID:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.035"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
-
-        <EditText
-            android:id="@+id/etIdAModificar"
-            android:layout_width="276dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:drawableEnd="@drawable/ic_lupa_24"
-            android:hint="@string/modificar_informacion"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Nombre:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.009"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etIdAModificar" />
-
-        <EditText
-            android:id="@+id/etNombreModificar"
-            android:layout_width="276dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/modificar_informacion"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etIdAModificar" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Precio:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.008"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etNombreModificar" />
-
-        <EditText
-            android:id="@+id/etPrecioModificar"
-            android:layout_width="276dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/modificar_informacion"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etNombreModificar" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Stock:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etPrecioModificar" />
-
-        <EditText
-            android:id="@+id/etStockModificar"
-            android:layout_width="276dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/modificar_informacion"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etPrecioModificar" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Descripción:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etPrecioModificar" />
-
-        <EditText
-            android:id="@+id/etDescripcionModificar"
-            android:layout_width="276dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="92dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/modificar_informacion"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etPrecioModificar" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Volumen:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etDescripcionModificar" />
-
-        <EditText
-            android:id="@+id/etVolumenModificar"
-            android:layout_width="276dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/modificar_informacion"
-            android:inputType="number"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etDescripcionModificar" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Autor:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.008"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etVolumenModificar" />
-
-        <EditText
-            android:id="@+id/etAutorModificar"
-            android:layout_width="276dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/modificar_informacion"
-            android:inputType="number"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etVolumenModificar" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Genero:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.008"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etAutorModificar" />
-
-        <Spinner
-            android:id="@+id/spGeneroModificar"
-            android:layout_width="276dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/modificar_informacion"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="8sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etAutorModificar" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Editorial:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.018"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spGeneroModificar" />
-
-        <EditText
-            android:id="@+id/etEditorialModificar"
-            android:layout_width="276dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/modificar_informacion"
-            android:inputType="number"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spGeneroModificar" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Publicacion:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etEditorialModificar" />
-
-        <EditText
-            android:id="@+id/etPublicacionModificar"
-            android:layout_width="276dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/modificar_informacion"
-            android:inputType="number"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etEditorialModificar" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="IMG:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etPublicacionModificar" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.384" />
 
         <ImageView
-            android:id="@+id/ic_subirImagen"
-            android:layout_width="21dp"
-            android:layout_height="29dp"
-            android:layout_marginEnd="208dp"
-            android:layout_marginBottom="6dp"
-            android:src="@drawable/icon_subir_imagen"
+            android:id="@+id/ivLogo"
+            android:layout_width="74dp"
+            android:layout_height="58dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.938" />
+            app:layout_constraintVertical_bias="0.428" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            android:id="@+id/btnModificar"
-            android:layout_width="61dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/button_modificar_background_selector"
-            android:drawableTop="@drawable/ic_lupa"
-            android:fontFamily="@font/sawarabi"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.881"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPublicacionModificar" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="317dp"
+        android:layout_height="662dp"
+        android:layout_marginTop="108dp"
+        android:background="@drawable/border_shape"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btnRegresar2"
-            android:layout_width="61dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/button_secundary_background_selector"
-            android:drawableTop="@drawable/ic_regresar"
-            android:fontFamily="@font/sawarabi"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPublicacionModificar" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTituloModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:drawableLeft=""
+                    android:fontFamily="@font/sawarabi"
+                    android:gravity="center"
+                    android:text="@string/titulo_modificar"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="ID:"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.011"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTituloModificar" />
+
+                <EditText
+                    android:id="@+id/etIdAEliminar"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="Ingresa el ID"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTituloModificar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Nombre:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etNombreModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/modificar_informacion"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtPrecioModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Precio:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etPrecioModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/modificar_informacion"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:id="@+id/txtStockModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Stock:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etStockModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/modificar_informacion"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp"
+                    android:ems="10"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/txtDescripcionModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Descripcion:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etDescripcionModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="89dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/modificar_informacion"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine" />
+
+                <TextView
+                    android:id="@+id/txtVolumenModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Volumen:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etVolumenModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/modificar_informacion"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp"
+                    android:ems="10"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/txtAutorModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Autor:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etAutorModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/modificar_informacion"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtGeneroModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Genero:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spinnerGeneroModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/txtEditorial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Editorial:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etEditorialModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/modificar_informacion"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtPublicacionModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Publicacion:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etPublicacionModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/modificar_informacion"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtImagenModificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="IMG:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/ivModificarImagen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/icon_subir_imagen" />
+
+                <Button
+                    android:id="@+id/btnModificarManga"
+                    android:layout_width="235dp"
+                    android:layout_height="41dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/button_background_selector"
+                    android:fontFamily="@font/sawarabi"
+                    android:gravity="center_horizontal"
+                    android:text="Agregar producto"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_font_principal_blanco"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </ScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btnRegresarModificar"
+        android:layout_width="210dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_secundary_background_selector"
+        android:fontFamily="@font/sawarabi"
+        android:text="@string/abortar_misi_n_capit_n"
+        android:textAllCaps="false"
+        android:textColor="@color/color_font_principal_blanco"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
