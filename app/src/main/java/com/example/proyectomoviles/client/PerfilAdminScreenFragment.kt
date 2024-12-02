@@ -19,6 +19,7 @@ import com.example.proyectomoviles.R
 import com.example.proyectomoviles.models.AdminConstants
 import android.content.Context
 import android.content.Intent
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -50,12 +51,16 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_activity_admin) {
         loadAdminData()
 
         loadProfilePhoto()
+
         ivAdminPhoto.setOnClickListener {
             getImageLauncher.launch("image/*")
         }
+
         btnCerrarSesion.setOnClickListener {
             onCerrarSesionClick()
         }
+
+
     }
 
     private fun loadAdminData() {
@@ -66,6 +71,7 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_activity_admin) {
         tvAreaAdmin.text = "Área: ${AdminConstants.ADMIN_AREA}"
         tvRangoAdmin.text = "Rango: ${AdminConstants.ADMIN_ACCESS_LEVEL}"
     }
+
 
     private fun getCircularBitmap(bitmap: Bitmap): Bitmap {
         val size = Math.min(bitmap.width, bitmap.height)
@@ -149,8 +155,6 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_activity_admin) {
         }
     }
 
-
-
     private fun onCerrarSesionClick() {
         val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -162,5 +166,4 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_activity_admin) {
 
         Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show()
     }
-
 }

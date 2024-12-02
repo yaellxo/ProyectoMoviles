@@ -81,7 +81,7 @@
             android:id="@+id/btnCerrarSesion"
             android:layout_width="257dp"
             android:layout_height="48dp"
-            android:layout_marginTop="168dp"
+            android:layout_marginTop="320dp"
             android:background="@drawable/button_secundary_background_selector"
             android:gravity="center"
             android:text="Cerrar sesión User"
