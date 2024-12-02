@@ -7,7 +7,7 @@ import com.example.proyectomoviles.R
 class AdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.admin_activity)
+        setContentView(R.layout.perfil_activity_admin)
         // Lógica para gestionar el CRUD
     }
 }
