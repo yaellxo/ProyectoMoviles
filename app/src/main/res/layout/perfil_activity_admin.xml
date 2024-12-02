@@ -6,7 +6,6 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
-    <!-- Imagen de fondo -->
     <ImageView
         android:id="@+id/ivbackground"
         android:layout_width="match_parent"
@@ -18,7 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Encabezado y logo -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="354dp"
         android:layout_height="78dp"
@@ -59,14 +57,13 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Área de usuario -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="316dp"
         android:layout_height="637dp"
         android:layout_marginTop="104dp"
         android:background="@drawable/border_shape"
-        android:padding="16dp"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -175,18 +172,89 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvAreaAdmin" />
 
-        <!-- Botón de cerrar sesión -->
         <Button
             android:id="@+id/btnCerrarSesion"
-            android:layout_width="139dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="544dp"
+            android:layout_width="142dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="556dp"
             android:background="@drawable/button_secundary_background_selector"
-            android:text="Cerrar sesión Admin"
+            android:text="Cerrar sesión Admin DE MIENTRAS"
             android:textColor="@android:color/white"
+            android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.117"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/ivAdminPhoto" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_agregar_admin"
+                app:backgroundTint="@color/opcion_agregar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_modificar_admin"
+                app:backgroundTint="@color/opcion_modificar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_eliminar_admin"
+                app:backgroundTint="@color/opcion_eliminar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_reporteventa_admin"
+                app:backgroundTint="@color/opcion_reporte"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_inventario_admin"
+                app:backgroundTint="@color/opcion_inventario"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_eventos_admin"
+                app:backgroundTint="@color/boton_compra"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_plus_admin"
+                app:backgroundTint="@color/negro_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
