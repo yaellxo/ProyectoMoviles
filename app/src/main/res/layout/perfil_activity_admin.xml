@@ -6,68 +6,74 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="392dp"
-        android:layout_height="781dp"
-        android:gravity="center"
-        android:padding="16dp"
+    <ImageView
+        android:id="@+id/ivbackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_admin"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="354dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/border_shape"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="337dp"
-            android:layout_height="76dp"
-            android:layout_marginStart="12dp"
-            android:background="@drawable/border_shape"
+        <TextView
+            android:id="@+id/HeaderTitle"
+            android:layout_width="228dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/sawarabi"
             android:gravity="center"
-            android:padding="8dp"
+            android:text="@string/Titulo"
+            android:textColor="@color/color_font_principal"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivLogo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="74dp"
+            android:layout_height="58dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/HeaderTitle"
-                android:layout_width="228dp"
-                android:layout_height="54dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/sawarabi"
-                android:gravity="center"
-                android:text="@string/Titulo"
-                android:textColor="@color/color_font_principal"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ivLogo"
-                app:layout_constraintHorizontal_bias="0.454"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.384" />
-
-            <ImageView
-                android:id="@+id/ivLogo"
-                android:layout_width="68dp"
-                android:layout_height="54dp"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/logo"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.428" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="316dp"
+        android:layout_height="637dp"
+        android:layout_marginTop="104dp"
+        android:background="@drawable/border_shape"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/ivAdminPhoto"
             android:layout_width="216dp"
             android:layout_height="216dp"
             android:layout_centerInParent="true"
-            android:layout_marginTop="104dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/circular_border"
             android:gravity="center"
             android:scaleType="centerCrop"
@@ -83,22 +89,19 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center"
-            android:padding="0dp"
             android:text="Admin"
             android:textColor="@android:color/black"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ivAdminPhoto" />
 
         <TextView
             android:id="@+id/tvEdadUser"
-            android:layout_width="312dp"
+            android:layout_width="212dp"
             android:layout_height="42dp"
             android:layout_marginTop="10dp"
-            android:drawablePadding="8dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center_vertical"
             android:text="ID:"
@@ -106,16 +109,14 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvAliasUser" />
 
         <TextView
             android:id="@+id/tvNombreUser"
-            android:layout_width="312dp"
+            android:layout_width="212dp"
             android:layout_height="42dp"
             android:layout_marginTop="10dp"
-            android:drawablePadding="8dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center_vertical"
             android:text="Nombre:"
@@ -123,54 +124,48 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvEdadUser" />
 
         <TextView
             android:id="@+id/tvCorreoAdmin"
-            android:layout_width="312dp"
+            android:layout_width="212dp"
             android:layout_height="42dp"
             android:layout_marginTop="10dp"
-            android:drawablePadding="8dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center_vertical"
             android:text="Correo:"
-            android:textColor="@color/boton_pressed_color"
+            android:textColor="@color/color_font_principal"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvNombreUser" />
 
         <TextView
             android:id="@+id/tvAreaAdmin"
-            android:layout_width="312dp"
+            android:layout_width="212dp"
             android:layout_height="42dp"
             android:layout_marginTop="10dp"
-            android:drawablePadding="8dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center_vertical"
             android:text="Area:"
-            android:textColor="@color/boton_pressed_color"
+            android:textColor="@color/color_font_principal"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvCorreoAdmin" />
 
         <TextView
             android:id="@+id/tvRangoAdmin"
-            android:layout_width="312dp"
+            android:layout_width="212dp"
             android:layout_height="42dp"
             android:layout_marginTop="8dp"
-            android:drawablePadding="8dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center_vertical"
             android:text="Rango:"
-            android:textColor="@color/boton_pressed_color"
+            android:textColor="@color/color_font_principal"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -179,73 +174,88 @@
 
         <Button
             android:id="@+id/btnCerrarSesion"
-            android:layout_width="172dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="568dp"
+            android:layout_width="142dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="556dp"
             android:background="@drawable/button_secundary_background_selector"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="Cerrar sesión Admin"
+            android:text="Cerrar sesión Admin DE MIENTRAS"
             android:textColor="@android:color/white"
+            android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.117"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/ivAdminPhoto" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/agregarAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_agregar_admin"
+                app:backgroundTint="@color/opcion_agregar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/modificarAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_modificar_admin"
+                app:backgroundTint="@color/opcion_modificar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/eliminarAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_eliminar_admin"
+                app:backgroundTint="@color/opcion_eliminar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/agregarReporte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_reporteventa_admin"
+                app:backgroundTint="@color/opcion_reporte"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/agregarManga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_inventario_admin"
+                app:backgroundTint="@color/opcion_inventario"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/agregarEvento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_eventos_admin"
+                app:backgroundTint="@color/boton_compra"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_plus_admin"
+                app:backgroundTint="@color/negro_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/fab_menu"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="45dp"
-        app:fabSize="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-        app:srcCompat="@drawable/ic_perfil">
-
-        <!-- Floating Action Buttons -->
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_option_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fabSize="mini"
-            app:srcCompat="@drawable/ic_perfil" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_option_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fabSize="mini"
-            app:srcCompat="@drawable/ic_eventos" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_option_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fabSize="mini"
-            app:srcCompat="@drawable/ic_pencil" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_option_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fabSize="mini"
-            app:srcCompat="@drawable/ic_area" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_option_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fabSize="mini"
-            app:srcCompat="@drawable/ic_carrito" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_option_6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fabSize="mini"
-            app:srcCompat="@drawable/ic_lupa" />
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,25 +4,30 @@
         android:id="@+id/menu_hot"
         android:icon="@drawable/ic_hot"
         android:title="Hot"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        android:titleTextAppearance="@layout/menu_item_layout" />
     <item
         android:id="@+id/menu_eventos"
         android:icon="@drawable/ic_eventos"
         android:title="Eventos"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        android:titleTextAppearance="@layout/menu_item_layout" />
     <item
         android:id="@+id/menu_busqueda"
         android:icon="@drawable/ic_busqueda"
         android:title="Busqueda"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        android:titleTextAppearance="@layout/menu_item_layout" />
     <item
         android:id="@+id/menu_carrito"
         android:icon="@drawable/ic_carrito"
         android:title="Carrito"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        android:titleTextAppearance="@layout/menu_item_layout" />
     <item
         android:id="@+id/menu_perfil"
         android:icon="@drawable/ic_perfil"
         android:title="Perfil"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        android:titleTextAppearance="@layout/menu_item_layout" />
 </menu>
