@@ -88,7 +88,10 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
                 if (!photoUriString.isNullOrEmpty()) {
                     val photoUri = Uri.parse(photoUriString)
                     val bitmap = BitmapFactory.decodeFile(photoUri.path)
-                    ivUserPhoto.setImageBitmap(bitmap)
+
+                    // Aplicar la función getCircularBitmap para redondear la imagen
+                    val circularBitmap = getCircularBitmap(bitmap)
+                    ivUserPhoto.setImageBitmap(circularBitmap)
                 } else {
                     ivUserPhoto.setImageResource(R.drawable.ic_perfil_negro)
                 }
@@ -96,6 +99,7 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
             }
         }
     }
+
 
     private fun getCircularBitmap(bitmap: Bitmap): Bitmap {
         val size = Math.min(bitmap.width, bitmap.height)
