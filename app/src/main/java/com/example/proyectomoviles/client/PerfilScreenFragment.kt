@@ -35,61 +35,67 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
     private lateinit var ivUserPhoto: ImageView
     private lateinit var btnCerrarSesion: Button
 
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-            tvAlias = view.findViewById(R.id.tvAliasUser)
-            tvEdad = view.findViewById(R.id.tvEdadUser)
-            tvNombre = view.findViewById(R.id.tvNombreUser)
-            ivUserPhoto = view.findViewById(R.id.ivUserPhoto)
-            btnCerrarSesion = view.findViewById(R.id.btnCerrarSesion)
+        tvAlias = view.findViewById(R.id.tvAliasUser)
+        tvEdad = view.findViewById(R.id.tvEdadUser)
+        tvNombre = view.findViewById(R.id.tvNombreUser)
+        ivUserPhoto = view.findViewById(R.id.ivUserPhoto)
+        btnCerrarSesion = view.findViewById(R.id.btnCerrarSesion)
 
-            val storedAlias = arguments?.getString("alias")
-            val userPhotoUri = arguments?.getString("userPhotoUri")
+        val storedAlias = arguments?.getString("alias")
+        val userPhotoUri = arguments?.getString("userPhotoUri")
 
-            if (storedAlias != null) {
-                Log.d("PerfilScreenFragment", "Alias activo recuperado: $storedAlias")
-                loadUserData(storedAlias)
-            } else {
-                Log.e("PerfilScreenFragment", "Alias no encontrado en los argumentos")
-            }
-
-
-            ivUserPhoto.setOnClickListener {
-                getImageLauncher.launch("image/*")
-            }
-
-            btnCerrarSesion.setOnClickListener {
-                onCerrarSesionClick()
-            }
+        if (storedAlias != null) {
+            Log.d("PerfilScreenFragment", "Alias activo recuperado: $storedAlias")
+            loadUserData(storedAlias)  // Esto carga los datos y la imagen de perfil.
+        } else {
+            Log.e("PerfilScreenFragment", "Alias no encontrado en los argumentos")
         }
 
+        ivUserPhoto.setOnClickListener {
+            getImageLauncher.launch("image/*")
+        }
 
-        private fun loadUserData(storedAlias: String) {
-            val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-            val usersJson = sharedPreferences.getString("users", "[]") ?: "[]"
-            val users = JSONArray(usersJson)
+        btnCerrarSesion.setOnClickListener {
+            onCerrarSesionClick()
+        }
+    }
 
-            for (i in 0 until users.length()) {
-                val user = users.getJSONObject(i)
-                if (user.getString("alias") == storedAlias) {
-                    Log.d("PerfilScreenFragment", "Cargando datos del usuario: $storedAlias")
-                    tvAlias.text = user.getString("alias")
-                    tvEdad.text = "Edad: ${user.getString("edad")}"
-                    tvNombre.text = "Nombre: ${user.getString("nombre")}"
+    private fun loadUserData(storedAlias: String) {
+        val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val usersJson = sharedPreferences.getString("users", "[]") ?: "[]"
+        val users = try {
+            JSONArray(usersJson)
+        } catch (e: JSONException) {
+            Log.e("PerfilScreenFragment", "Error al convertir el JSON a JSONArray", e)
+            return
+        }
 
-                    // Cargar la imagen de perfil
-                    val photoFile = File(requireContext().filesDir, "${storedAlias}_profile_image.jpg")
-                    if (photoFile.exists()) {
-                        val bitmap = BitmapFactory.decodeFile(photoFile.absolutePath)
-                        ivUserPhoto.setImageBitmap(bitmap)
-                    } else {
-                        ivUserPhoto.setImageResource(R.drawable.ic_perfil_negro)
-                    }
-                    break
+        for (i in 0 until users.length()) {
+            val user = users.getJSONObject(i)
+            val alias = user.getString("alias")
+
+            if (alias.equals(storedAlias, ignoreCase = true)) {
+                Log.d("PerfilScreenFragment", "Cargando datos del usuario: $storedAlias")
+                tvAlias.text = user.getString("alias")
+                tvEdad.text = "Edad: ${user.getString("edad")}"
+                tvNombre.text = "Nombre: ${user.getString("nombre")}"
+
+                // Cargar la imagen de perfil desde la URI almacenada en SharedPreferences
+                val photoUriString = user.optString("photoUri", null)
+                if (!photoUriString.isNullOrEmpty()) {
+                    val photoUri = Uri.parse(photoUriString)
+                    val bitmap = BitmapFactory.decodeFile(photoUri.path)
+                    ivUserPhoto.setImageBitmap(bitmap)
+                } else {
+                    ivUserPhoto.setImageResource(R.drawable.ic_perfil_negro)
                 }
+                break
             }
         }
+    }
 
     private fun getCircularBitmap(bitmap: Bitmap): Bitmap {
         val size = Math.min(bitmap.width, bitmap.height)
@@ -152,9 +158,13 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
         val inputStream = requireActivity().contentResolver.openInputStream(userPhotoUri)
         val bitmap = BitmapFactory.decodeStream(inputStream)
 
+        // Crear el directorio para almacenar las imágenes
         val directory = File(requireContext().filesDir, "profile_pics")
         if (!directory.exists()) directory.mkdir()
 
+        Log.d("PerfilScreenFragment", "Directorio para almacenar imágenes: ${directory.absolutePath}")
+
+        // Crear el archivo para guardar la imagen con el alias del usuario
         val file = File(directory, "$storedAlias.jpg")
         val outputStream = FileOutputStream(file)
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
@@ -162,15 +172,21 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
         outputStream.flush()
         outputStream.close()
 
+        // Log para ver la ubicación de la imagen guardada
         Log.d("PerfilScreenFragment", "Imagen guardada en: ${file.absolutePath}")
+
         return Uri.fromFile(file)
     }
+
 
     private fun saveProfilePhoto(userPhotoUri: Uri?, storedAlias: String) {
         if (userPhotoUri == null) {
             Log.e("PerfilScreenFragment", "La URI de la imagen es nula.")
             return
         }
+
+        // Guardar la imagen en almacenamiento interno
+        val imageUri = saveImageToInternalStorage(userPhotoUri, storedAlias)
 
         val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val usersJson = sharedPreferences.getString("users", "[]") ?: "[]"
@@ -193,45 +209,11 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
             if (alias.equals(storedAlias, ignoreCase = true)) {
                 Log.d("PerfilScreenFragment", "Se encontró el usuario con el alias proporcionado: $storedAlias")
                 userFound = true
-                var inputStream: InputStream? = null
-                try {
-                    inputStream = requireActivity().contentResolver.openInputStream(userPhotoUri)
-                    if (inputStream == null) {
-                        Log.e("PerfilScreenFragment", "No se pudo abrir el InputStream para la URI: $userPhotoUri")
-                        return
-                    }
 
-                    val originalBitmap = BitmapFactory.decodeStream(inputStream)
-                    if (originalBitmap == null) {
-                        Log.e("PerfilScreenFragment", "No se pudo decodificar la imagen a Bitmap.")
-                        return
-                    }
-                    Log.d("PerfilScreenFragment", "Imagen decodificada exitosamente.")
-
-                    // Escalar la imagen si es demasiado grande
-                    val maxWidth = 800
-                    val maxHeight = 800
-                    val scaledBitmap = scaleBitmap(originalBitmap, maxWidth, maxHeight)
-                    Log.d("PerfilScreenFragment", "Imagen escalada con tamaño máximo de ${scaledBitmap.width}x${scaledBitmap.height}.")
-
-                    // Convertir a Base64
-                    val encodedImage = encodeImageToBase64(scaledBitmap)
-                    Log.d("PerfilScreenFragment", "Imagen convertida a Base64 exitosamente.")
-
-                    // Guardar la imagen en el usuario
-                    user.put("photoBase64", encodedImage)
-                    Log.d("PerfilScreenFragment", "Foto de perfil guardada para el usuario con alias: $storedAlias")
-                    break
-                } catch (e: Exception) {
-                    Log.e("PerfilScreenFragment", "Error al procesar la imagen", e)
-                } finally {
-                    try {
-                        inputStream?.close()
-                        Log.d("PerfilScreenFragment", "InputStream cerrado correctamente.")
-                    } catch (e: IOException) {
-                        Log.e("PerfilScreenFragment", "Error al cerrar el InputStream", e)
-                    }
-                }
+                // Guardar la URI de la imagen en el objeto del usuario (o su nombre)
+                user.put("photoUri", imageUri.toString())
+                Log.d("PerfilScreenFragment", "Foto de perfil guardada para el usuario con alias: $storedAlias")
+                break
             }
         }
 
@@ -242,6 +224,7 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
             Log.d("PerfilScreenFragment", "Usuarios actualizados en SharedPreferences: ${users.toString()}")
         }
     }
+
 
     private fun scaleBitmap(bitmap: Bitmap, maxWidth: Int, maxHeight: Int): Bitmap {
         val width = bitmap.width
