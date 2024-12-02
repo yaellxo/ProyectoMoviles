@@ -85,7 +85,7 @@
                     android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="45dp"
-                    android:drawableLeft="@drawable/icon_list_add_40px"
+                    android:drawableLeft="@drawable/icon_agregar"
                     android:fontFamily="@font/sawarabi"
                     android:paddingLeft="50dp"
                     android:text="@string/titulo_agregar"
