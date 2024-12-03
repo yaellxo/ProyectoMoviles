@@ -6,15 +6,70 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/ivbackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="353dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/border_shape"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/HeaderTitle"
+            android:layout_width="228dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/sawarabi"
+            android:gravity="center"
+            android:text="@string/Titulo"
+            android:textColor="@color/color_font_principal"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivLogo"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.384" />
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="74dp"
+            android:layout_height="58dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.428" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="311dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="208dp"
+        android:layout_height="393dp"
+        android:layout_marginTop="196dp"
         android:background="@drawable/border_shape"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -23,49 +78,33 @@
             android:layout_width="53dp"
             android:layout_height="41dp"
             android:layout_marginEnd="200dp"
-            android:src="@drawable/icon_eliminar"
+            android:src="@drawable/ic_eventos_negro"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.046" />
-
-        <Button
-            android:id="@+id/btnEliminar"
-            android:layout_width="235dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="192dp"
-            android:background="@color/opcion_eliminar"
-            android:fontFamily="@font/sawarabi"
-            android:text="@string/boton_eliminar_evento"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.431"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+            app:layout_constraintVertical_bias="0.032" />
 
         <TextView
-            android:id="@+id/tvRegistro2"
+            android:id="@+id/tvEliminarEvento"
             android:layout_width="278dp"
             android:layout_height="42dp"
-            android:layout_marginTop="84dp"
+            android:layout_marginTop="60dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center"
             android:text="@string/eliminiar_text_evento"
-            android:textColor="@color/color_font_principal"
+            android:textColor="@color/negro_color"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="150dp"
             android:layout_height="45dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center"
             android:text="@string/titulo_eliminar"
@@ -73,75 +112,75 @@
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.705"
+            app:layout_constraintHorizontal_bias="0.701"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tvId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="84dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/sawarabi"
             android:text="ID:"
             android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.011"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+            app:layout_constraintTop_toBottomOf="@id/tvEliminarEvento" />
 
         <EditText
-            android:id="@+id/etIdAEliminar"
-            android:layout_width="276dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="112dp"
+            android:id="@+id/etIdAEliminarEvento"
+            android:layout_width="268dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/border_layout"
+            android:drawableEnd="@drawable/ic_lupa"
+            android:drawablePadding="8dp"
             android:fontFamily="@font/sawarabi"
             android:hint="Ingresa el ID"
             android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
+            android:textColor="@color/negro_color"
+            android:textColorHint="@color/gris_color"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
-
-        <ImageView
-            android:id="@+id/ivLupa"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="6dp"
-            android:src="@drawable/icon_lupa"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.632" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="410dp"
-        android:layout_height="123dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
-        app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintTop_toBottomOf="@id/tvId" />
 
         <Button
-            android:id="@+id/btnRegresar2"
-            android:layout_width="294dp"
-            android:layout_height="46dp"
+            android:id="@+id/btnEliminar"
+            android:layout_width="235dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/button_eliminar_background_selector"
+            android:fontFamily="@font/sawarabi"
+            android:text="@string/boton_eliminar_evento"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.512"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etIdAEliminarEvento" />
+
+
+        <Button
+            android:id="@+id/btnRegresarEliminarEvento"
+            android:layout_width="212dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/button_secundary_background_selector"
             android:fontFamily="@font/sawarabi"
+            android:gravity="center"
             android:text="@string/abortar_misi_n_capit_n"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="58dp"
-            tools:layout_editor_absoluteY="38dp" />
+            app:layout_constraintTop_toBottomOf="@id/btnEliminar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

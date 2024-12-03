@@ -1,0 +1,358 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/ivbackground2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="354dp"
+            android:layout_height="78dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/border_shape"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/RegInvHeaderTitle"
+                android:layout_width="228dp"
+                android:layout_height="54dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/sawarabi"
+                android:gravity="center"
+                android:text="@string/Titulo"
+                android:textColor="@color/color_font_principal"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ivRegInvLogo"
+                app:layout_constraintHorizontal_bias="0.454"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.384" />
+
+            <ImageView
+                android:id="@+id/ivRegInvLogo"
+                android:layout_width="74dp"
+                android:layout_height="58dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.428" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="317dp"
+        android:layout_height="662dp"
+        android:layout_marginTop="108dp"
+        android:background="@drawable/border_shape"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tVRegInvTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:drawableLeft="@drawable/icon_agregar"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Agregar Manga"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tVRegInvNombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Nombre:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/eTRegInvNombreRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/placeholder"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tVRegInvPrecio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Precio:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/eTNDRegInvPrecio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/placeholder"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:id="@+id/tVRegInvStock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Stock:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/eTNRegInvStock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/placeholder"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp"
+                    android:ems="10"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/tvRegInvDescripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Descripcion:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/multiLineRegInvDescripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="89dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/placeholder"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine" />
+
+                <TextView
+                    android:id="@+id/tVRegInvVolumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Volumen:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/eTNRegInvVolumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/placeholder"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp"
+                    android:ems="10"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/tVRegInvAutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Autor:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/eTRegInvAutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/placeholder"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tVRegInvGenero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Genero:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spRegInvGenero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/tVRegInvEditorial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Editorial:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etRegInvEditorial"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="@string/placeholder"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tVRegInvPublicacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Publicacion:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/iBRegInvPublicacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#000000"
+                    app:tint="#FFFFFF"
+                    app:srcCompat="@drawable/baseline_calendar_month_24" />
+
+                <TextView
+                    android:id="@+id/tVRegInvImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="IMG:"
+                    android:textColor="@color/color_font_principal"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iVRegInvImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/icon_add_image" />
+
+                <Button
+                    android:id="@+id/btnRegInvAgregarProducto"
+                    android:layout_width="235dp"
+                    android:layout_height="41dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/button_background_selector"
+                    android:fontFamily="@font/sawarabi"
+                    android:gravity="center_horizontal"
+                    android:text="Agregar producto"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_font_principal_blanco"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btnRegInvRegresar"
+        android:layout_width="210dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_secundary_background_selector"
+        android:fontFamily="@font/sawarabi"
+        android:text="@string/abortar_misi_n_capit_n"
+        android:textAllCaps="false"
+        android:textColor="@color/color_font_principal_blanco"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

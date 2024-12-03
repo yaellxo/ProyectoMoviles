@@ -43,7 +43,6 @@ android {
 }
 
 dependencies {
-
     // Dependencias comunes
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -58,6 +57,7 @@ dependencies {
 
     // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
+    implementation ("com.getbase:floatingactionbutton:1.10.1")
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
 
     // Material Components
@@ -72,3 +72,4 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
+

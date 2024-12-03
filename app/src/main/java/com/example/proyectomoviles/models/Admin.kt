@@ -2,6 +2,7 @@ package com.example.proyectomoviles.models
 
 object AdminConstants {
     const val ADMIN_ID = "admin123"
+    const val ADMIN_NOMBRE = "Admin Admin"
     const val ADMIN_EMAIL = "admin@example.com"
     const val ADMIN_ALIAS = "admin"
     const val ADMIN_PASSWORD = "admin"
