@@ -25,7 +25,7 @@ import java.io.FileOutputStream
 import java.io.InputStream
 import java.io.OutputStream
 
-class PerfilAdminScreenFragment : Fragment(R.layout.perfil_activity_admin) {
+class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
 
     private lateinit var tvAlias: TextView
     private lateinit var tvIdAdmin: TextView
