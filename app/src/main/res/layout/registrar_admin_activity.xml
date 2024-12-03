@@ -61,226 +61,192 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="317dp"
-        android:layout_height="662dp"
+        android:id="@+id/constraintLayout"
+        android:layout_width="316dp"
+        android:layout_height="615dp"
         android:layout_marginTop="108dp"
         android:background="@drawable/border_shape"
-        android:padding="16dp"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="229dp"
-            android:layout_height="45dp"
-            android:fontFamily="@font/sawarabi"
-            android:gravity="center"
-            android:text="@string/Registro"
-            android:textColor="@color/color_font_principal"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Nombre:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.049"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etNombreRegistro"
-            android:layout_width="276dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/escribe_tu_verdadero_nombre"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:gravity="center"
+                    android:text="Registrar"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Alias:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etNombreRegistro" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Nombre:"
+                    android:textColor="@color/color_font_principal" />
 
-        <EditText
-            android:id="@+id/etAliasRegistro"
-            android:layout_width="276dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/tu_nombre_de_batalla_en_este_mundo"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etNombreRegistro" />
+                <EditText
+                    android:id="@+id/etNombreAdminRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="Escribe el nombre real del nuevo administrador."
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="10sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Correo:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.046"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etAliasRegistro" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Alias:"
+                    android:textColor="@color/color_font_principal" />
 
-        <EditText
-            android:id="@+id/etCorreoRegistro"
-            android:layout_width="276dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/tu_b_ho_mensajero_necesita_una_direcci_n"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etAliasRegistro" />
+                <EditText
+                    android:id="@+id/etAliasAdminRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="Define el alias de batalla para este administrador."
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="10sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Edad:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.053"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etCorreoRegistro" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Correo:"
+                    android:textColor="@color/color_font_principal" />
 
-        <EditText
-            android:id="@+id/etEdadRegistro"
-            android:layout_width="276dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/registra_tu_nivel_de_experiencia"
-            android:inputType="number"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etCorreoRegistro" />
+                <EditText
+                    android:id="@+id/etCorreoAdminRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="Ingresa el correo oficial para el nuevo administrador."
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="10sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Contraseña:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.053"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etEdadRegistro" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Nivel de Acceso:"
+                    android:textColor="@color/color_font_principal" />
 
-        <EditText
-            android:id="@+id/etClaveRegistro"
-            android:layout_width="276dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/protege_tus_secretos_como_un_ninja"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etEdadRegistro" />
+                <Spinner
+                    android:id="@+id/spNivelAccesoAdminRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="Selecciona el nivel de acceso del administrador."
+                    android:background="@drawable/border_layout"
+                    android:padding="10dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:spinnerMode="dropdown"
+                    android:entries="@array/niveles_acceso"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="10sp" />
 
-        <TextView
-            android:id="@+id/tvCondicionesRegistro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/sawarabi"
-            android:gravity="center"
-            android:text="@string/al_unirte_a_esta_batalla_aceptas_las_reglas_del_juego_el_destino_est_en_tus_manos"
-            android:textColor="@color/color_font_secundario_gris_medio"
-            android:textSize="8sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etClaveRegistro" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Area:"
+                    android:textColor="@color/color_font_principal" />
 
-        <Button
-            android:id="@+id/btnCrearCuenta"
-            android:layout_width="235dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_background_selector"
-            android:fontFamily="@font/sawarabi"
-            android:text="@string/nete_a_la_sociedad_de_almas"
-            android:textAllCaps="false"
-            android:textColor="@color/color_font_principal_blanco"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.511"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCondicionesRegistro" />
+                <EditText
+                    android:id="@+id/etAreaAdminRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="Asignar el área o zona de responsabilidad."
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="10sp" />
 
-        <Button
-            android:id="@+id/btnRegresar"
-            android:layout_width="210dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/button_secundary_background_selector"
-            android:fontFamily="@font/sawarabi"
-            android:text="@string/abortar_misi_n_capit_n"
-            android:textAllCaps="false"
-            android:textColor="@color/color_font_principal_blanco"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnCrearCuenta" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:text="Contraseña:"
+                    android:textColor="@color/color_font_principal" />
 
+                <EditText
+                    android:id="@+id/etClaveAdminRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="Crea una clave secreta para el nuevo administrador."
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textColorHint="@color/color_font_secundario_gris_medio"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdminAgregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:src="@drawable/ic_agregar_admin"
+        app:backgroundTint="@color/opcion_agregar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabRegresarAdminAgregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/ic_regresar"
+        app:backgroundTint="@color/boton_pressed_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

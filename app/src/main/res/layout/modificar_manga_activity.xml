@@ -6,6 +6,17 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/ivbackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="354dp"
         android:layout_height="78dp"
@@ -55,7 +66,7 @@
         android:layout_height="662dp"
         android:layout_marginTop="108dp"
         android:background="@drawable/border_shape"
-        android:padding="16dp"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,8 +83,10 @@
 
                 <TextView
                     android:id="@+id/tvTituloModificar"
+                    android:drawablePadding="4dp"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:drawableLeft=""
                     android:fontFamily="@font/sawarabi"
                     android:gravity="center"
@@ -83,9 +96,9 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/sawarabi"
                     android:text="ID:"
                     android:textColor="@android:color/black"
@@ -95,39 +108,35 @@
                     app:layout_constraintTop_toBottomOf="@id/tvTituloModificar" />
 
                 <EditText
-                    android:id="@+id/etIdAEliminar"
+                    android:id="@+id/etIdMangaModificar"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/border_layout"
+                    android:drawableEnd="@drawable/ic_lupa"
                     android:fontFamily="@font/sawarabi"
-                    android:hint="Ingresa el ID"
+                    android:hint="Escribir código especial."
                     android:padding="10dp"
                     android:textColor="@color/color_font_principal"
                     android:textColorHint="@color/color_font_secundario_gris_medio"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvTituloModificar" />
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/sawarabi"
                     android:text="Nombre:"
                     android:textColor="@color/color_font_principal"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etNombreModificar"
+                    android:id="@+id/etNombreMangaModificar"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/border_layout"
                     android:fontFamily="@font/sawarabi"
-                    android:hint="@string/modificar_informacion"
                     android:padding="10dp"
                     android:textColor="@color/color_font_principal"
                     android:textColorHint="@color/color_font_secundario_gris_medio"
@@ -137,20 +146,19 @@
                     android:id="@+id/txtPrecioModificar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/sawarabi"
                     android:text="Precio:"
                     android:textColor="@color/color_font_principal"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etPrecioModificar"
+                    android:id="@+id/etPrecioMangaModificar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/border_layout"
                     android:fontFamily="@font/sawarabi"
-                    android:hint="@string/modificar_informacion"
                     android:padding="10dp"
                     android:textColor="@color/color_font_principal"
                     android:textColorHint="@color/color_font_secundario_gris_medio"
@@ -160,22 +168,21 @@
 
                 <TextView
                     android:id="@+id/txtStockModificar"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/sawarabi"
                     android:text="Stock:"
                     android:textColor="@color/color_font_principal"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etStockModificar"
+                    android:id="@+id/etStockMangaModificar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/border_layout"
                     android:fontFamily="@font/sawarabi"
-                    android:hint="@string/modificar_informacion"
                     android:padding="10dp"
                     android:textColor="@color/color_font_principal"
                     android:textColorHint="@color/color_font_secundario_gris_medio"
@@ -185,22 +192,21 @@
 
                 <TextView
                     android:id="@+id/txtDescripcionModificar"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/sawarabi"
                     android:text="Descripcion:"
                     android:textColor="@color/color_font_principal"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etDescripcionModificar"
+                    android:id="@+id/etDescripcionMangaModificar"
                     android:layout_width="match_parent"
                     android:layout_height="89dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/border_layout"
                     android:fontFamily="@font/sawarabi"
-                    android:hint="@string/modificar_informacion"
                     android:padding="10dp"
                     android:textColor="@color/color_font_principal"
                     android:textColorHint="@color/color_font_secundario_gris_medio"
@@ -220,13 +226,12 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etVolumenModificar"
+                    android:id="@+id/etVolumenMangaModificar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/border_layout"
                     android:fontFamily="@font/sawarabi"
-                    android:hint="@string/modificar_informacion"
                     android:padding="10dp"
                     android:textColor="@color/color_font_principal"
                     android:textColorHint="@color/color_font_secundario_gris_medio"
@@ -236,22 +241,21 @@
 
                 <TextView
                     android:id="@+id/txtAutorModificar"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/sawarabi"
                     android:text="Autor:"
                     android:textColor="@color/color_font_principal"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etAutorModificar"
+                    android:id="@+id/etAutorMangaModificar"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/border_layout"
                     android:fontFamily="@font/sawarabi"
-                    android:hint="@string/modificar_informacion"
                     android:padding="10dp"
                     android:textColor="@color/color_font_principal"
                     android:textColorHint="@color/color_font_secundario_gris_medio"
@@ -259,44 +263,44 @@
 
                 <TextView
                     android:id="@+id/txtGeneroModificar"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/sawarabi"
                     android:text="Genero:"
                     android:textColor="@color/color_font_principal"
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/spinnerGeneroModificar"
+                    android:id="@+id/spNivelAccesoMangaModificar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/border_layout"
-                    android:fontFamily="@font/sawarabi"
                     android:padding="10dp"
+                    android:fontFamily="@font/sawarabi"
+                    android:spinnerMode="dropdown"
+                    android:entries="@array/niveles_acces"
                     android:textColor="@color/color_font_principal"
-                    android:textColorHint="@color/color_font_secundario_gris_medio"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/txtEditorial"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/sawarabi"
                     android:text="Editorial:"
                     android:textColor="@color/color_font_principal"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etEditorialModificar"
+                    android:id="@+id/etEditorialMangaModificar"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/border_layout"
                     android:fontFamily="@font/sawarabi"
-                    android:hint="@string/modificar_informacion"
                     android:padding="10dp"
                     android:textColor="@color/color_font_principal"
                     android:textColorHint="@color/color_font_secundario_gris_medio"
@@ -304,78 +308,61 @@
 
                 <TextView
                     android:id="@+id/txtPublicacionModificar"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/sawarabi"
                     android:text="Publicacion:"
                     android:textColor="@color/color_font_principal"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etPublicacionModificar"
+                    android:id="@+id/etPublicacionMangaModificar"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/border_layout"
                     android:fontFamily="@font/sawarabi"
-                    android:hint="@string/modificar_informacion"
                     android:padding="10dp"
                     android:textColor="@color/color_font_principal"
                     android:textColorHint="@color/color_font_secundario_gris_medio"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtImagenModificar"
-                    android:layout_width="match_parent"
+                    android:id="@+id/btnImagenMangaModificar"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/sawarabi"
-                    android:text="IMG:"
+                    android:text="IMG "
                     android:textColor="@color/color_font_principal"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/ivModificarImagen"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/icon_subir_imagen" />
-
-                <Button
-                    android:id="@+id/btnModificarManga"
-                    android:layout_width="235dp"
-                    android:layout_height="41dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/button_background_selector"
-                    android:fontFamily="@font/sawarabi"
-                    android:gravity="center_horizontal"
-                    android:text="Agregar producto"
-                    android:textAllCaps="false"
-                    android:textColor="@color/color_font_principal_blanco"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
+                    android:textStyle="bold"
+                    android:drawableEnd="@drawable/ic_lupa_24"
+                    android:drawablePadding="4dp"
+                    android:gravity="center" />
             </LinearLayout>
         </ScrollView>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/btnRegresarModificar"
-        android:layout_width="210dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="94dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/button_secundary_background_selector"
-        android:fontFamily="@font/sawarabi"
-        android:text="@string/abortar_misi_n_capit_n"
-        android:textAllCaps="false"
-        android:textColor="@color/color_font_principal_blanco"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabMangaModificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:src="@drawable/ic_inventario_admin"
+        app:backgroundTint="@color/opcion_modificar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabRegresarMangaModificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/ic_regresar"
+        app:backgroundTint="@color/boton_pressed_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
