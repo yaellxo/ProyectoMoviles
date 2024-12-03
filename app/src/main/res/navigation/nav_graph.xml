@@ -26,5 +26,6 @@
     <fragment
         android:id="@+id/menu_admin"
         android:name="com.example.proyectomoviles.client.PerfilAdminScreenFragment"
-        android:label="Profile" />
+        android:label="" />
+
 </navigation>

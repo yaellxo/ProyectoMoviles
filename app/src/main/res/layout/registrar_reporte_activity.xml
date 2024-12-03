@@ -61,7 +61,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/contenedorFragment"
         android:layout_width="318dp"
         android:layout_height="613dp"
         android:layout_marginTop="108dp"

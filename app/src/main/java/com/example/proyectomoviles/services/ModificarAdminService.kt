@@ -4,12 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.R
 
-class ReportService : AppCompatActivity() {
+class ModificarAdminService : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.registrar_reporte_activity)
+        setContentView(R.layout.modificar_admin_activity)
 
     }
 }
-

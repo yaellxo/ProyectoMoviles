@@ -35,6 +35,30 @@
             android:name="com.example.proyectomoviles.client.LoginScreen"
             android:theme="@style/Theme.ProyectoMoviles"/>
 
+        <activity
+            android:name=".services.EliminarAdminService"
+            android:theme="@style/Theme.ProyectoMoviles"/>
+
+        <activity
+            android:name=".services.ModificarAdminService"
+            android:theme="@style/Theme.ProyectoMoviles"/>
+
+        <activity
+            android:name=".services.RegistrarAdminService"
+            android:theme="@style/Theme.ProyectoMoviles"/>
+
+        <activity
+            android:name=".services.InventoryService"
+            android:theme="@style/Theme.ProyectoMoviles"/>
+
+        <activity
+            android:name=".services.EventService"
+            android:theme="@style/Theme.ProyectoMoviles"/>
+
+        <activity
+            android:name=".services.ReportService"
+            android:theme="@style/Theme.ProyectoMoviles"/>
+
     </application>
 
 </manifest>

@@ -19,6 +19,12 @@ import com.example.proyectomoviles.R
 import android.content.Context
 import android.content.Intent
 import com.example.proyectomoviles.models.AdminConstants
+import com.example.proyectomoviles.services.EliminarAdminService
+import com.example.proyectomoviles.services.EventService
+import com.example.proyectomoviles.services.InventoryService
+import com.example.proyectomoviles.services.ModificarAdminService
+import com.example.proyectomoviles.services.RegistrarAdminService
+import com.example.proyectomoviles.services.ReportService
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.File
 import java.io.FileOutputStream
@@ -44,6 +50,7 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Inicializar vistas
         tvAlias = view.findViewById(R.id.tvAliasUser)
         tvIdAdmin = view.findViewById(R.id.tvEdadUser)
         tvNombreAdmin = view.findViewById(R.id.tvNombreUser)
@@ -63,13 +70,13 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
             view.findViewById(R.id.agregarEvento)
         )
 
-        fabMain.setImageResource(fabOpenIcon)
-
-        hideAdditionalButtons()
-
         fabMain.setOnClickListener {
             toggleAdditionalButtons()
         }
+
+        // Configuración de los botones flotantes
+        fabMain.setImageResource(fabOpenIcon)
+        hideAdditionalButtons()
 
         loadAdminData()
         loadProfilePhoto()
@@ -78,6 +85,36 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
             getImageLauncher.launch("image/*")
         }
 
+        additionalButtons[0].setOnClickListener {
+            val intent = Intent(activity, RegistrarAdminService::class.java)
+            startActivity(intent)
+        }
+
+        additionalButtons[1].setOnClickListener {
+            val intent = Intent(activity, ModificarAdminService::class.java)
+            startActivity(intent)
+        }
+
+        additionalButtons[2].setOnClickListener {
+            val intent = Intent(activity, EliminarAdminService::class.java)
+            startActivity(intent)
+        }
+
+        additionalButtons[3].setOnClickListener {
+            val intent = Intent(activity, ReportService::class.java)
+            startActivity(intent)
+        }
+
+        additionalButtons[4].setOnClickListener {
+            val intent = Intent(activity, InventoryService::class.java)
+            startActivity(intent)
+        }
+
+        additionalButtons[5].setOnClickListener {
+            val intent = Intent(activity, EventService::class.java)
+            startActivity(intent)
+        }
+        
         btnCerrarSesion.setOnClickListener {
             onCerrarSesionClick()
         }
@@ -220,3 +257,4 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
         Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show()
     }
 }
+
