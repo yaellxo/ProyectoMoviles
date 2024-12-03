@@ -46,54 +46,54 @@
         android:id="@+id/table_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:background="@drawable/border_shape"
         android:stretchColumns="*"
-        app:layout_constraintTop_toBottomOf="@id/search_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/search_container">
 
         <!-- Encabezados -->
         <TableRow>
+
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@drawable/border_layout"
+                android:gravity="center"
                 android:text="ID"
+                android:textStyle="bold" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:background="@drawable/border_layout"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:background="@drawable/border_layout" />
-
-            <TextView
                 android:text="Stock"
+                android:textStyle="bold" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:background="@drawable/border_layout"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:background="@drawable/border_layout" />
-
-            <TextView
                 android:text="Nombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:background="@drawable/border_layout" />
+                android:textStyle="bold" />
 
             <TextView
-                android:text="Precio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:background="@drawable/border_layout"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:background="@drawable/border_layout" />
+                android:text="Precio"
+                android:textStyle="bold" />
         </TableRow>
     </TableLayout>
-
-
-
 
     <LinearLayout
         android:layout_width="0dp"
