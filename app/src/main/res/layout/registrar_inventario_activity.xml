@@ -6,7 +6,18 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/ivbackground2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="354dp"
             android:layout_height="78dp"
             android:layout_marginTop="16dp"
@@ -17,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/HeaderTitle"
+                android:id="@+id/RegInvHeaderTitle"
                 android:layout_width="228dp"
                 android:layout_height="54dp"
                 android:layout_marginStart="16dp"
@@ -31,14 +42,14 @@
                 android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ivLogo"
+                app:layout_constraintEnd_toStartOf="@+id/ivRegInvLogo"
                 app:layout_constraintHorizontal_bias="0.454"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.384" />
 
             <ImageView
-                android:id="@+id/ivLogo"
+                android:id="@+id/ivRegInvLogo"
                 android:layout_width="74dp"
                 android:layout_height="58dp"
                 android:layout_marginEnd="8dp"
@@ -71,18 +82,18 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvTitle"
+                    android:id="@+id/tVRegInvTitle"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:drawableLeft="@drawable/icon_agregar"
                     android:fontFamily="@font/sawarabi"
-                    android:gravity="center"
-                    android:text="@string/titulo_agregar"
+                    android:text="Agregar Manga"
                     android:textColor="@color/color_font_principal"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tVRegInvNombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -92,7 +103,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etNombreRegistro"
+                    android:id="@+id/eTRegInvNombreRegistro"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="8dp"
@@ -105,7 +116,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tVRegInvPrecio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -115,7 +126,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editTextNumberDecimal"
+                    android:id="@+id/eTNDRegInvPrecio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -130,17 +141,17 @@
                     android:inputType="numberDecimal" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/tVRegInvStock"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:fontFamily="@font/sawarabi"
-                    android:text="Precio:"
+                    android:text="Stock:"
                     android:textColor="@color/color_font_principal"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editTextNumber"
+                    android:id="@+id/eTNRegInvStock"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -155,7 +166,7 @@
                     android:inputType="number" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/tvRegInvDescripcion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -165,7 +176,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editTextTextMultiLine"
+                    android:id="@+id/multiLineRegInvDescripcion"
                     android:layout_width="match_parent"
                     android:layout_height="89dp"
                     android:layout_marginTop="8dp"
@@ -181,7 +192,7 @@
                     android:inputType="textMultiLine" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/tVRegInvVolumen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -191,7 +202,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editTextNumber2"
+                    android:id="@+id/eTNRegInvVolumen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -206,7 +217,7 @@
                     android:inputType="number" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/tVRegInvAutor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -216,7 +227,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etAutor"
+                    android:id="@+id/eTRegInvAutor"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="8dp"
@@ -229,7 +240,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/tVRegInvGenero"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -239,7 +250,7 @@
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/spinnerGenero"
+                    android:id="@+id/spRegInvGenero"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -251,7 +262,7 @@
                     android:textSize="12sp"/>
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/tVRegInvEditorial"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -261,7 +272,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/etAutor3"
+                    android:id="@+id/etRegInvEditorial"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="8dp"
@@ -274,7 +285,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/tVRegInvPublicacion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -283,21 +294,16 @@
                     android:textColor="@color/color_font_principal"
                     android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/etAutor4"
+                <ImageButton
+                    android:id="@+id/iBRegInvPublicacion"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/border_layout"
-                    android:fontFamily="@font/sawarabi"
-                    android:hint="@string/placeholder"
-                    android:padding="10dp"
-                    android:textColor="@color/color_font_principal"
-                    android:textColorHint="@color/color_font_secundario_gris_medio"
-                    android:textSize="12sp" />
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#000000"
+                    app:tint="#FFFFFF"
+                    app:srcCompat="@drawable/baseline_calendar_month_24" />
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/tVRegInvImg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -307,14 +313,14 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/iVRegInvImg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     app:srcCompat="@drawable/icon_add_image" />
 
                 <Button
-                    android:id="@+id/btnCrearCuenta"
+                    android:id="@+id/btnRegInvAgregarProducto"
                     android:layout_width="235dp"
                     android:layout_height="41dp"
                     android:layout_gravity="center_horizontal"
@@ -334,7 +340,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/btnRegresar"
+        android:id="@+id/btnRegInvRegresar"
         android:layout_width="210dp"
         android:layout_height="38dp"
         android:layout_marginStart="94dp"

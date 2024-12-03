@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/HeaderTitle"
+                android:id="@+id/RegRepHeaderTitle"
                 android:layout_width="228dp"
                 android:layout_height="54dp"
                 android:layout_marginStart="16dp"
@@ -42,14 +42,14 @@
                 android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ivLogo"
+                app:layout_constraintEnd_toStartOf="@+id/ivRegRepLogo"
                 app:layout_constraintHorizontal_bias="0.454"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.384" />
 
             <ImageView
-                android:id="@+id/ivLogo"
+                android:id="@+id/ivRegRepLogo"
                 android:layout_width="74dp"
                 android:layout_height="58dp"
                 android:layout_marginEnd="8dp"
@@ -82,7 +82,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvTitle"
+                    android:id="@+id/tvRegRepTitle"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:fontFamily="@font/sawarabi"
@@ -92,7 +92,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editTextTextMultiLine2"
+                    android:id="@+id/MultiLineRegRepReporte"
                     android:layout_width="match_parent"
                     android:layout_height="510dp"
                     android:layout_marginTop="8dp"
@@ -108,7 +108,7 @@
                     android:textSize="12sp" />
 
                 <Button
-                    android:id="@+id/btnCrearCuenta"
+                    android:id="@+id/btnRegRepAgregarReporte"
                     android:layout_width="235dp"
                     android:layout_height="41dp"
                     android:layout_gravity="center_horizontal"
@@ -116,7 +116,7 @@
                     android:background="@drawable/button_background_selector"
                     android:fontFamily="@font/sawarabi"
                     android:gravity="center_horizontal"
-                    android:text="Agregar producto"
+                    android:text="Agregar reporte"
                     android:textAllCaps="false"
                     android:textColor="@color/color_font_principal_blanco"
                     android:textSize="16sp"
@@ -129,7 +129,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/btnRegresar"
+        android:id="@+id/btnRegRepRegresar"
         android:layout_width="210dp"
         android:layout_height="38dp"
         android:layout_marginStart="94dp"
