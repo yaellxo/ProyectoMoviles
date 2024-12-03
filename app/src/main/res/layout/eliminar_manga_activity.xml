@@ -77,7 +77,7 @@
             android:layout_width="53dp"
             android:layout_height="41dp"
             android:layout_marginEnd="200dp"
-            android:src="@drawable/ic_manga"
+            android:src="@drawable/ic_inventario_negro"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

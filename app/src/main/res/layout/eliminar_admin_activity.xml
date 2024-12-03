@@ -78,7 +78,7 @@
             android:layout_width="53dp"
             android:layout_height="41dp"
             android:layout_marginEnd="200dp"
-            android:src="@drawable/ic_eliminar_usuario"
+            android:src="@drawable/ic_eliminar_admin_negro"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -155,7 +155,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="1dp"
-        android:src="@drawable/ic_eliminar_admin"
+        android:src="@drawable/ic_eliminar_admin_blanco"
         app:backgroundTint="@color/opcion_eliminar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

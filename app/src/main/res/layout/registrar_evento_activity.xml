@@ -89,7 +89,7 @@
                     android:drawablePadding="4dp"
                     android:fontFamily="@font/sawarabi"
                     android:gravity="center"
-                    android:text="Registrar Evento"
+                    android:text="Registrar"
                     android:textColor="@color/color_font_principal"
                     android:textSize="30sp"
                     android:textStyle="bold" />

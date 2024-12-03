@@ -39,7 +39,7 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
     private lateinit var additionalButtons: List<FloatingActionButton>
 
     private val fabOpenIcon = R.drawable.ic_plus_admin
-    private val fabCloseIcon = R.drawable.ic_cerrar_admin
+    private val fabCloseIcon = R.drawable.ic_cerrar_menu_admin
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

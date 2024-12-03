@@ -87,7 +87,7 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
                     val circularBitmap = getCircularBitmap(bitmap)
                     ivUserPhoto.setImageBitmap(circularBitmap)
                 } else {
-                    ivUserPhoto.setImageResource(R.drawable.ic_perfil_negro)
+                    ivUserPhoto.setImageResource(R.drawable.ic_perfil_user)
                 }
                 break
             }
