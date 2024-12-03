@@ -8,5 +8,4 @@ object AdminConstants {
     const val ADMIN_PASSWORD = "admin"
     const val ADMIN_ACCESS_LEVEL = 10
     const val ADMIN_AREA = "IT"
-    const val ADMIN_REGISTRATION_DATE = "2023-01-01"
 }
