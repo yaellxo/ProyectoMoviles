@@ -59,6 +59,15 @@
             android:name=".services.ReportService"
             android:theme="@style/Theme.ProyectoMoviles"/>
 
+        <activity
+            android:name="com.example.proyectomoviles.services.RegistrarMangaActivity"
+            android:theme="@style/Theme.ProyectoMoviles"/>
+
+        <activity
+            android:name="com.example.proyectomoviles.services.TableMangaActivity"
+            android:theme="@style/Theme.ProyectoMoviles"/>
+
+
     </application>
 
 </manifest>
