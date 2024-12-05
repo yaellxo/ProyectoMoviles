@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation ("com.google.code.gson:gson:2.8.9")
+    implementation ("com.itextpdf:itextpdf:5.5.13.2")
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
 

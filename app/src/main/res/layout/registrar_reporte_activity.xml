@@ -92,8 +92,17 @@
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/tvCaracteresRestantes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Caracteres restantes: 3100"
+                    android:fontFamily="@font/sawarabi"
+                    android:layout_below="@id/etReporteRegistrar"
+                    android:layout_marginTop="8dp" />
+
                 <EditText
-                    android:id="@+id/editTextTextMultiLine2"
+                    android:id="@+id/etReporteRegistrar"
                     android:layout_width="match_parent"
                     android:layout_height="575dp"
                     android:layout_marginTop="8dp"
