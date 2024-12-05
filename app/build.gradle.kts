@@ -55,8 +55,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
 
-
-    implementation("com.google.code.gson:gson:2.10.1")
     // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
     implementation ("com.getbase:floatingactionbutton:1.10.1")
