@@ -169,14 +169,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="49dp"
                     android:layout_marginTop="10dp"
-                    android:hint="Selecciona el nivel de acceso del administrador."
-                    android:background="@drawable/border_layout"
+                    android:hint="Selecciona tu rango de Cazador."
                     android:padding="10dp"
                     android:fontFamily="@font/sawarabi"
                     android:spinnerMode="dropdown"
+                    android:background="@drawable/border_layout_spinner"
+                    android:popupBackground="@color/background"
                     android:entries="@array/niveles_acceso"
-                    android:textColor="@color/color_font_principal"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="match_parent"

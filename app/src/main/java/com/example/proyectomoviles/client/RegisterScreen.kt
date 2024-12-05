@@ -86,6 +86,7 @@ class RegisterScreen : AppCompatActivity() {
             }
 
             users.put(newUser)
+
             editor.putString("users", users.toString())
             editor.apply()
 

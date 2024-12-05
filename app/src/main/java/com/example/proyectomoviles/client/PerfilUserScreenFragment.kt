@@ -23,7 +23,7 @@ import java.io.File
 import java.io.FileOutputStream
 import org.json.JSONException
 
-class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
+class PerfilUserScreenFragment : Fragment(R.layout.perfil_activity) {
 
     private lateinit var tvAlias: TextView
     private lateinit var tvEdad: TextView
@@ -41,7 +41,6 @@ class PerfilScreenFragment : Fragment(R.layout.perfil_activity) {
         btnCerrarSesion = view.findViewById(R.id.btnCerrarSesion)
 
         val storedAlias = arguments?.getString("alias")
-        val userPhotoUri = arguments?.getString("userPhotoUri")
 
         if (storedAlias != null) {
             Log.d("PerfilScreenFragment", "Alias activo recuperado: $storedAlias")
