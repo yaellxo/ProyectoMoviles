@@ -29,6 +29,12 @@ object CustomToast {
                 imageView.setImageResource(R.drawable.ic_perfil)
                 background.setColor(ContextCompat.getColor(context, R.color.opcion_agregar))
             }
+            //Inicio de sesion exitoso-----------------------------
+            R.id.btnCrearCuenta -> {
+                textView.text = "Inicio de sesión exitoso."
+                imageView.setImageResource(R.drawable.ic_perfil)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_agregar))
+            }
             //ELIMINAR-----------------------------
             R.id.fabEventoEliminar -> {
                 textView.text = "El evento ha sido eliminado con éxito."

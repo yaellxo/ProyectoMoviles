@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.MainActivity
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.models.AdminConstants
+import com.example.proyectomoviles.utils.CustomToast
 import org.json.JSONArray
 
 class LoginScreen : AppCompatActivity() {
@@ -76,21 +77,7 @@ class LoginScreen : AppCompatActivity() {
 
                         Log.d("LoginScreen", "URL de la imagen de perfil: $photoUriString")
 
-                        val mensaje = if (photoUriString.isNotEmpty()) {
-                            "URL de imagen de perfil: $photoUriString\nInicio de sesión exitoso\n" +
-                                    "Nombre: ${user.getString("nombre")}\n" +
-                                    "Alias: ${user.getString("alias")}\n" +
-                                    "Correo: ${user.getString("correo")}\n" +
-                                    "Edad: ${user.getString("edad")}"
-                        } else {
-                            "Inicio de sesión exitoso\n" +
-                                    "Nombre: ${user.getString("nombre")}\n" +
-                                    "Alias: ${user.getString("alias")}\n" +
-                                    "Correo: ${user.getString("correo")}\n" +
-                                    "Edad: ${user.getString("edad")}"
-                        }
-
-                        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
+                        CustomToast.show(this, R.id.btnInicioSesion)
 
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
