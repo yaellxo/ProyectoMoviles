@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="4dp"
+    app:cardCornerRadius="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Nombre del evento -->
+        <TextView
+            android:id="@+id/tvNombreEvento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre del Evento"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/negro_color"
+            android:textStyle="bold" />
+
+        <!-- Etiqueta y fecha del evento -->
+        <TextView
+            android:id="@+id/tvFechaLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Fecha:"
+            android:textColor="@color/negro_color"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvFechaEvento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha del Evento"
+            android:textColor="@color/negro_color"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <!-- Etiqueta y ubicación del evento -->
+        <TextView
+            android:id="@+id/tvUbicacionLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Ubicación:"
+            android:textColor="@color/negro_color"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvUbicacionEvento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ubicación del Evento"
+            android:textColor="@color/negro_color"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <!-- Etiqueta y descripción del evento -->
+        <TextView
+            android:id="@+id/tvDescripcionLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Descripción:"
+            android:textColor="@color/negro_color"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDescripcionEvento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción breve del evento..."
+            android:textColor="@color/negro_color"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

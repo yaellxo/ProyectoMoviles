@@ -59,6 +59,7 @@ class InventoryService : AppCompatActivity() {
 
         fabRegresarInventario = findViewById(R.id.fabRegresarInventario)
         fabMain = findViewById(R.id.fab)
+
         additionalButtons = listOf(
             findViewById(R.id.agregarManga),
             findViewById(R.id.modificarManga),
