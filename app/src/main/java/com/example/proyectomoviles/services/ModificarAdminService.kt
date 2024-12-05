@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONArray
-import org.json.JSONObject
 
 class ModificarAdminService : AppCompatActivity() {
 
