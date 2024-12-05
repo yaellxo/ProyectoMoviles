@@ -21,12 +21,10 @@ class EliminarAdminService : AppCompatActivity() {
         val fabAdminEliminar: FloatingActionButton = findViewById(R.id.fabAdminEliminar)
         val fabRegresarAdminEliminar: FloatingActionButton = findViewById(R.id.fabRegresarAdminEliminar)
 
-        // Obtenemos las SharedPreferences donde están guardados los datos de los administradores
         val sharedPreferences: SharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val adminsJson = sharedPreferences.getString("admins_data", "[]")
         val admins = JSONArray(adminsJson)
 
-        // Escuchar la tecla Enter para eliminar el administrador
         etIdAdminEliminar.setOnEditorActionListener { _, actionId, event ->
             if (event != null && event.keyCode == KeyEvent.KEYCODE_ENTER || actionId == KeyEvent.KEYCODE_ENTER) {
                 val adminId = etIdAdminEliminar.text.toString().trim()
@@ -42,15 +40,12 @@ class EliminarAdminService : AppCompatActivity() {
                     return@setOnEditorActionListener true
                 }
 
-                // Eliminar el administrador
                 admins.remove(adminIndex)
 
-                // Guardar los datos actualizados
                 sharedPreferences.edit().putString("admins_data", admins.toString()).apply()
 
                 Toast.makeText(this, "Administrador eliminado con éxito.", Toast.LENGTH_SHORT).show()
 
-                // Limpiar el campo de texto
                 etIdAdminEliminar.text.clear()
 
                 finish()
@@ -74,15 +69,12 @@ class EliminarAdminService : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Eliminar el administrador
             admins.remove(adminIndex)
 
-            // Guardar los datos actualizados
             sharedPreferences.edit().putString("admins_data", admins.toString()).apply()
 
             Toast.makeText(this, "Administrador eliminado con éxito.", Toast.LENGTH_SHORT).show()
 
-            // Limpiar el campo de texto
             etIdAdminEliminar.text.clear()
 
             finish()
@@ -93,7 +85,6 @@ class EliminarAdminService : AppCompatActivity() {
         }
     }
 
-    // Función para buscar el índice del administrador por ID
     private fun findAdminIndexById(adminId: String, admins: JSONArray): Int {
         for (i in 0 until admins.length()) {
             val admin = admins.getJSONObject(i)
