@@ -44,6 +44,12 @@
         <item>Nivel 3</item>
     </string-array>
 
+    <string-array name="generos">
+        <item>Shonen</item>
+        <item>Seinen</item>
+        <item>Shoujo</item>
+    </string-array>
+
     <string name="modificar_informacion">Escribir la información.</string>
     <string name="boton_modificar_usuario">¡Modificar la sociedad de almas!</string>
     <string name="boton_modificar_producto">Modificar Producto</string>
