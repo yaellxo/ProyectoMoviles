@@ -257,6 +257,7 @@
                     android:background="@drawable/border_layout"
                     android:fontFamily="@font/sawarabi"
                     android:hint="¿Qué género tendrá tu manga?"
+                    android:entries="@array/generos"
                     android:padding="10dp"
                     android:textColor="@color/color_font_principal"
                     android:textColorHint="@color/color_font_secundario_gris_medio"
@@ -326,7 +327,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabModificarManga"
+        android:id="@+id/fabAgregarManga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="1dp"
@@ -336,7 +337,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabRegresarMangaModificar"
+        android:id="@+id/fabRegresarMangaAgregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="1dp"

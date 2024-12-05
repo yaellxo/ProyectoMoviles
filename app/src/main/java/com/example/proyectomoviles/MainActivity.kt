@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import com.example.proyectomoviles.client.LoginScreen
+import com.example.proyectomoviles.models.ArbolBinarioManga
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -73,4 +73,5 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainActivity", "Options menu created")
         return true
     }
+
 }

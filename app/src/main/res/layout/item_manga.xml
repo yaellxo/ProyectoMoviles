@@ -1,0 +1,63 @@
+<!-- item_manga.xml -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/border_shape"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/mangaImagenView"
+        android:layout_width="113dp"
+        android:layout_height="179dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/textViewsContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/mangaImagenView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="start">
+
+        <TextView
+            android:id="@+id/mangaIdTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/nombreTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre del Manga"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/stockTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stock"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/precioTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Precio"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
