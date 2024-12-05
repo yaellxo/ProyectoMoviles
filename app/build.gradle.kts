@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation ("com.google.code.gson:gson:2.8.9")
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
 
@@ -62,6 +63,7 @@ dependencies {
 
     // Material Components
     implementation("com.google.android.material:material:1.9.0")
+    implementation(libs.firebase.crashlytics.buildtools)
 
     // Test dependencies
     testImplementation(libs.junit)

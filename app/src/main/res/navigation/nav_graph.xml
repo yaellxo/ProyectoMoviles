@@ -21,11 +21,14 @@
         android:label="Order" />
     <fragment
         android:id="@+id/menu_perfil"
-        android:name="com.example.proyectomoviles.client.PerfilScreenFragment"
+        android:name="com.example.proyectomoviles.client.PerfilUserScreenFragment"
         android:label="Profile" />
     <fragment
         android:id="@+id/menu_admin"
-        android:name="com.example.proyectomoviles.client.PerfilAdminScreenFragment"
-        android:label="" />
-
+        android:name="com.example.proyectomoviles.services.PerfilAdminScreenFragment"
+        android:label="Admin" />
+    <fragment
+        android:id="@+id/menu_super_admin"
+        android:name="com.example.proyectomoviles.services.PerfilSuperAdminScreenFragment"
+        android:label="Admin" />
 </navigation>
