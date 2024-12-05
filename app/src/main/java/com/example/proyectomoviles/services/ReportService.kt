@@ -47,10 +47,9 @@ class ReportService : AppCompatActivity() {
 
                 val currentText = charSequence.toString()
                 if (currentText.length > MAX_CHARACTERS) {
-                    // Limitar texto al máximo permitido
                     val textoPermitido = currentText.substring(0, MAX_CHARACTERS)
                     etReporteRegistrar.setText(textoPermitido)
-                    etReporteRegistrar.setSelection(MAX_CHARACTERS) // Posicionar el cursor al final
+                    etReporteRegistrar.setSelection(MAX_CHARACTERS)
                     Toast.makeText(this@ReportService, "Has alcanzado el límite de caracteres.", Toast.LENGTH_SHORT).show()
                 }
 
@@ -58,7 +57,7 @@ class ReportService : AppCompatActivity() {
             }
 
             override fun afterTextChanged(editable: Editable?) {
-                val caracteresRestantes = (MAX_CHARACTERS - (editable?.length ?: 0)).coerceAtLeast(0) // Evitar negativos
+                val caracteresRestantes = (MAX_CHARACTERS - (editable?.length ?: 0)).coerceAtLeast(0)
 
                 tvCaracteresRestantes.text = "Caracteres restantes: $caracteresRestantes"
 
