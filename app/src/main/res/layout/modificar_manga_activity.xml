@@ -275,7 +275,6 @@
                     android:padding="10dp"
                     android:fontFamily="@font/sawarabi"
                     android:spinnerMode="dropdown"
-                    android:entries="@array/niveles_acces"
                     android:textColor="@color/color_font_principal"
                     android:textSize="12sp" />
 

@@ -178,13 +178,43 @@
             android:layout_height="39dp"
             android:layout_marginTop="556dp"
             android:background="@drawable/button_secundary_background_selector"
-            android:text="Cerrar sesión Admin DE MIENTRAS"
+            android:text="Cerrar sesión superAdmin DE MIENTRAS"
             android:textColor="@android:color/white"
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.117"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/ivAdminPhoto" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/agregarAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_agregar_admin"
+                app:backgroundTint="@color/opcion_agregar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/modificarAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_modificar_admin"
+                app:backgroundTint="@color/opcion_modificar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/eliminarAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:src="@drawable/ic_eliminar_admin_blanco"
+                app:backgroundTint="@color/opcion_eliminar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/agregarReporte"

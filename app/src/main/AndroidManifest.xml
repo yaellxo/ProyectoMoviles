@@ -59,6 +59,22 @@
             android:name=".services.ReportService"
             android:theme="@style/Theme.ProyectoMoviles"/>
 
+        <activity
+            android:name=".client.event_screens.AgregarEventoScreen"
+            android:theme="@style/Theme.ProyectoMoviles"
+            android:exported="true" />
+
+        <activity
+            android:name=".client.event_screens.ModificarEventoScreen"
+            android:theme="@style/Theme.ProyectoMoviles"
+            android:exported="true" />
+
+        <activity
+            android:name=".client.event_screens.EliminarEventoScreen"
+            android:theme="@style/Theme.ProyectoMoviles"
+            android:exported="true" />
+
+
     </application>
 
 </manifest>

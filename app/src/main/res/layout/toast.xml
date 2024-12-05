@@ -10,7 +10,6 @@
     android:layout_marginHorizontal="20dp"
     android:layout_gravity="center_horizontal"
     android:layout_marginTop="10dp"
-    android:minWidth="1000dp"
     android:elevation="4dp">
 
     <ImageView
@@ -29,6 +28,6 @@
         android:maxLines="3"
         android:layout_gravity="center_vertical"
         android:text="Mensaje personalizado "
-        android:textColor="#FFFFFF"
+        android:textColor="#fff"
         android:textSize="16sp" />
 </LinearLayout>

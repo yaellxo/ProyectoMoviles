@@ -24,9 +24,9 @@ class BottomNavHelper {
         bottomNavigationView.menu.forEach { menuItem ->
             val menuItemView = bottomNavigationView.findViewById<View>(menuItem.itemId)
 
-            menuItemView?.setOnTouchListener(object : View.OnTouchListener {
-                override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                    if (event?.action == MotionEvent.ACTION_DOWN) {
+            menuItemView?.setOnTouchListener { v, event ->
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN -> {
                         val rotate = RotateAnimation(
                             0f, 15f,
                             RotateAnimation.RELATIVE_TO_SELF, 0.5f,
@@ -36,7 +36,7 @@ class BottomNavHelper {
                         v?.startAnimation(rotate)
                     }
 
-                    if (event?.action == MotionEvent.ACTION_UP || event?.action == MotionEvent.ACTION_CANCEL) {
+                    MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                         val rotateBack = RotateAnimation(
                             15f, 0f,
                             RotateAnimation.RELATIVE_TO_SELF, 0.5f,
@@ -45,20 +45,15 @@ class BottomNavHelper {
                         rotateBack.duration = 200
                         v?.startAnimation(rotateBack)
                     }
-
-                    return false
                 }
-            })
+                false
+            }
         }
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             bottomNavigationView.menu.forEach { menuItem ->
                 val itemView = bottomNavigationView.findViewById<View>(menuItem.itemId)
-                if (menuItem.itemId == item.itemId) {
-                    itemView?.isSelected = true
-                } else {
-                    itemView?.isSelected = false
-                }
+                itemView?.isSelected = menuItem.itemId == item.itemId
             }
 
             when (item.itemId) {
@@ -67,19 +62,19 @@ class BottomNavHelper {
                 R.id.menu_busqueda -> navController.navigate(R.id.menu_busqueda)
                 R.id.menu_carrito -> navController.navigate(R.id.menu_carrito)
                 R.id.menu_perfil -> {
-                    val sharedPreferences = bottomNavigationView.context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+                    val sharedPreferences =
+                        bottomNavigationView.context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
 
                     val storedAlias = sharedPreferences.getString("activeUserAlias", "No disponible")
                     val nombre = sharedPreferences.getString("nombre", "No disponible")
                     val correo = sharedPreferences.getString("correo", "No disponible")
                     val edad = sharedPreferences.getString("edad", "No disponible")
                     val userType = sharedPreferences.getString("userType", "No disponible")
-                    val photoBase64 = sharedPreferences.getString("photoBase64", "No disponible")
+                    val photoBase64 = sharedPreferences.getString("photoBase64", null)
+                    val area = sharedPreferences.getString("area", null)
+                    val nivelAcceso = sharedPreferences.getString("nivelAcceso", null)
 
-                    Log.d("BottomNavHelper", "Alias: $storedAlias, Nombre: $nombre, Correo: $correo, Edad: $edad, Tipo de usuario: $userType, Foto: $photoBase64")
-
-                    val mensaje = "Bienvenido $nombre ($storedAlias)\nCorreo: $correo\nEdad: $edad\nTipo de usuario: $userType"
-                    Toast.makeText(bottomNavigationView.context, mensaje, Toast.LENGTH_LONG).show()
+                    Log.d("BottomNavHelper", "Alias: $storedAlias, Nombre: $nombre, Correo: $correo, Edad: $edad, Tipo de usuario: $userType")
 
                     val bundle = Bundle().apply {
                         putString("alias", storedAlias)
@@ -88,22 +83,30 @@ class BottomNavHelper {
                         putString("edad", edad)
                         putString("userType", userType)
                         putString("photoBase64", photoBase64)
+                        putString("area", area)
+                        putString("nivelAcceso", nivelAcceso)
                     }
 
-                    Log.d("BottomNavHelper", "Bundle creado con los siguientes valores:")
-                    Log.d("BottomNavHelper", "alias: ${bundle.getString("alias")}")
-                    Log.d("BottomNavHelper", "nombre: ${bundle.getString("nombre")}")
-                    Log.d("BottomNavHelper", "correo: ${bundle.getString("correo")}")
-                    Log.d("BottomNavHelper", "edad: ${bundle.getString("edad")}")
-                    Log.d("BottomNavHelper", "userType: ${bundle.getString("userType")}")
-                    Log.d("BottomNavHelper", "photoBase64: ${bundle.getString("photoBase64")}")
-
-                    if (userType == "admin") {
-                        Log.d("BottomNavHelper", "Navigating to admin menu")
-                        navController.navigate(R.id.menu_admin)
-                    } else {
-                        Log.d("BottomNavHelper", "Navigating to user profile")
-                        navController.navigate(R.id.menu_perfil, bundle)
+                    when (userType) {
+                        "superAdmin" -> {
+                            Log.d("BottomNavHelper", "Navigating to superadmin menu")
+                            navController.navigate(R.id.menu_super_admin, bundle)
+                        }
+                        "admin" -> {
+                            Log.d("BottomNavHelper", "Navigating to admin menu")
+                            navController.navigate(R.id.menu_admin, bundle)
+                        }
+                        "user" -> {
+                            Log.d("BottomNavHelper", "Navigating to user profile")
+                            navController.navigate(R.id.menu_perfil, bundle)
+                        }
+                        else -> {
+                            Toast.makeText(
+                                bottomNavigationView.context,
+                                "Error: Tipo de usuario no reconocido",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
             }
