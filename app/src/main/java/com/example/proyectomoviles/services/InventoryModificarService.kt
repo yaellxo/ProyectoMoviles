@@ -8,7 +8,7 @@ class InventoryModificarService : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.table_manga)
+        setContentView(R.layout.modificar_manga_activity)
 
     }
 }

@@ -8,7 +8,7 @@ class InventoryEliminarService : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.table_manga)
+        setContentView(R.layout.eliminar_manga_activity)
 
     }
 }

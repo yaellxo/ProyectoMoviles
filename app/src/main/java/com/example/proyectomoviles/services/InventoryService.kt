@@ -91,8 +91,9 @@ class InventoryService : AppCompatActivity() {
     private fun showAdditionalButtons() {
         additionalButtons.forEachIndexed { index, button ->
             button.visibility = View.VISIBLE
+            button.alpha = 0f
             button.animate()
-                .translationY((-100 * (index + 1)).toFloat())
+                .translationY(-200f * (index + 1))
                 .alpha(1f)
                 .setDuration(200)
                 .start()
@@ -101,16 +102,12 @@ class InventoryService : AppCompatActivity() {
     }
 
     private fun toggleAdditionalButtons() {
-        if (additionalButtons[0].visibility == View.GONE) {
-            showAdditionalButtons()
-        } else {
+        val areButtonsVisible = additionalButtons.first().visibility == View.VISIBLE
+        if (areButtonsVisible) {
             hideAdditionalButtons()
+        } else {
+            showAdditionalButtons()
         }
-    }
-
-    private fun mostrarDatosDelArbol() {
-        val mangas = arbolBinarioManga.obtenerMangasEnOrden()
-        mangaAdapter.actualizarMangas(mangas)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

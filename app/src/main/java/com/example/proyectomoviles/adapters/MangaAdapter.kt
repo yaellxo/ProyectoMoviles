@@ -1,6 +1,10 @@
 package com.example.proyectomoviles.adapters
 
 import android.graphics.BitmapFactory
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.StyleSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -36,8 +40,16 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
             Log.d("MangaAdapter", "Imagen no encontrada, utilizando imagen por defecto.")
         }
 
-        holder.mangaIdTextView.text = "ID: ${manga.mangaId}"
-        holder.stockTextView.text = "Stock: ${manga.stock}"
+        // Formatear "ID" en negritas
+        val idText = SpannableString("ID: ${manga.mangaId}")
+        idText.setSpan(StyleSpan(Typeface.BOLD), 0, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE) // Negrita en "ID"
+        holder.mangaIdTextView.text = idText
+
+        // Formatear "Stock" en negritas
+        val stockText = SpannableString("Stock: ${manga.stock}")
+        stockText.setSpan(StyleSpan(Typeface.BOLD), 0, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE) // Negrita en "Stock"
+        holder.stockTextView.text = stockText
+
         holder.nombreTextView.text = manga.titulo
         holder.precioTextView.text = "$${manga.precio}"
     }
