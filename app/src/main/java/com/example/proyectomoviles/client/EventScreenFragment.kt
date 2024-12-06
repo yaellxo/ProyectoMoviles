@@ -17,7 +17,7 @@ class EventScreenFragment : Fragment(R.layout.event_activity) {
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewMainEventos)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         val eventosList = EventosManager.obtenerEventos()
-        val adapter = EventoAdapter(eventosList)
+        val adapter = EventoAdapter(eventosList, requireContext())
         recyclerView.adapter = adapter
     }
 }

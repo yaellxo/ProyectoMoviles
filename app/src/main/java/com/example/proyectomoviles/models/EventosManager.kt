@@ -20,7 +20,8 @@ object EventosManager {
         nuevoNombre: String,
         nuevaFecha: String,
         nuevaUbicacion: String,
-        nuevaDescripcion: String
+        nuevaDescripcion: String,
+        nuevaUri: String
     ) {
         if (eventoIndex in 0 until eventosList.size) {
             val evento = eventosList[eventoIndex]
@@ -28,7 +29,8 @@ object EventosManager {
                 nombre = nuevoNombre,
                 fecha = nuevaFecha,
                 ubicacion = nuevaUbicacion,
-                descripcion = nuevaDescripcion
+                descripcion = nuevaDescripcion,
+                imagenUri = nuevaUri
             )
         } else {
             println("Índice fuera de rango")

@@ -6,5 +6,6 @@ data class Evento(
     val nombre: String,
     val fecha: String,
     val ubicacion: String,
-    val descripcion: String
+    val descripcion: String,
+    val imagenUri: String? = null
 ) : Serializable

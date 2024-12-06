@@ -3,8 +3,8 @@ package com.example.proyectomoviles.services
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.ListView
+import android.widget.EditText
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +14,7 @@ import com.example.proyectomoviles.client.event_screens.AgregarEventoScreen
 import com.example.proyectomoviles.client.event_screens.EliminarEventoScreen
 import com.example.proyectomoviles.client.event_screens.ModificarEventoScreen
 import com.example.proyectomoviles.models.EventosManager
+import com.example.proyectomoviles.utils.CustomToast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -22,6 +23,7 @@ class EventService : AppCompatActivity() {
     private lateinit var fabRegresarEvento: FloatingActionButton
     private lateinit var additionalButtons: List<FloatingActionButton>
     private lateinit var fabMain: FloatingActionButton
+
 
     private val fabOpenIcon = R.drawable.ic_plus_admin
     private val fabCloseIcon = R.drawable.ic_cerrar_menu_admin
@@ -33,8 +35,28 @@ class EventService : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.recyclerViewEventos)
         recyclerView.layoutManager = LinearLayoutManager(this)
         val eventosList = EventosManager.obtenerEventos()
-        val adapter = EventoAdapter(eventosList)
+        val eventosInicial = ArrayList(eventosList)
+        val adapter = EventoAdapter(eventosList, this)
         recyclerView.adapter = adapter
+
+        val buscarEventosPorId = findViewById<EditText>(R.id.buscarEventosPorId)
+        val btnBuscarEventoPorId = findViewById<ImageButton>(R.id.btnBuscarEventoPorId)
+
+        btnBuscarEventoPorId.setOnClickListener {
+            val id = buscarEventosPorId.text.toString()
+            if(id.isNotEmpty() && !id.isNotNumber()){
+                if(id.toInt() < EventosManager.eventosList.size && id.toInt() >= 0){
+                    adapter.resetEvents(eventosInicial)
+                    adapter.updateEventos(id.toInt())
+                }else{
+                    CustomToast.show(this, 500)
+                    adapter.resetEvents(eventosInicial)
+                }
+            } else {
+                adapter.resetEvents(eventosInicial)
+                CustomToast.show(this, 500)
+            }
+        }
 
         fabRegresarEvento = findViewById(R.id.fabRegresarEvento)
         fabMain = findViewById(R.id.fabEvento)
@@ -74,6 +96,10 @@ class EventService : AppCompatActivity() {
         fabRegresarEvento.setOnClickListener{
             finish()
         }
+    }
+
+    fun String.isNotNumber(): Boolean {
+        return this.toIntOrNull() == null
     }
 
     private fun hideAdditionalButtons() {

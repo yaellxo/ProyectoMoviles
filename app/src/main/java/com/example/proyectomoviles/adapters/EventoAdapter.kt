@@ -1,21 +1,35 @@
 package com.example.proyectomoviles.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.models.Evento
 
-class EventoAdapter(private val eventos: List<Evento>) :
+class EventoAdapter(private var eventos: List<Evento>, private val context: Context) :
     RecyclerView.Adapter<EventoAdapter.EventoViewHolder>() {
 
     class EventoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val ivEventoImagen: ImageView = itemView.findViewById(R.id.ivEventoImagen)
         val tvNombre: TextView = itemView.findViewById(R.id.tvNombreEvento)
         val tvFecha: TextView = itemView.findViewById(R.id.tvFechaEvento)
         val tvUbicacion: TextView = itemView.findViewById(R.id.tvUbicacionEvento)
         val tvDescripcion: TextView = itemView.findViewById(R.id.tvDescripcionEvento)
+    }
+
+    fun resetEvents(eventosOriginales : List<Evento>){
+        eventos = eventosOriginales
+    }
+
+    fun updateEventos(index: Int) {
+        val eventoSeleccionado = eventos[index]
+        eventos = listOf(eventoSeleccionado)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventoViewHolder {
@@ -26,6 +40,11 @@ class EventoAdapter(private val eventos: List<Evento>) :
 
     override fun onBindViewHolder(holder: EventoViewHolder, position: Int) {
         val evento = eventos[position]
+
+        Glide.with(context)
+            .load(evento.imagenUri)
+            .into(holder.ivEventoImagen)
+
         holder.tvNombre.text = evento.nombre
         holder.tvFecha.text = evento.fecha
         holder.tvUbicacion.text = evento.ubicacion

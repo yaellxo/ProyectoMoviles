@@ -30,20 +30,20 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/et_search"
+            android:id="@+id/buscarEventosPorId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Ingresar ID"
             android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_search"
+            app:layout_constraintEnd_toStartOf="@+id/btnBuscarEventoPorId"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.562" />
 
         <ImageButton
-            android:id="@+id/btn_search"
+            android:id="@+id/btnBuscarEventoPorId"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@android:color/transparent"
