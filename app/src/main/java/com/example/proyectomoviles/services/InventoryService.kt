@@ -28,13 +28,12 @@ class InventoryService : AppCompatActivity() {
     private lateinit var mangaAdapter: MangaAdapter
 
     private val fabOpenIcon = R.drawable.ic_plus_admin
-    private val fabCloseIcon = R.drawable.ic_cerrar_menu_admin
 
+    private val fabCloseIcon = R.drawable.ic_cerrar_menu_admin
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.table_manga)
 
-        // Inicialización de vistas antes de usarlas
         recyclerViewMangas = findViewById(R.id.recyclerViewMangas)
         fabRegresarInventario = findViewById(R.id.fabRegresarInventario)
         fabMain = findViewById(R.id.fab)
@@ -44,24 +43,19 @@ class InventoryService : AppCompatActivity() {
             findViewById(R.id.eliminarManga)
         )
 
-        // Cargar el árbol antes de mostrar los datos
         cargarArbolDesdeArchivo()
 
-        // Obtener los mangas del árbol y asegurarse de que el adaptador esté inicializado
         val mangas = arbolBinarioManga.obtenerMangasEnOrden()
         Log.d("InventoryService", "Número de mangas cargados: ${mangas.size}")
         mangas.forEachIndexed { index, manga ->
             Log.d("InventoryService", "Manga $index: ${manga.titulo}")
         }
 
-        // Inicializar el adaptador con los mangas
         mangaAdapter = MangaAdapter(mangas.toMutableList())
 
-        // Establecer el adaptador y el layout manager
         recyclerViewMangas.adapter = mangaAdapter
         recyclerViewMangas.layoutManager = LinearLayoutManager(this)
 
-        // Configuración de FAB y botones adicionales
         fabMain.setOnClickListener {
             toggleAdditionalButtons()
         }
@@ -82,7 +76,6 @@ class InventoryService : AppCompatActivity() {
         }
     }
 
-    // Método para ocultar los botones adicionales
     private fun hideAdditionalButtons() {
         additionalButtons.forEach { button ->
             button.animate()
@@ -95,7 +88,6 @@ class InventoryService : AppCompatActivity() {
         fabMain.setImageResource(fabOpenIcon)
     }
 
-    // Método para mostrar los botones adicionales
     private fun showAdditionalButtons() {
         additionalButtons.forEachIndexed { index, button ->
             button.visibility = View.VISIBLE
@@ -108,7 +100,6 @@ class InventoryService : AppCompatActivity() {
         fabMain.setImageResource(fabCloseIcon)
     }
 
-    // Método para alternar entre mostrar y ocultar los botones adicionales
     private fun toggleAdditionalButtons() {
         if (additionalButtons[0].visibility == View.GONE) {
             showAdditionalButtons()
@@ -117,13 +108,11 @@ class InventoryService : AppCompatActivity() {
         }
     }
 
-    // Método para mostrar los datos del árbol en el RecyclerView
     private fun mostrarDatosDelArbol() {
         val mangas = arbolBinarioManga.obtenerMangasEnOrden()
         mangaAdapter.actualizarMangas(mangas)
     }
 
-    // Manejo de resultados al agregar un nuevo manga
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_ADD_MANGA && resultCode == RESULT_OK) {
@@ -134,7 +123,6 @@ class InventoryService : AppCompatActivity() {
         }
     }
 
-    // Método para cargar el árbol de mangas desde un archivo
     private fun cargarArbolDesdeArchivo() {
         try {
             val archivo = File(filesDir, "arbol_manga.ser")
@@ -152,7 +140,6 @@ class InventoryService : AppCompatActivity() {
         }
     }
 
-    // Método para guardar el árbol de mangas en un archivo
     private fun guardarArbolEnArchivo() {
         try {
             val archivo = File(filesDir, "arbol_manga.ser")

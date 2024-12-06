@@ -17,10 +17,10 @@
         android:theme="@style/Theme.ProyectoMoviles"
         android:forceDarkAllowed="false">
 
+        <!-- Actividad de Login -->
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.proyectomoviles.client.LoginScreen"
             android:exported="true"
-            android:label=" "
             android:theme="@style/Theme.ProyectoMoviles">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,13 +28,16 @@
             </intent-filter>
         </activity>
 
+        <!-- Resto de las actividades -->
         <activity
-            android:name="com.example.proyectomoviles.client.RegisterScreen"
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label=" "
             android:theme="@style/Theme.ProyectoMoviles" />
 
         <activity
-            android:name="com.example.proyectomoviles.client.LoginScreen"
-            android:theme="@style/Theme.ProyectoMoviles"/>
+            android:name="com.example.proyectomoviles.client.RegisterScreen"
+            android:theme="@style/Theme.ProyectoMoviles" />
 
         <activity
             android:name=".services.EliminarAdminService"

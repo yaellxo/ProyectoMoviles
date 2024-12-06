@@ -24,10 +24,8 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
     override fun onBindViewHolder(holder: MangaViewHolder, position: Int) {
         val manga = mMangas[position]
 
-        // Log para verificar que se está obteniendo el manga correctamente
         Log.d("MangaAdapter", "Cargando manga en posición $position: ${manga.titulo}")
 
-        // Cargar la imagen de manera segura
         val file = File(manga.imagenUrl)
         if (file.exists()) {
             val bitmap = BitmapFactory.decodeFile(file.absolutePath)
@@ -38,7 +36,6 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
             Log.d("MangaAdapter", "Imagen no encontrada, utilizando imagen por defecto.")
         }
 
-        // Configurar los textos
         holder.mangaIdTextView.text = "ID: ${manga.mangaId}"
         holder.stockTextView.text = "Stock: ${manga.stock}"
         holder.nombreTextView.text = manga.titulo
