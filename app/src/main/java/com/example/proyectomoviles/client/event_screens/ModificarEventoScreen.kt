@@ -9,6 +9,7 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.proyectomoviles.R
+import com.example.proyectomoviles.models.Evento
 import com.example.proyectomoviles.models.EventosManager
 import com.example.proyectomoviles.models.EventosManager.eventosList
 import com.example.proyectomoviles.services.EventService
@@ -39,18 +40,19 @@ class ModificarEventoScreen : AppCompatActivity() {
         val descripcionField = findViewById<EditText>(R.id.etDescripcionEventoModificar)
 
         fabRegresarEvento = findViewById(R.id.fabRegresarEventoModificar)
+        val btnBuscarEventoPorIdModificar = findViewById<ImageButton>(R.id.btnBuscarEventoPorIdModificar)
 
         btnModificar.setOnClickListener{
-            val imagenUri = imagenUri?.toString()
             val id = idField.text.toString()
             val nombre = nombreField.text.toString()
             val fecha = fechaField.text.toString()
             val ubicacion = ubicacionField.text.toString()
             val descripcion = descripcionField.text.toString()
+            val imagenUri = imagenUri?.toString()
 
             if(id.isNotEmpty() && !id.isNotNumber()){
                 if(id.toInt() < eventosList.size && id.toInt() >= 0){
-                    if (nombre.isEmpty() || fecha.isEmpty() || ubicacion.isEmpty() || descripcion.isEmpty() || imagenUri == null) {
+                    if (nombre.isEmpty() || fecha.isEmpty() || ubicacion.isEmpty() || descripcion.isEmpty() || imagenUri === null){
                         CustomToast.show(this, 600)
                     } else {
                         EventosManager.modificarEvento(id.toInt(), nombre, fecha, ubicacion, descripcion, imagenUri)
@@ -61,8 +63,28 @@ class ModificarEventoScreen : AppCompatActivity() {
                 } else {
                     CustomToast.show(this, 500)
                 }
-            } else {
-                CustomToast.show(this, 500)
+            }
+        }
+
+        btnBuscarEventoPorIdModificar.setOnClickListener {
+            val id = idField.text.toString()
+
+            if (id.isNotEmpty() && !id.isNotNumber()) {
+                if (id.toInt() < eventosList.size && id.toInt() >= 0) {
+                    val evento = eventosList[id.toInt()]
+                    nombreField.setText(evento.nombre)
+                    fechaField.setText(evento.fecha)
+                    ubicacionField.setText(evento.ubicacion)
+                    descripcionField.setText(evento.descripcion)
+
+                    evento.imagenUri?.let { uri ->
+                        Glide.with(this)
+                            .load(uri)
+                            .into(btnModificarImagen)
+                    }
+                }else{
+                    CustomToast.show(this, 500)
+                }
             }
         }
 

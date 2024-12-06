@@ -83,7 +83,7 @@
 
             <TextView
                 android:id="@+id/tvTituloModificarEvento"
-                android:layout_width="229dp"
+                android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:fontFamily="@font/sawarabi"
                 android:gravity="center"
@@ -107,22 +107,40 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTituloModificarEvento" />
 
-            <EditText
-                android:id="@+id/etIdEventoModificar"
-                android:layout_width="276dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="0dp"
-                android:background="@drawable/border_layout"
-                android:drawableEnd="@drawable/ic_lupa"
-                android:fontFamily="@font/sawarabi"
-                android:hint="Escribir código especial."
-                android:padding="10dp"
-                android:textColor="@color/color_font_principal"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTituloModificarEvento" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/etIdEventoModificar"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="Escribir código especial."
+                    android:padding="12dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btnBuscarEventoPorIdModificar"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Search"
+                    android:src="@drawable/ic_lupa"
+                    app:layout_constraintBottom_toBottomOf="@id/etIdEventoModificar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/etIdEventoModificar" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
