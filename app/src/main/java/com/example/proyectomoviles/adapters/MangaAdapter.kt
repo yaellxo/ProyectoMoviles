@@ -1,6 +1,7 @@
 package com.example.proyectomoviles.adapters
 
 import android.graphics.BitmapFactory
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,18 +18,27 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_manga, parent, false)
         return MangaViewHolder(itemView)
+
     }
 
     override fun onBindViewHolder(holder: MangaViewHolder, position: Int) {
         val manga = mMangas[position]
 
+        // Log para verificar que se está obteniendo el manga correctamente
+        Log.d("MangaAdapter", "Cargando manga en posición $position: ${manga.titulo}")
+
+        // Cargar la imagen de manera segura
         val file = File(manga.imagenUrl)
         if (file.exists()) {
             val bitmap = BitmapFactory.decodeFile(file.absolutePath)
             holder.mangaImagenView.setImageBitmap(bitmap)
+            Log.d("MangaAdapter", "Imagen cargada desde la ruta: ${manga.imagenUrl}")
+        } else {
+            holder.mangaImagenView.setImageResource(R.drawable.ic_deafaultmanga)
+            Log.d("MangaAdapter", "Imagen no encontrada, utilizando imagen por defecto.")
         }
 
-        // Mostrar el ID con el prefijo "ID: "
+        // Configurar los textos
         holder.mangaIdTextView.text = "ID: ${manga.mangaId}"
         holder.stockTextView.text = "Stock: ${manga.stock}"
         holder.nombreTextView.text = manga.titulo
@@ -36,6 +46,7 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
     }
 
     override fun getItemCount(): Int {
+        Log.d("MangaAdapter", "Número de mangas en el adapter: ${mMangas.size}")
         return mMangas.size
     }
 
@@ -47,8 +58,40 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
         val precioTextView: TextView = itemView.findViewById(R.id.precioTextView)
     }
 
+    /**
+     * Agrega un nuevo manga a la lista.
+     */
     fun agregarManga(manga: Manga) {
         mMangas.add(manga)
         notifyItemInserted(mMangas.size - 1)
+    }
+
+    /**
+     * Reemplaza la lista completa de mangas.
+     */
+    fun actualizarMangas(nuevaLista: List<Manga>) {
+        mMangas.clear()
+        mMangas.addAll(nuevaLista)
+        notifyDataSetChanged()
+    }
+
+    /**
+     * Elimina un manga por su posición.
+     */
+    fun eliminarManga(posicion: Int) {
+        if (posicion in 0 until mMangas.size) {
+            mMangas.removeAt(posicion)
+            notifyItemRemoved(posicion)
+        }
+    }
+
+    /**
+     * Actualiza un manga en una posición específica.
+     */
+    fun actualizarManga(posicion: Int, manga: Manga) {
+        if (posicion in 0 until mMangas.size) {
+            mMangas[posicion] = manga
+            notifyItemChanged(posicion)
+        }
     }
 }

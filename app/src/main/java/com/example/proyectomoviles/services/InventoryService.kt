@@ -15,6 +15,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.File
 import java.io.FileInputStream
 import java.io.ObjectInputStream
+import java.io.FileOutputStream
+import java.io.ObjectOutputStream
 
 class InventoryService : AppCompatActivity() {
 
@@ -31,32 +33,9 @@ class InventoryService : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.table_manga)
-        cargarArbolDesdeArchivo()
 
-        arbolBinarioManga = ArbolBinarioManga()
-
-        val manga = intent.getSerializableExtra("manga") as? Manga
-
-        if (manga != null) {
-            arbolBinarioManga.agregarManga(manga)
-            Log.d("InventoryService", "Manga recibido: ${manga.titulo}")
-        } else {
-            Log.d("InventoryService", "No se recibió manga")
-        }
-
-        val mangas = arbolBinarioManga.obtenerMangasEnOrden()
-
+        // Inicialización de vistas antes de usarlas
         recyclerViewMangas = findViewById(R.id.recyclerViewMangas)
-        recyclerViewMangas.layoutManager = LinearLayoutManager(this)
-
-        Log.d("InventoryService", "Número de mangas cargados: ${mangas.size}")
-        mangas.forEachIndexed { index, manga ->
-            Log.d("InventoryService", "Manga $index: ${manga.titulo}")
-        }
-
-        mangaAdapter = MangaAdapter(mangas.toMutableList())
-        recyclerViewMangas.adapter = mangaAdapter
-
         fabRegresarInventario = findViewById(R.id.fabRegresarInventario)
         fabMain = findViewById(R.id.fab)
         additionalButtons = listOf(
@@ -65,6 +44,24 @@ class InventoryService : AppCompatActivity() {
             findViewById(R.id.eliminarManga)
         )
 
+        // Cargar el árbol antes de mostrar los datos
+        cargarArbolDesdeArchivo()
+
+        // Obtener los mangas del árbol y asegurarse de que el adaptador esté inicializado
+        val mangas = arbolBinarioManga.obtenerMangasEnOrden()
+        Log.d("InventoryService", "Número de mangas cargados: ${mangas.size}")
+        mangas.forEachIndexed { index, manga ->
+            Log.d("InventoryService", "Manga $index: ${manga.titulo}")
+        }
+
+        // Inicializar el adaptador con los mangas
+        mangaAdapter = MangaAdapter(mangas.toMutableList())
+
+        // Establecer el adaptador y el layout manager
+        recyclerViewMangas.adapter = mangaAdapter
+        recyclerViewMangas.layoutManager = LinearLayoutManager(this)
+
+        // Configuración de FAB y botones adicionales
         fabMain.setOnClickListener {
             toggleAdditionalButtons()
         }
@@ -73,7 +70,7 @@ class InventoryService : AppCompatActivity() {
 
         additionalButtons[0].setOnClickListener {
             val intent = Intent(this, InventoryAgregarService::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, REQUEST_ADD_MANGA)
         }
         additionalButtons[1].setOnClickListener {
             val intent = Intent(this, InventoryModificarService::class.java)
@@ -85,6 +82,7 @@ class InventoryService : AppCompatActivity() {
         }
     }
 
+    // Método para ocultar los botones adicionales
     private fun hideAdditionalButtons() {
         additionalButtons.forEach { button ->
             button.animate()
@@ -97,12 +95,12 @@ class InventoryService : AppCompatActivity() {
         fabMain.setImageResource(fabOpenIcon)
     }
 
+    // Método para mostrar los botones adicionales
     private fun showAdditionalButtons() {
         additionalButtons.forEachIndexed { index, button ->
             button.visibility = View.VISIBLE
-            button.alpha = 0f
             button.animate()
-                .translationY(-200f * (index + 1))
+                .translationY((-100 * (index + 1)).toFloat())
                 .alpha(1f)
                 .setDuration(200)
                 .start()
@@ -110,36 +108,67 @@ class InventoryService : AppCompatActivity() {
         fabMain.setImageResource(fabCloseIcon)
     }
 
+    // Método para alternar entre mostrar y ocultar los botones adicionales
     private fun toggleAdditionalButtons() {
-        val areButtonsVisible = additionalButtons.first().visibility == View.VISIBLE
-        if (areButtonsVisible) {
-            hideAdditionalButtons()
-        } else {
+        if (additionalButtons[0].visibility == View.GONE) {
             showAdditionalButtons()
+        } else {
+            hideAdditionalButtons()
         }
     }
 
+    // Método para mostrar los datos del árbol en el RecyclerView
+    private fun mostrarDatosDelArbol() {
+        val mangas = arbolBinarioManga.obtenerMangasEnOrden()
+        mangaAdapter.actualizarMangas(mangas)
+    }
+
+    // Manejo de resultados al agregar un nuevo manga
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_ADD_MANGA && resultCode == RESULT_OK) {
+            val nuevoManga = data?.getSerializableExtra("nuevo_manga") as Manga
+            arbolBinarioManga.agregarManga(nuevoManga)
+            mangaAdapter.agregarManga(nuevoManga)
+            guardarArbolEnArchivo()
+        }
+    }
+
+    // Método para cargar el árbol de mangas desde un archivo
     private fun cargarArbolDesdeArchivo() {
         try {
             val archivo = File(filesDir, "arbol_manga.ser")
             if (archivo.exists()) {
                 val fileInputStream = FileInputStream(archivo)
                 val objectInputStream = ObjectInputStream(fileInputStream)
-
-                // Deserializamos el objeto y lo asignamos a arbolManga
-                val arbolCargado = objectInputStream.readObject() as ArbolBinarioManga
+                arbolBinarioManga = objectInputStream.readObject() as ArbolBinarioManga
                 objectInputStream.close()
                 fileInputStream.close()
-
-                arbolBinarioManga.addAll(arbolCargado)
-                Log.d("MainActivity", "Árbol cargado exitosamente.")
             } else {
-                Log.d("MainActivity", "Archivo de árbol no encontrado.")
+                arbolBinarioManga = ArbolBinarioManga()
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            Log.e("MainActivity", "Error al cargar el árbol.")
         }
+    }
+
+    // Método para guardar el árbol de mangas en un archivo
+    private fun guardarArbolEnArchivo() {
+        try {
+            val archivo = File(filesDir, "arbol_manga.ser")
+            val fileOutputStream = FileOutputStream(archivo)
+            val objectOutputStream = ObjectOutputStream(fileOutputStream)
+            objectOutputStream.writeObject(arbolBinarioManga)
+            objectOutputStream.close()
+            fileOutputStream.close()
+            Log.d("InventoryService", "Árbol guardado exitosamente.")
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    companion object {
+        const val REQUEST_ADD_MANGA = 1002
     }
 }
 

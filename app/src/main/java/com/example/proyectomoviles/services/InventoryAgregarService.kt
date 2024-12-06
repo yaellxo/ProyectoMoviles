@@ -72,16 +72,16 @@ class InventoryAgregarService : AppCompatActivity() {
             )
 
             arbolManga.agregarManga(manga)
-
             guardarArbolEnArchivo()
 
             Log.d("InventoryAgregarService", "Manga agregado: ${manga.titulo}, ID: ${manga.mangaId}")
 
             Toast.makeText(this, "Manga agregado con éxito!", Toast.LENGTH_SHORT).show()
 
-            val intent = Intent(this, InventoryService::class.java)
-            intent.putExtra("manga", manga)
-            startActivity(intent)
+            val resultIntent = Intent()
+            resultIntent.putExtra("nuevo_manga", manga)
+            setResult(RESULT_OK, resultIntent)
+            finish()
         }
 
         btnImagenMangaRegistrar.setOnClickListener {
