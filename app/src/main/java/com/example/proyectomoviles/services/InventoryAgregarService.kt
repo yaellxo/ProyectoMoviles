@@ -35,7 +35,7 @@ class InventoryAgregarService : AppCompatActivity() {
         val etDescripcionMangaRegistrar: EditText = findViewById(R.id.etDescripcionMangaRegistrar)
         val etVolumenMangaRegistrar: EditText = findViewById(R.id.etVolumenMangaRegistrar)
         val etAutorMangaRegistrar: EditText = findViewById(R.id.etAutorMangaRegistrar)
-        val etGeneroMangaRegistrar: Spinner = findViewById(R.id.etGeneroMangaRegistrar)
+        val spGeneroMangaRegistrar: Spinner = findViewById(R.id.spGeneroMangaRegistrar)
         val etEditorialMangaRegistrar: EditText = findViewById(R.id.etEditorialMangaRegistrar)
         val etPublicacionMangaRegistrar: EditText = findViewById(R.id.etPublicacionMangaRegistrar)
         val btnImagenMangaRegistrar: TextView = findViewById(R.id.btnImagenMangaRegistrar)
@@ -49,7 +49,8 @@ class InventoryAgregarService : AppCompatActivity() {
             val descripcion = etDescripcionMangaRegistrar.text.toString()
             val volumen = etVolumenMangaRegistrar.text.toString().toDoubleOrNull() ?: 0.0
             val autor = etAutorMangaRegistrar.text.toString()
-            val genero = etGeneroMangaRegistrar.selectedItem.toString()
+            val genero = spGeneroMangaRegistrar.selectedItem.toString()
+            Log.d("InventoryAgregarService", "Género seleccionado: $genero")
             val editorial = etEditorialMangaRegistrar.text.toString()
             val publicacion = etPublicacionMangaRegistrar.text.toString()
 

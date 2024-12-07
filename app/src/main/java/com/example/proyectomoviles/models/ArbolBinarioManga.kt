@@ -110,36 +110,45 @@ class ArbolBinarioManga : Serializable {
         return nodo
     }
 
-    fun obtenerMinimo(nodo: NodoManga?): NodoManga {
-        var actual = nodo
-        while (actual?.izquierda != null) {
-            actual = actual.izquierda
-        }
-        return actual!!
+    fun buscarPorId(mangaId: String): Manga? {
+        return buscarPorIdRecursivo(raiz, mangaId)
     }
 
-    fun modificarMangaPorId(id: String, nuevoManga: Manga): Boolean {
-        val nodo = buscarNodoPorId(raiz, id)
+    private fun buscarPorIdRecursivo(nodo: NodoManga?, mangaId: String): Manga? {
+        if (nodo == null) return null
+
+        return when {
+            mangaId < nodo.manga.mangaId -> buscarPorIdRecursivo(nodo.izquierda, mangaId)
+            mangaId > nodo.manga.mangaId -> buscarPorIdRecursivo(nodo.derecha, mangaId)
+            else -> nodo.manga
+        }
+    }
+
+    fun modificarManga(mangaId: String, nuevoManga: Manga): Boolean {
+        val nodo = buscarPorId(mangaId)
         return if (nodo != null) {
-            nodo.manga = nuevoManga
-            Log.d("ArbolBinarioManga", "Manga con ID $id modificado exitosamente.")
-
-            val mangasEnOrden = obtenerMangasEnOrden()
-            Log.d("ArbolBinarioManga", "Árbol después de la modificación (en orden): ${mangasEnOrden.joinToString()}")
-
+            nodo.titulo = nuevoManga.titulo
+            nodo.precio = nuevoManga.precio
+            nodo.stock = nuevoManga.stock
+            nodo.descripcion = nuevoManga.descripcion
+            nodo.volumen = nuevoManga.volumen
+            nodo.autor = nuevoManga.autor
+            nodo.genero = nuevoManga.genero
+            nodo.editorial = nuevoManga.editorial
+            nodo.publicacion = nuevoManga.publicacion
+            nodo.imagenUrl = nuevoManga.imagenUrl
             true
         } else {
             false
         }
     }
 
-    private fun buscarNodoPorId(nodo: NodoManga?, id: String): NodoManga? {
-        if (nodo == null) return null
-        return when {
-            id < nodo.manga.mangaId -> buscarNodoPorId(nodo.izquierda, id)
-            id > nodo.manga.mangaId -> buscarNodoPorId(nodo.derecha, id)
-            else -> nodo
+    fun obtenerMinimo(nodo: NodoManga?): NodoManga {
+        var actual = nodo
+        while (actual?.izquierda != null) {
+            actual = actual.izquierda
         }
+        return actual!!
     }
 
     fun obtenerMangasEnOrden(): List<Manga> {
@@ -172,17 +181,4 @@ class ArbolBinarioManga : Serializable {
         }
     }
 
-    fun actualizarMangas(mangasActualizadas: List<Manga>): Boolean {
-        raiz = null
-
-        mangasActualizadas.forEach { manga ->
-            agregarManga(manga)
-        }
-
-        val mangasEnOrden = obtenerMangasEnOrden()
-        Log.d("ArbolBinarioManga", "Árbol después de la actualización (en orden): ${mangasEnOrden.joinToString()}")
-
-        return mangasEnOrden.size == mangasActualizadas.size
-
-    }
 }
