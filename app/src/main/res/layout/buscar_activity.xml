@@ -183,6 +183,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ibcomedy" />
 
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMangas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_container" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

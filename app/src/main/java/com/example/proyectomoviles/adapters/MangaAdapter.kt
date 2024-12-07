@@ -50,10 +50,8 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
         holder.nombreTextView.text = manga.titulo
         holder.precioTextView.text = "$${manga.precio}"
 
-        // Detectar toque largo y aplicar animación
         holder.itemView.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
-                // Iniciar la animación de "vibración"
                 startVibrationAnimation(holder.itemView)
             }
             false
@@ -74,11 +72,10 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
     }
 
     private fun startVibrationAnimation(view: View) {
-        // Animación de "vibración" moviendo el item de izquierda a derecha
         val shake = ObjectAnimator.ofFloat(view, "translationX", -10f, 10f)
-        shake.duration = 200 // duración de la animación
-        shake.repeatCount = 5 // cuántas veces repetirá la vibración
-        shake.repeatMode = ObjectAnimator.REVERSE // Repetir en reversa
+        shake.duration = 200
+        shake.repeatCount = 5
+        shake.repeatMode = ObjectAnimator.REVERSE
         shake.start()
     }
 
