@@ -55,6 +55,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
+    
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
     // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
