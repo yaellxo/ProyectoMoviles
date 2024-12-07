@@ -35,7 +35,7 @@ class InventoryAgregarService : AppCompatActivity() {
         val etDescripcionMangaRegistrar: EditText = findViewById(R.id.etDescripcionMangaRegistrar)
         val etVolumenMangaRegistrar: EditText = findViewById(R.id.etVolumenMangaRegistrar)
         val etAutorMangaRegistrar: EditText = findViewById(R.id.etAutorMangaRegistrar)
-        val etGeneroMangaRegistrar: Spinner = findViewById(R.id.etGeneroMangaRegistrar)
+        val spGeneroMangaRegistrar: Spinner = findViewById(R.id.spGeneroMangaRegistrar)
         val etEditorialMangaRegistrar: EditText = findViewById(R.id.etEditorialMangaRegistrar)
         val etPublicacionMangaRegistrar: EditText = findViewById(R.id.etPublicacionMangaRegistrar)
         val btnImagenMangaRegistrar: TextView = findViewById(R.id.btnImagenMangaRegistrar)
@@ -49,11 +49,18 @@ class InventoryAgregarService : AppCompatActivity() {
             val descripcion = etDescripcionMangaRegistrar.text.toString()
             val volumen = etVolumenMangaRegistrar.text.toString().toDoubleOrNull() ?: 0.0
             val autor = etAutorMangaRegistrar.text.toString()
-            val genero = etGeneroMangaRegistrar.selectedItem.toString()
+            val genero = spGeneroMangaRegistrar.selectedItem.toString()
             val editorial = etEditorialMangaRegistrar.text.toString()
             val publicacion = etPublicacionMangaRegistrar.text.toString()
 
-            val imagenUrl = selectedImageUri?.let { saveImageToInternalStorage(it) } ?: ""
+            if (titulo.isEmpty() || precio == 0f || stock == 0 || descripcion.isEmpty() || volumen == 0.0 ||
+                autor.isEmpty() || genero.isEmpty() || editorial.isEmpty() || publicacion.isEmpty() || selectedImageUri == null) {
+
+                Toast.makeText(this, "Por favor, complete todos los campos, incluyendo la imagen.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val imagenUrl = saveImageToInternalStorage(selectedImageUri!!)
 
             val mangaId = generateMangaId()
 
@@ -72,16 +79,16 @@ class InventoryAgregarService : AppCompatActivity() {
             )
 
             arbolManga.agregarManga(manga)
-
             guardarArbolEnArchivo()
 
             Log.d("InventoryAgregarService", "Manga agregado: ${manga.titulo}, ID: ${manga.mangaId}")
 
             Toast.makeText(this, "Manga agregado con éxito!", Toast.LENGTH_SHORT).show()
 
-            val intent = Intent(this, InventoryService::class.java)
-            intent.putExtra("manga", manga)
-            startActivity(intent)
+            val resultIntent = Intent()
+            resultIntent.putExtra("nuevo_manga", manga)
+            setResult(RESULT_OK, resultIntent)
+            finish()
         }
 
         btnImagenMangaRegistrar.setOnClickListener {

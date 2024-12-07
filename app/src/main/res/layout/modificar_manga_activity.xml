@@ -267,12 +267,13 @@
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/spNivelAccesoMangaModificar"
+                    android:id="@+id/spGeneroMangaModificar"
                     android:layout_width="match_parent"
                     android:layout_height="49dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/border_layout"
                     android:padding="10dp"
+                    android:entries="@array/generos"
                     android:fontFamily="@font/sawarabi"
                     android:spinnerMode="dropdown"
                     android:textColor="@color/color_font_principal"
@@ -343,7 +344,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="1dp"
-        android:src="@drawable/ic_inventario_admin"
+        android:src="@drawable/ic_inventario_editar_mangas"
         app:backgroundTint="@color/opcion_modificar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

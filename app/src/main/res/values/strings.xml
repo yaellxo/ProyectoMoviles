@@ -47,7 +47,18 @@
     <string-array name="generos">
         <item>Shonen</item>
         <item>Seinen</item>
-        <item>Shoujo</item>
+        <item>Shojo</item>
+        <item>Josei</item>
+        <item>Mecha</item>
+        <item>Horror</item>
+        <item>Spokon</item>
+        <item>Slice of Life</item>
+        <item>Isekai</item>
+        <item>Fantasy</item>
+        <item>Comedy</item>
+        <item>Harem</item>
+
+
     </string-array>
 
     <string name="modificar_informacion">Escribir la información.</string>

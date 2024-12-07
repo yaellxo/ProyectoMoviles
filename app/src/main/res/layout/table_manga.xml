@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/border_layout">
@@ -23,7 +22,7 @@
         android:layout_width="359dp"
         android:layout_height="55dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/border_shape"
+        android:background="@drawable/border_shape_delgado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,43 +30,30 @@
 
         <EditText
             android:id="@+id/et_search"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Ingresar ID"
+            android:layout_width="329dp"
+            android:layout_height="43dp"
+            android:fontFamily="@font/sawarabi"
+            android:hint="Buscar"
             android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_search"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.562" />
 
-        <ImageButton
-            android:id="@+id/btn_search"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="Buscar"
-            android:src="@drawable/ic_lupa_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Contenedor donde se mostrarán los mangas -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contenedorFragment"
         android:layout_width="359dp"
         android:layout_height="672dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/border_shape"
+        android:background="@drawable/border_shape_delgado"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_container">
 
-        <!-- RecyclerView para mostrar los mangas -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewMangas"
             android:layout_width="match_parent"
@@ -80,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="1dp"
-        android:src="@drawable/ic_agregar_admin"
+        android:src="@drawable/ic_inventario_mangas"
         app:backgroundTint="@color/opcion_agregar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -90,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="1dp"
-        android:src="@drawable/ic_modificar_admin"
+        android:src="@drawable/ic_inventario_editar_mangas"
         app:backgroundTint="@color/opcion_modificar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -100,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="1dp"
-        android:src="@drawable/ic_eliminar_admin_blanco"
+        android:src="@drawable/ic_inventario_eliminar_mangas"
         app:backgroundTint="@color/opcion_eliminar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
