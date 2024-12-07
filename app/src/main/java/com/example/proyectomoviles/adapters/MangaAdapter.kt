@@ -40,14 +40,12 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
             Log.d("MangaAdapter", "Imagen no encontrada, utilizando imagen por defecto.")
         }
 
-        // Formatear "ID" en negritas
         val idText = SpannableString("ID: ${manga.mangaId}")
-        idText.setSpan(StyleSpan(Typeface.BOLD), 0, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE) // Negrita en "ID"
+        idText.setSpan(StyleSpan(Typeface.BOLD), 0, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         holder.mangaIdTextView.text = idText
 
-        // Formatear "Stock" en negritas
         val stockText = SpannableString("Stock: ${manga.stock}")
-        stockText.setSpan(StyleSpan(Typeface.BOLD), 0, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE) // Negrita en "Stock"
+        stockText.setSpan(StyleSpan(Typeface.BOLD), 0, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         holder.stockTextView.text = stockText
 
         holder.nombreTextView.text = manga.titulo
@@ -67,26 +65,18 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
         val precioTextView: TextView = itemView.findViewById(R.id.precioTextView)
     }
 
-    /**
-     * Agrega un nuevo manga a la lista.
-     */
     fun agregarManga(manga: Manga) {
         mMangas.add(manga)
         notifyItemInserted(mMangas.size - 1)
     }
 
-    /**
-     * Reemplaza la lista completa de mangas.
-     */
-    fun actualizarMangas(nuevaLista: List<Manga>) {
+    fun actualizarMangas(mangasActualizadas: List<Manga>) {
         mMangas.clear()
-        mMangas.addAll(nuevaLista)
+        mMangas.addAll(mangasActualizadas)
         notifyDataSetChanged()
     }
 
-    /**
-     * Elimina un manga por su posición.
-     */
+
     fun eliminarManga(posicion: Int) {
         if (posicion in 0 until mMangas.size) {
             mMangas.removeAt(posicion)
@@ -94,9 +84,6 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
         }
     }
 
-    /**
-     * Actualiza un manga en una posición específica.
-     */
     fun actualizarManga(posicion: Int, manga: Manga) {
         if (posicion in 0 until mMangas.size) {
             mMangas[posicion] = manga
