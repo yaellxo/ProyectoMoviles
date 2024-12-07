@@ -1,46 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/ivEventoDetalleImagen"
+        android:id="@+id/ivbackground2"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop" />
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_admin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/tvNombreDetalleEvento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:paddingTop="16dp"
-        android:text="Nombre del evento" />
+        android:id="@+id/Evento_Titulo"
+        android:layout_width="384dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/border_layout"
+        android:fontFamily="@font/sawarabi"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Titulo evento"
+        android:textColor="@color/color_font_principal"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvFechaDetalleEvento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:paddingTop="8dp"
-        android:text="Fecha del evento" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="400dp"
+        android:layout_height="750dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="70dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/scrollView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/old_paper_nbg" />
 
-    <TextView
-        android:id="@+id/tvUbicacionDetalleEvento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:paddingTop="8dp"
-        android:text="Ubicación del evento" />
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="325dp"
+        android:layout_height="700dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="104dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvDescripcionDetalleEvento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:paddingTop="8dp"
-        android:text="Descripción del evento" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-</LinearLayout>
+            <ImageView
+                android:id="@+id/ivEventoDetalleImagen"
+                android:layout_width="325dp"
+                android:layout_height="325dp"
+                app:srcCompat="@drawable/advertencia"
+                android:scaleType="centerCrop" />
+
+            <Button
+                android:id="@+id/btnRecordatorio"
+                android:layout_width="268dp"
+                android:layout_height="37dp"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_flecha_32"
+                android:text="Recibir recordatorio" />
+
+            <TextView
+                android:id="@+id/tvNombreDetalleEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sawarabi"
+                android:paddingTop="16dp"
+                android:text="Nombre del evento"
+                android:textColor="@color/color_font_principal"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvFechaDetalleEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sawarabi"
+                android:paddingTop="8dp"
+                android:text="Fecha del evento"
+                android:textColor="@color/color_font_principal"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvUbicacionDetalleEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sawarabi"
+                android:paddingTop="8dp"
+                android:text="Ubicación del evento"
+                android:textColor="@color/color_font_principal"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvDescripcionDetalleEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sawarabi"
+                android:paddingTop="8dp"
+                android:text="Descripción del evento"
+                android:textColor="@color/color_font_principal"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
