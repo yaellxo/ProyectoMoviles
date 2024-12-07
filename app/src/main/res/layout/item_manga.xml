@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
 
-        <!-- Imagen del manga -->
         <ImageView
             android:id="@+id/mangaImagenView"
             android:layout_width="113dp"
@@ -27,7 +26,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:cardCornerRadius="12dp"/>
 
-        <!-- Contenedor de texto -->
         <LinearLayout
             android:id="@+id/textViewsContainer"
             android:layout_width="0dp"

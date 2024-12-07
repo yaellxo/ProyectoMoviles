@@ -50,11 +50,17 @@ class InventoryAgregarService : AppCompatActivity() {
             val volumen = etVolumenMangaRegistrar.text.toString().toDoubleOrNull() ?: 0.0
             val autor = etAutorMangaRegistrar.text.toString()
             val genero = spGeneroMangaRegistrar.selectedItem.toString()
-            Log.d("InventoryAgregarService", "Género seleccionado: $genero")
             val editorial = etEditorialMangaRegistrar.text.toString()
             val publicacion = etPublicacionMangaRegistrar.text.toString()
 
-            val imagenUrl = selectedImageUri?.let { saveImageToInternalStorage(it) } ?: ""
+            if (titulo.isEmpty() || precio == 0f || stock == 0 || descripcion.isEmpty() || volumen == 0.0 ||
+                autor.isEmpty() || genero.isEmpty() || editorial.isEmpty() || publicacion.isEmpty() || selectedImageUri == null) {
+
+                Toast.makeText(this, "Por favor, complete todos los campos, incluyendo la imagen.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val imagenUrl = saveImageToInternalStorage(selectedImageUri!!)
 
             val mangaId = generateMangaId()
 
