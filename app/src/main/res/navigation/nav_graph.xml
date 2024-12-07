@@ -1,5 +1,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/menu_hot"
     android:id="@+id/nav_graph">
 
@@ -10,7 +11,12 @@
     <fragment
         android:id="@+id/menu_eventos"
         android:name="com.example.proyectomoviles.client.EventScreenFragment"
-        android:label="Event" />
+        android:label="Event Screen"
+        tools:layout="@layout/event_activity" >
+        <action
+            android:id="@+id/action_eventScreenFragment_to_eventoDetalleFragment"
+            app:destination="@id/eventoDetalleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/menu_busqueda"
         android:name="com.example.proyectomoviles.client.BuscarScreenFragment"
@@ -31,4 +37,9 @@
         android:id="@+id/menu_super_admin"
         android:name="com.example.proyectomoviles.services.PerfilSuperAdminScreenFragment"
         android:label="Admin" />
+    <fragment
+        android:id="@+id/eventoDetalleFragment"
+        android:name="com.example.proyectomoviles.client.EventDetailsFragment"
+        android:label="Event Detail"
+        tools:layout="@layout/event_detail_activity" />
 </navigation>
