@@ -15,7 +15,7 @@ import com.example.proyectomoviles.R
 import com.example.proyectomoviles.models.Manga
 import java.io.File
 
-class MangaAdapterTienda(private val mMangas: MutableList<Manga>) :
+class MangaAdapterTienda(private var mMangas: MutableList<Manga>) :
     RecyclerView.Adapter<MangaAdapterTienda.MangaViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MangaViewHolder {
@@ -44,6 +44,12 @@ class MangaAdapterTienda(private val mMangas: MutableList<Manga>) :
     }
 
     override fun getItemCount(): Int = mMangas.size
+
+    fun actualizarMangas(mangas: List<Manga>) {
+        mMangas = mangas.toMutableList()
+        notifyDataSetChanged()
+    }
+
 
     class MangaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val mangaImagenView: ImageView = itemView.findViewById(R.id.mangaImagenView)

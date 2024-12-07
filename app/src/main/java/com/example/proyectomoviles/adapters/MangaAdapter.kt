@@ -1,5 +1,4 @@
-package com.example.proyectomoviles.adapters
-
+import android.animation.ObjectAnimator
 import android.graphics.BitmapFactory
 import android.graphics.Typeface
 import android.text.Spannable
@@ -7,6 +6,7 @@ import android.text.SpannableString
 import android.text.style.StyleSpan
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -22,7 +22,6 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_manga, parent, false)
         return MangaViewHolder(itemView)
-
     }
 
     override fun onBindViewHolder(holder: MangaViewHolder, position: Int) {
@@ -50,6 +49,13 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
 
         holder.nombreTextView.text = manga.titulo
         holder.precioTextView.text = "$${manga.precio}"
+
+        holder.itemView.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                startVibrationAnimation(holder.itemView)
+            }
+            false
+        }
     }
 
     override fun getItemCount(): Int {
@@ -63,6 +69,14 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
         val stockTextView: TextView = itemView.findViewById(R.id.stockTextView)
         val nombreTextView: TextView = itemView.findViewById(R.id.nombreTextView)
         val precioTextView: TextView = itemView.findViewById(R.id.precioTextView)
+    }
+
+    private fun startVibrationAnimation(view: View) {
+        val shake = ObjectAnimator.ofFloat(view, "translationX", -10f, 10f)
+        shake.duration = 200
+        shake.repeatCount = 5
+        shake.repeatMode = ObjectAnimator.REVERSE
+        shake.start()
     }
 
     fun agregarManga(manga: Manga) {
