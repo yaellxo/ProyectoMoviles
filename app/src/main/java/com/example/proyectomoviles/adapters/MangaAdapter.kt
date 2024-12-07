@@ -73,7 +73,6 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
     fun actualizarMangas(mangasActualizadas: List<Manga>) {
         mMangas.clear()
         mMangas.addAll(mangasActualizadas)
-        notifyDataSetChanged()
     }
 
 

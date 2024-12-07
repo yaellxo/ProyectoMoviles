@@ -2,8 +2,12 @@ package com.example.proyectomoviles.services
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,12 +33,13 @@ class InventoryService : AppCompatActivity() {
     private lateinit var mangaAdapter: MangaAdapter
 
     private val fabOpenIcon = R.drawable.ic_plus_admin
-
     private val fabCloseIcon = R.drawable.ic_cerrar_menu_admin
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.table_manga)
 
+        val et_search: EditText = findViewById(R.id.et_search)
         recyclerViewMangas = findViewById(R.id.recyclerViewMangas)
         fabRegresarInventario = findViewById(R.id.fabRegresarInventario)
         fabMain = findViewById(R.id.fab)
@@ -75,17 +80,50 @@ class InventoryService : AppCompatActivity() {
             val intent = Intent(this, InventoryEliminarService::class.java)
             startActivity(intent)
         }
+
+        et_search.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+                val query = charSequence.toString().trim()
+
+                if (query.isNotEmpty()) {
+                    val mangasFiltrados = arbolBinarioManga.obtenerMangasEnOrden().filter { manga ->
+                        manga.titulo.contains(query, ignoreCase = true) ||
+                                manga.precio.toString().contains(query) ||
+                                manga.volumen.toString().contains(query) ||
+                                manga.autor.contains(query, ignoreCase = true) ||
+                                manga.genero.contains(query, ignoreCase = true) ||
+                                manga.editorial.contains(query, ignoreCase = true) ||
+                                manga.mangaId.contains(query, ignoreCase = true)
+                    }
+
+                    mangaAdapter.actualizarMangas(mangasFiltrados)
+                    mangaAdapter.notifyDataSetChanged()
+
+                    if (mangasFiltrados.isEmpty()) {
+                        Toast.makeText(this@InventoryService, "No se encontraron mangas", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    val mangas = arbolBinarioManga.obtenerMangasEnOrden()
+                    mangaAdapter.actualizarMangas(mangas)
+                    mangaAdapter.notifyDataSetChanged()
+                }
+            }
+
+            override fun afterTextChanged(editable: Editable?) {
+            }
+        })
     }
 
     override fun onResume() {
         super.onResume()
-
         cargarArbolDesdeArchivo()
 
         val mangasActualizados = arbolBinarioManga.obtenerMangasEnOrden()
 
         mangaAdapter.actualizarMangas(mangasActualizados)
-
         mangaAdapter.notifyDataSetChanged()
     }
 
@@ -141,7 +179,6 @@ class InventoryService : AppCompatActivity() {
             }
         }
 
-
         if (requestCode == REQUEST_ADD_MANGA && resultCode == RESULT_OK) {
             val nuevoManga = data?.getSerializableExtra("nuevo_manga") as Manga
             arbolBinarioManga.agregarManga(nuevoManga)
@@ -169,7 +206,6 @@ class InventoryService : AppCompatActivity() {
         }
     }
 
-
     private fun guardarArbolEnArchivo() {
         try {
             val archivo = File(filesDir, "arbol_manga.ser")
@@ -189,4 +225,3 @@ class InventoryService : AppCompatActivity() {
         const val REQUEST_ELIMINAR_MANGA = 1003
     }
 }
-
