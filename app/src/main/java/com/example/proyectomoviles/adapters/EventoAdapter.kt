@@ -11,8 +11,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.models.Evento
 
-class EventoAdapter(private var eventos: List<Evento>, private val context: Context) :
-    RecyclerView.Adapter<EventoAdapter.EventoViewHolder>() {
+class EventoAdapter(
+    private var eventos: List<Evento>,
+    private val context: Context,
+    private val listener: OnEventoClickListener? = null
+) : RecyclerView.Adapter<EventoAdapter.EventoViewHolder>() {
+
+    interface OnEventoClickListener {
+        fun onEventoClick(evento: Evento)
+    }
 
     class EventoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ivEventoImagen: ImageView = itemView.findViewById(R.id.ivEventoImagen)
@@ -49,6 +56,11 @@ class EventoAdapter(private var eventos: List<Evento>, private val context: Cont
         holder.tvFecha.text = evento.fecha
         holder.tvUbicacion.text = evento.ubicacion
         holder.tvDescripcion.text = evento.descripcion
+
+        // Agregar el listener de clics
+        holder.itemView.setOnClickListener {
+            listener?.onEventoClick(evento)
+        }
     }
 
     override fun getItemCount(): Int = eventos.size
