@@ -72,6 +72,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/ivLogo2"
+            android:layout_width="53dp"
+            android:layout_height="41dp"
+            android:layout_marginEnd="200dp"
+            android:src="@drawable/ic_inventario_negro"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.032" />
+
         <TextView
             android:id="@+id/tvEliminarManga"
             android:layout_width="278dp"
@@ -100,6 +111,7 @@
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.701"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -141,7 +153,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="1dp"
-        android:src="@drawable/ic_inventario_eliminar_mangas"
+        android:src="@drawable/ic_modificar_admin"
         app:backgroundTint="@color/opcion_eliminar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

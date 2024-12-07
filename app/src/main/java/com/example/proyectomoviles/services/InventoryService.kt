@@ -1,26 +1,20 @@
 package com.example.proyectomoviles.services
 
-import MangaAdapter
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectomoviles.R
+import com.example.proyectomoviles.adapters.MangaAdapter
 import com.example.proyectomoviles.models.ArbolBinarioManga
 import com.example.proyectomoviles.models.Manga
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.File
 import java.io.FileInputStream
 import java.io.ObjectInputStream
-import java.io.FileOutputStream
-import java.io.ObjectOutputStream
 
 class InventoryService : AppCompatActivity() {
 
@@ -37,29 +31,40 @@ class InventoryService : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.table_manga)
-
-        val et_search: EditText = findViewById(R.id.et_search)
-        recyclerViewMangas = findViewById(R.id.recyclerViewMangas)
-        fabRegresarInventario = findViewById(R.id.fabRegresarInventario)
-        fabMain = findViewById(R.id.fab)
-        additionalButtons = listOf(
-            findViewById(R.id.agregarManga),
-            findViewById(R.id.modificarManga),
-            findViewById(R.id.eliminarManga)
-        )
-
         cargarArbolDesdeArchivo()
 
-        var mangas = arbolBinarioManga.obtenerMangasEnOrden()
+        arbolBinarioManga = ArbolBinarioManga()
+
+        val manga = intent.getSerializableExtra("manga") as? Manga
+
+        if (manga != null) {
+            arbolBinarioManga.agregarManga(manga)
+            Log.d("InventoryService", "Manga recibido: ${manga.titulo}")
+        } else {
+            Log.d("InventoryService", "No se recibió manga")
+        }
+
+        val mangas = arbolBinarioManga.obtenerMangasEnOrden()
+
+        recyclerViewMangas = findViewById(R.id.recyclerViewMangas)
+        recyclerViewMangas.layoutManager = LinearLayoutManager(this)
+
         Log.d("InventoryService", "Número de mangas cargados: ${mangas.size}")
         mangas.forEachIndexed { index, manga ->
             Log.d("InventoryService", "Manga $index: ${manga.titulo}")
         }
 
         mangaAdapter = MangaAdapter(mangas.toMutableList())
-
         recyclerViewMangas.adapter = mangaAdapter
-        recyclerViewMangas.layoutManager = LinearLayoutManager(this)
+
+        fabRegresarInventario = findViewById(R.id.fabRegresarInventario)
+        fabMain = findViewById(R.id.fab)
+
+        additionalButtons = listOf(
+            findViewById(R.id.agregarManga),
+            findViewById(R.id.modificarManga),
+            findViewById(R.id.eliminarManga)
+        )
 
         fabMain.setOnClickListener {
             toggleAdditionalButtons()
@@ -69,7 +74,7 @@ class InventoryService : AppCompatActivity() {
 
         additionalButtons[0].setOnClickListener {
             val intent = Intent(this, InventoryAgregarService::class.java)
-            startActivityForResult(intent, REQUEST_ADD_MANGA)
+            startActivity(intent)
         }
         additionalButtons[1].setOnClickListener {
             val intent = Intent(this, InventoryModificarService::class.java)
@@ -79,51 +84,6 @@ class InventoryService : AppCompatActivity() {
             val intent = Intent(this, InventoryEliminarService::class.java)
             startActivity(intent)
         }
-
-        et_search.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
-                val query = charSequence.toString().trim()
-
-                if (query.isNotEmpty()) {
-                    val mangasFiltrados = arbolBinarioManga.obtenerMangasEnOrden().filter { manga ->
-                        manga.titulo.contains(query, ignoreCase = true) ||
-                                manga.precio.toString().contains(query) ||
-                                manga.volumen.toString().contains(query) ||
-                                manga.autor.contains(query, ignoreCase = true) ||
-                                manga.genero.contains(query, ignoreCase = true) ||
-                                manga.editorial.contains(query, ignoreCase = true) ||
-                                manga.mangaId.contains(query, ignoreCase = true)
-                    }
-
-                    mangaAdapter.actualizarMangas(mangasFiltrados)
-                    mangaAdapter.notifyDataSetChanged()
-
-                    if (mangasFiltrados.isEmpty()) {
-                        Toast.makeText(this@InventoryService, "No se encontraron mangas", Toast.LENGTH_SHORT).show()
-                    }
-                } else {
-                    val mangas = arbolBinarioManga.obtenerMangasEnOrden()
-                    mangaAdapter.actualizarMangas(mangas)
-                    mangaAdapter.notifyDataSetChanged()
-                }
-            }
-
-            override fun afterTextChanged(editable: Editable?) {
-            }
-        })
-    }
-
-    override fun onResume() {
-        super.onResume()
-        cargarArbolDesdeArchivo()
-
-        val mangasActualizados = arbolBinarioManga.obtenerMangasEnOrden()
-
-        mangaAdapter.actualizarMangas(mangasActualizados)
-        mangaAdapter.notifyDataSetChanged()
     }
 
     private fun hideAdditionalButtons() {
@@ -160,67 +120,27 @@ class InventoryService : AppCompatActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == REQUEST_ELIMINAR_MANGA && resultCode == RESULT_OK) {
-            val mangaIdEliminado = data?.getStringExtra("manga_eliminado")
-            mangaIdEliminado?.let {
-                arbolBinarioManga.eliminarManga(mangaIdEliminado)
-
-                val mangasRestantes = arbolBinarioManga.obtenerMangasEnOrden()
-
-                mangaAdapter.actualizarMangas(mangasRestantes)
-
-                mangaAdapter.notifyDataSetChanged()
-
-                Toast.makeText(this, "Manga eliminado exitosamente", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        if (requestCode == REQUEST_ADD_MANGA && resultCode == RESULT_OK) {
-            val nuevoManga = data?.getSerializableExtra("nuevo_manga") as Manga
-            arbolBinarioManga.agregarManga(nuevoManga)
-            mangaAdapter.agregarManga(nuevoManga)
-
-            guardarArbolEnArchivo()
-        }
-    }
-
     private fun cargarArbolDesdeArchivo() {
         try {
             val archivo = File(filesDir, "arbol_manga.ser")
             if (archivo.exists()) {
                 val fileInputStream = FileInputStream(archivo)
                 val objectInputStream = ObjectInputStream(fileInputStream)
-                arbolBinarioManga = objectInputStream.readObject() as ArbolBinarioManga
+
+                // Deserializamos el objeto y lo asignamos a arbolManga
+                val arbolCargado = objectInputStream.readObject() as ArbolBinarioManga
                 objectInputStream.close()
                 fileInputStream.close()
+
+                arbolBinarioManga.addAll(arbolCargado)
+                Log.d("MainActivity", "Árbol cargado exitosamente.")
             } else {
-                arbolBinarioManga = ArbolBinarioManga()
+                Log.d("MainActivity", "Archivo de árbol no encontrado.")
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            arbolBinarioManga = ArbolBinarioManga()
+            Log.e("MainActivity", "Error al cargar el árbol.")
         }
-    }
-
-    private fun guardarArbolEnArchivo() {
-        try {
-            val archivo = File(filesDir, "arbol_manga.ser")
-            val fileOutputStream = FileOutputStream(archivo)
-            val objectOutputStream = ObjectOutputStream(fileOutputStream)
-            objectOutputStream.writeObject(arbolBinarioManga)
-            objectOutputStream.close()
-            fileOutputStream.close()
-            Log.d("InventoryService", "Árbol guardado exitosamente.")
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    companion object {
-        const val REQUEST_ADD_MANGA = 1002
-        const val REQUEST_ELIMINAR_MANGA = 1003
     }
 }
+

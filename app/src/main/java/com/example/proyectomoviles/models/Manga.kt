@@ -3,15 +3,15 @@ package com.example.proyectomoviles.models
 import java.io.Serializable
 
 data class Manga(
-    var titulo: String,
-    var precio: Float,
-    var stock: Int,
-    var descripcion: String,
-    var volumen: Double,
-    var autor: String,
-    var genero: String,
-    var editorial: String,
-    var publicacion: String,
-    var imagenUrl: String,
-    var mangaId: String
+    val titulo: String,
+    val precio: Float,
+    val stock: Int,
+    val descripcion: String,
+    val volumen: Double,
+    val autor: String,
+    val genero: String,
+    val editorial: String,
+    val publicacion: String,
+    val imagenUrl: String,
+    val mangaId: String
 ) : Serializable

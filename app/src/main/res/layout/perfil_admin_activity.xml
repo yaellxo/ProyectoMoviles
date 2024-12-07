@@ -201,7 +201,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:src="@drawable/ic_inventario_blanco"
+                android:src="@drawable/ic_inventario_admin"
                 app:backgroundTint="@color/opcion_inventario"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
