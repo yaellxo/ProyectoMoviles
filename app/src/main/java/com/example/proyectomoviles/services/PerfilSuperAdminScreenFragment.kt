@@ -45,7 +45,6 @@ class PerfilSuperAdminScreenFragment : Fragment(R.layout.perfil_superadmin_activ
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Inicializar vistas
         tvAlias = view.findViewById(R.id.tvAliasUser)
         tvIdAdmin = view.findViewById(R.id.tvEdadUser)
         tvNombreAdmin = view.findViewById(R.id.tvNombreUser)
@@ -69,7 +68,6 @@ class PerfilSuperAdminScreenFragment : Fragment(R.layout.perfil_superadmin_activ
             toggleAdditionalButtons()
         }
 
-        // Configuración de los botones flotantes
         fabMain.setImageResource(fabOpenIcon)
         hideAdditionalButtons()
 
