@@ -29,6 +29,24 @@ object CustomToast {
                 imageView.setImageResource(R.drawable.ic_perfil)
                 background.setColor(ContextCompat.getColor(context, R.color.opcion_agregar))
             }
+            //Inicio de sesion exitoso-----------------------------
+            R.id.btnCrearCuenta -> {
+                textView.text = "Inicio de sesión exitoso."
+                imageView.setImageResource(R.drawable.ic_perfil)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_agregar))
+            }
+            //ID INVÁLIDO
+            500 -> {
+                textView.text = "Ingresa un ID válido."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //ID INVÁLIDO
+            600 -> {
+                textView.text = "Por favor, completa todos los campos."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
             //ELIMINAR-----------------------------
             R.id.fabEventoEliminar -> {
                 textView.text = "El evento ha sido eliminado con éxito."
@@ -46,13 +64,19 @@ object CustomToast {
                 background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
             }
 
+            R.id.fabAdminEliminar -> {
+                textView.text = "El perfil ha sido eliminado con éxito."
+                imageView.setImageResource(R.drawable.ic_perfil)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+
             //AGREGAR-----------------------------
             R.id.fabEventoAgregar -> {
                 textView.text = "El evento ha sido agregado con éxito."
                 imageView.setImageResource(R.drawable.ic_eventos_admin)
                 background.setColor(ContextCompat.getColor(context, R.color.opcion_agregar))
             }
-            R.id.fabMangaAgregar -> {
+            R.id.fabAgregarManga -> {
                 textView.text = "El manga ha sido agregado con éxito."
                 imageView.setImageResource(R.drawable.ic_inventario_admin)
                 background.setColor(ContextCompat.getColor(context, R.color.opcion_agregar))
@@ -99,10 +123,28 @@ object CustomToast {
         toast.view = customView
         toast.show()
 
-        //Ejemplo de uso en activities:
+        //  CASO 1: GENERAR TOAST DESPUES DE HACER CLICK EN UN BOTÓN ESPECÍFICO
+        //  En este archivo:
+        //  R.id.<IDENTIFICADOR DEL BOTÓN> -> {
+        //    textView.text = "<MENSAJE A MOSTRAR>"
+        //    imageView.setImageResource(R.drawable.<ICONO O IMAGEN A MOSTRAR>)
+        //    background.setColor(ContextCompat.getColor(context, R.color.<COLOR DEL TOAST>))
+        //}
+        //  En donde lo llames:
         //  val btnRegitro : Button = findViewById (R.id.btnRegitro)
         //  btnRegitro.setOnClickListener {
         //    CustomToast.show(this, R.id.btnRegitro)
         //  }
+
+        //  CASO 2: GENERAR TOAST SIN VENIR DE UN BOTÓN:
+        //  En este archivo:
+        //  <NUMERO QUE IDENTIFICARA AL TOAST> -> {
+        //    textView.text = "<MENSAJE A MOSTRAR>"
+        //    imageView.setImageResource(R.drawable.<ICONO O IMAGEN A MOSTRAR>)
+        //    background.setColor(ContextCompat.getColor(context, R.color.<COLOR DEL TOAST>))
+        //}
+        //  En donde lo llamas:
+        //  CustomToast.show(this, 100)
+        //
     }
 }
