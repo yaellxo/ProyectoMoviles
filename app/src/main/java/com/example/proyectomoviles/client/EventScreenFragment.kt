@@ -39,7 +39,7 @@ class EventScreenFragment : Fragment(R.layout.event_activity) {
         // Mostramos un poco de la siguiente página
         viewPager.offscreenPageLimit = 3
 
-        // Configuración del RecyclerView (no se toca)
+        // Configuración del RecyclerView
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewMainEventos)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         val eventosList = EventosManager.obtenerEventos()
