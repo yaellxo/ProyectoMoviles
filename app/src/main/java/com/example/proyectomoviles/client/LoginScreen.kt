@@ -36,7 +36,6 @@ class LoginScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Verificar si es un superadmin
             if (alias == AdminConstants.ADMIN_ALIAS && claveLogin == AdminConstants.ADMIN_PASSWORD) {
                 val editor = sharedPreferences.edit()
                 editor.putString("userType", "superAdmin")
@@ -55,6 +54,48 @@ class LoginScreen : AppCompatActivity() {
             }
 
             try {
+                val adminsJson = sharedPreferences.getString("admins_data", "[]")
+                val adminsArray = JSONArray(adminsJson)
+                var adminFound = false
+
+                for (i in 0 until adminsArray.length()) {
+                    val admin = adminsArray.getJSONObject(i)
+                    if (admin.getString("alias") == alias && admin.getString("clave") == claveLogin) {
+                        adminFound = true
+
+                        val editor = sharedPreferences.edit()
+                        editor.putString("userType", "admin")
+                        editor.putString("activeUserAlias", alias)
+                        editor.putString("nombre", admin.getString("nombre"))
+                        editor.putString("correo", admin.getString("correo"))
+                        editor.putString("area", admin.getString("area"))
+                        editor.putString("nivelAcceso", admin.getString("nivelAcceso"))
+                        editor.putString("userId", admin.getString("adminId"))
+                        editor.apply()
+
+                        val nivelAcceso = admin.getString("nivelAcceso")
+                        Toast.makeText(
+                            this,
+                            "Inicio de sesión exitoso como administrador con nivel de acceso: $nivelAcceso",
+                            Toast.LENGTH_LONG
+                        ).show()
+
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                        return@setOnClickListener
+                    }
+                }
+
+                if (!adminFound) {
+                    Toast.makeText(this, "Alias o clave incorrectos", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Log.e("LoginScreen", "Error al recuperar los administradores: ${e.message}")
+                Toast.makeText(this, "Error al verificar administrador", Toast.LENGTH_SHORT).show()
+            }
+
+            try {
                 val usersJson = sharedPreferences.getString("users", "[]")
                 val usersArray = JSONArray(usersJson)
                 var userFound = false
@@ -64,17 +105,15 @@ class LoginScreen : AppCompatActivity() {
                     if (user.getString("alias") == alias && user.getString("clave") == claveLogin) {
                         userFound = true
 
-                        // Guardar la información del usuario en SharedPreferences
                         val editor = sharedPreferences.edit()
                         editor.putString("userType", "user")
                         editor.putString("activeUserAlias", alias)
                         editor.putString("nombre", user.getString("nombre"))
                         editor.putString("correo", user.getString("correo"))
                         editor.putString("edad", user.getString("edad"))
-                        editor.putString("userId", user.getString("userId"))  // Guardar el userId del usuario
+                        editor.putString("userId", user.getString("userId"))
                         editor.apply()
 
-                        // Almacenar la URL de la foto si está disponible
                         val photoUriString = user.optString("photoUri", "")
                         editor.putString("userPhotoUri", photoUriString)
                         editor.apply()
