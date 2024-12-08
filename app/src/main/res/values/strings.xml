@@ -68,4 +68,7 @@
     <string name="boton_regreso">Volver!</string>
     <string name="placeholder">placeholder</string>
     <string name="titulo_agregar">Agregar</string>
+
+    <string name="precio_template">Precio: $%s</string>
+
 </resources>

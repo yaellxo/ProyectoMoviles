@@ -1,3 +1,5 @@
+package com.example.proyectomoviles.adapters
+
 import android.animation.ObjectAnimator
 import android.graphics.BitmapFactory
 import android.graphics.Typeface

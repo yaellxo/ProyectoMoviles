@@ -56,48 +56,60 @@ class BottomNavHelper {
                 itemView?.isSelected = menuItem.itemId == item.itemId
             }
 
+            val sharedPreferences =
+                bottomNavigationView.context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+
+            val storedAlias = sharedPreferences.getString("activeUserAlias", "No disponible")
+            val nombre = sharedPreferences.getString("nombre", "No disponible")
+            val correo = sharedPreferences.getString("correo", "No disponible")
+            val edad = sharedPreferences.getString("edad", "No disponible")
+            val userType = sharedPreferences.getString("userType", "No disponible")
+            val photoBase64 = sharedPreferences.getString("photoBase64", null)
+            val area = sharedPreferences.getString("area", null)
+            val nivelAcceso = sharedPreferences.getString("nivelAcceso", null)
+            val userId = sharedPreferences.getString("userId", "No disponible")
+
+            Log.d("BottomNavHelper", "Alias: $storedAlias, Nombre: $nombre, Correo: $correo, Edad: $edad, Tipo de usuario: $userType, ID: $userId")
+
+            // Crear un bundle para pasar los datos
+            val bundle = Bundle().apply {
+                putString("userId",  sharedPreferences.getString("userId", "No disponible"))
+                putString("alias", storedAlias)
+                putString("nombre", nombre)
+                putString("correo", correo)
+                putString("edad", edad)
+                putString("userType", userType)
+                putString("photoBase64", photoBase64)
+                putString("area", area)
+                putString("nivelAcceso", nivelAcceso)
+            }
+
             when (item.itemId) {
-                R.id.menu_hot -> navController.navigate(R.id.menu_hot)
-                R.id.menu_eventos -> navController.navigate(R.id.menu_eventos)
-                R.id.menu_busqueda -> navController.navigate(R.id.menu_busqueda)
-                R.id.menu_carrito -> navController.navigate(R.id.menu_carrito)
+                R.id.menu_hot -> {
+                    Log.d("BottomNavHelper", "Navigating to hot menu")
+                    navController.navigate(R.id.menu_hot, bundle)
+                }
+                R.id.menu_eventos -> {
+                    Log.d("BottomNavHelper", "Navigating to eventos menu")
+                    navController.navigate(R.id.menu_eventos, bundle)
+                }
+                R.id.menu_busqueda -> {
+                    Log.d("BottomNavHelper", "Navigating to busqueda menu")
+                    navController.navigate(R.id.menu_busqueda, bundle)
+                }
+                R.id.menu_carrito -> {
+                    Log.d("BottomNavHelper", "Navigating to carrito menu")
+                    navController.navigate(R.id.menu_carrito, bundle)
+                }
                 R.id.menu_perfil -> {
-                    val sharedPreferences =
-                        bottomNavigationView.context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-
-                    val storedAlias = sharedPreferences.getString("activeUserAlias", "No disponible")
-                    val nombre = sharedPreferences.getString("nombre", "No disponible")
-                    val correo = sharedPreferences.getString("correo", "No disponible")
-                    val edad = sharedPreferences.getString("edad", "No disponible")
-                    val userType = sharedPreferences.getString("userType", "No disponible")
-                    val photoBase64 = sharedPreferences.getString("photoBase64", null)
-                    val area = sharedPreferences.getString("area", null)
-                    val nivelAcceso = sharedPreferences.getString("nivelAcceso", null)
-
-                    Log.d("BottomNavHelper", "Alias: $storedAlias, Nombre: $nombre, Correo: $correo, Edad: $edad, Tipo de usuario: $userType")
-
-                    val bundle = Bundle().apply {
-                        putString("alias", storedAlias)
-                        putString("nombre", nombre)
-                        putString("correo", correo)
-                        putString("edad", edad)
-                        putString("userType", userType)
-                        putString("photoBase64", photoBase64)
-                        putString("area", area)
-                        putString("nivelAcceso", nivelAcceso)
-                    }
-
                     when (userType) {
                         "superAdmin" -> {
-                            Log.d("BottomNavHelper", "Navigating to superadmin menu")
                             navController.navigate(R.id.menu_super_admin, bundle)
                         }
                         "admin" -> {
-                            Log.d("BottomNavHelper", "Navigating to admin menu")
                             navController.navigate(R.id.menu_admin, bundle)
                         }
                         "user" -> {
-                            Log.d("BottomNavHelper", "Navigating to user profile")
                             navController.navigate(R.id.menu_perfil, bundle)
                         }
                         else -> {
@@ -108,6 +120,13 @@ class BottomNavHelper {
                             ).show()
                         }
                     }
+                }
+                else -> {
+                    Toast.makeText(
+                        bottomNavigationView.context,
+                        "Error: Tipo de usuario no reconocido",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
             true
