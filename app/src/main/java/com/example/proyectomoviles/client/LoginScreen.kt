@@ -36,7 +36,6 @@ class LoginScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Verificar si es el super administrador
             if (alias == AdminConstants.ADMIN_ALIAS && claveLogin == AdminConstants.ADMIN_PASSWORD) {
                 val editor = sharedPreferences.edit()
                 editor.putString("userType", "superAdmin")
@@ -50,7 +49,6 @@ class LoginScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Verificar si es administrador
             try {
                 val adminsJson = sharedPreferences.getString("admins_data", "[]")
                 val adminsArray = JSONArray(adminsJson)
@@ -86,7 +84,6 @@ class LoginScreen : AppCompatActivity() {
                     }
                 }
 
-                // Si no se encuentra el administrador, pasar a verificar si es un usuario registrado
                 if (!adminFound) {
                     val usersJson = sharedPreferences.getString("users", "[]")
                     val usersArray = JSONArray(usersJson)

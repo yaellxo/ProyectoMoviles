@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-kapt")
 }
 
 android {
@@ -43,7 +44,6 @@ android {
 }
 
 dependencies {
-    // Dependencias comunes
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -52,24 +52,32 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+<<<<<<< HEAD
     implementation(libs.androidx.material3)
+=======
+    implementation("com.google.code.gson:gson:2.8.9")
+    implementation("com.itextpdf:itextpdf:5.5.13.2")
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    kapt("com.github.bumptech.glide:compiler:4.15.1")
+>>>>>>> master
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
     
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
-    // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
     implementation ("com.getbase:floatingactionbutton:1.10.1")
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
 
-    // Material Components
     implementation("com.google.android.material:material:1.9.0")
     implementation(libs.firebase.crashlytics.buildtools)
 
+<<<<<<< HEAD
     implementation ("com.github.bumptech.glide:glide:4.16.0")
 
     // Test dependencies
+=======
+>>>>>>> master
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
