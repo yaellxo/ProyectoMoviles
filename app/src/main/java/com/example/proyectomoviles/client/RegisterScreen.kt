@@ -52,12 +52,12 @@ class RegisterScreen : AppCompatActivity() {
             Log.d("RegisterScreen", "Datos de Registro: Nombre = $nombre, Alias = $alias, Correo = $correo, Edad = $edadString, Clave = $clave")
 
             if (nombre.isEmpty() || alias.isEmpty() || correo.isEmpty() || edadString.isEmpty() || clave.isEmpty()) {
-                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this, 600)
                 return@setOnClickListener
             }
 
             if (edadString.toIntOrNull() == null || edadString.toInt() !in 1..150) {
-                Toast.makeText(this, "Por favor, ingrese una edad válida", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this, 100)
                 return@setOnClickListener
             }
 
