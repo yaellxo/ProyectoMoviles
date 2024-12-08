@@ -66,7 +66,8 @@
             app:layout_constraintTop_toBottomOf="@id/HeaderTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="NotSibling">
 
         <TextView
             android:id="@+id/tvTitle"
@@ -314,18 +315,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etAreaModificar" />
 
-        <ImageView
-            android:id="@+id/ivLogoModificar"
-            android:layout_width="49dp"
-            android:layout_height="54dp"
-            android:layout_marginEnd="212dp"
-            android:src="@drawable/ic_modificar_usuario"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
