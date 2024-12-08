@@ -41,6 +41,10 @@ class LoginScreen : AppCompatActivity() {
                 val editor = sharedPreferences.edit()
                 editor.putString("userType", "superAdmin")
                 editor.putString("activeUserAlias", alias)
+                editor.putString("nombre", AdminConstants.ADMIN_NOMBRE)
+                editor.putString("correo", AdminConstants.ADMIN_EMAIL)
+                editor.putString("edad", AdminConstants.ADMIN_AREA)
+                editor.putString("userId", AdminConstants.ADMIN_ID)
                 editor.apply()
 
                 Toast.makeText(this, "Inicio de sesión exitoso como super administrador", Toast.LENGTH_SHORT).show()

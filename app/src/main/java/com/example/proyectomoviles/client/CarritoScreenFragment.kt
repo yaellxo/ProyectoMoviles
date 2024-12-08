@@ -14,6 +14,7 @@ import com.example.proyectomoviles.R
 import com.example.proyectomoviles.models.Manga
 import com.example.proyectomoviles.models.Usuario
 import org.json.JSONArray
+import org.json.JSONObject
 
 class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
 
@@ -28,13 +29,11 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
         val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val usersJson = sharedPreferences.getString("users", "[]")  // Obtener la lista de usuarios desde SharedPreferences
 
-        if (!usersJson.isNullOrEmpty()) {
-            val usersArray = JSONArray(usersJson)
-            // Asignar el userId del primer usuario en el JSON (o el adecuado)
-            userId = usersArray.getJSONObject(0).getString("userId")
+        val usersArray = JSONArray(usersJson)  // Crear el JSONArray, aunque esté vacío
+        userId = if (usersArray.length() > 0) {
+            usersArray.getJSONObject(0).getString("userId")  // Usar el primer elemento si existe
         } else {
-            userId = "default"
-            Log.e("CarritoScreen", "No se encontró userId, se asignó un valor predeterminado.")
+            "defaultUserId"  // Valor predeterminado cuando no hay elementos
         }
 
         Log.d("CarritoScreen", "UserId recuperado: $userId")
@@ -56,20 +55,39 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
         // Obtener usuario
         val usuario = obtenerUsuarioPorId(userId)
 
-        if (usuario != null && usuario.carrito.isNotEmpty()) {
-            // Log para verificar el carrito cargado
-            Log.d("CarritoScreen", "Carrito cargado con ${usuario.carrito.size} elementos.")
-            // Actualizar el RecyclerView con los datos del carrito
-            carritoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-            carritoRecyclerView.adapter = MangaAdapterCarrito(
-                context = requireContext(),
-                mangas = usuario.carrito,
-                userId = userId
-            )
+        if (usuario != null) {
+            val carrito = usuario.carrito
+
+            // Verificar si el carrito del usuario tiene mangas
+            if (carrito.isNotEmpty()) {
+                // Filtrar mangas por mangaId o cualquier condición específica
+                val mangasFiltrados = carrito.filter { manga ->
+                    manga.mangaId.isNotEmpty()
+                }.toMutableList()
+
+                if (mangasFiltrados.isNotEmpty()) {
+                    // Log para verificar el carrito filtrado
+                    Log.d("CarritoScreen", "Carrito cargado con ${mangasFiltrados.size} mangas.")
+                    // Actualizar el RecyclerView con los mangas filtrados
+                    carritoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+                    carritoRecyclerView.adapter = MangaAdapterCarrito(
+                        context = requireContext(),
+                        mangas = mangasFiltrados,
+                        userId = userId
+                    )
+                    // Notificar que los datos del RecyclerView han cambiado
+                    carritoRecyclerView.adapter?.notifyDataSetChanged()
+                } else {
+                    Log.d("CarritoScreen", "No se encontraron mangas válidos en el carrito.")
+                }
+            } else {
+                Log.d("CarritoScreen", "El carrito está vacío.")
+            }
         } else {
-            Log.d("CarritoScreen", "No se encontraron mangas en el carrito o usuario no existe.")
+            Log.d("CarritoScreen", "Usuario no encontrado.")
         }
     }
+
 
     private fun obtenerUsuarioPorId(userId: String): Usuario? {
         val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
@@ -120,10 +138,55 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
         return carrito
     }
 
+    private fun guardarCarrito(usuario: Usuario) {
+        val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
+        // Convertir la lista de usuarios a JSON
+        val usersJson = sharedPreferences.getString("users", "[]")
+        val usersArray = JSONArray(usersJson)
+
+        // Buscar el usuario y actualizar su carrito
+        for (i in 0 until usersArray.length()) {
+            val userJson = usersArray.getJSONObject(i)
+            if (userJson.getString("userId") == usuario.userId) {
+                // Actualizar el carrito en el JSON del usuario
+                val carritoJson = JSONArray()
+                usuario.carrito.forEach { manga ->
+                    val mangaJson = JSONObject()
+                    mangaJson.put("titulo", manga.titulo)
+                    mangaJson.put("precio", manga.precio)
+                    mangaJson.put("stock", manga.stock)
+                    mangaJson.put("descripcion", manga.descripcion)
+                    mangaJson.put("volumen", manga.volumen)
+                    mangaJson.put("autor", manga.autor)
+                    mangaJson.put("genero", manga.genero)
+                    mangaJson.put("editorial", manga.editorial)
+                    mangaJson.put("publicacion", manga.publicacion)
+                    mangaJson.put("imagenUrl", manga.imagenUrl)
+                    mangaJson.put("mangaId", manga.mangaId)
+                    carritoJson.put(mangaJson)
+                }
+                userJson.put("carrito", carritoJson)
+
+                // Guardar el JSON actualizado en SharedPreferences
+                usersArray.put(i, userJson)
+                break
+            }
+        }
+
+        editor.putString("users", usersArray.toString())
+        editor.apply()
+
+        Log.d("CarritoScreen", "Carrito actualizado en SharedPreferences.")
+    }
+
     fun actualizarVista() {
         val usuario = obtenerUsuarioPorId(userId)
         usuario?.let {
+            // Actualizar el RecyclerView con los datos actualizados
             carritoRecyclerView.adapter?.notifyDataSetChanged() // Actualizar el RecyclerView si es necesario
         }
     }
+
 }
