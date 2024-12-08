@@ -21,6 +21,15 @@ class BottomNavHelper {
             menuItem.title = menuItem.title
         }
 
+        val sharedPreferences =
+            bottomNavigationView.context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val userType = sharedPreferences.getString("userType", "No disponible")
+
+        if (userType == "superAdmin" || userType == "admin") {
+            val menuCarrito = bottomNavigationView.menu.findItem(R.id.menu_carrito)
+            menuCarrito.isVisible = false
+        }
+
         bottomNavigationView.menu.forEach { menuItem ->
             val menuItemView = bottomNavigationView.findViewById<View>(menuItem.itemId)
 
