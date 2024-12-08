@@ -35,6 +35,18 @@ object CustomToast {
                 imageView.setImageResource(R.drawable.ic_perfil)
                 background.setColor(ContextCompat.getColor(context, R.color.opcion_agregar))
             }
+            //ID INVÁLIDO
+            500 -> {
+                textView.text = "Ingresa un ID válido."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //ID INVÁLIDO
+            600 -> {
+                textView.text = "Por favor, completa todos los campos."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
             //ELIMINAR-----------------------------
             R.id.fabEventoEliminar -> {
                 textView.text = "El evento ha sido eliminado con éxito."
@@ -98,37 +110,6 @@ object CustomToast {
                 imageView.setImageResource(R.drawable.ic_reporteventa_admin)
                 background.setColor(ContextCompat.getColor(context, R.color.opcion_reporte))
             }
-
-            R.id.fabReporteAgregar -> {
-                textView.text = "El reporte ha sido agrergado con éxito."
-                imageView.setImageResource(R.drawable.ic_reporteventa_admin)
-                background.setColor(ContextCompat.getColor(context, R.color.opcion_reporte))
-            }
-
-            //-------------------------------------------------------------------------------
-
-            //Validaciones
-
-            //Edad Inválida
-            100 -> {
-                textView.text = "Por favor, ingrese una edad válida"
-                imageView.setImageResource(R.drawable.advertencia)
-                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
-            }
-
-            //ID INVÁLIDO
-            500 -> {
-                textView.text = "Ingresa un ID válido."
-                imageView.setImageResource(R.drawable.advertencia)
-                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
-            }
-            //completa todos los campos
-            600 -> {
-                textView.text = "Por favor, completa todos los campos."
-                imageView.setImageResource(R.drawable.advertencia)
-                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
-            }
-
 
             else -> {
                 textView.text = "Registra el id de este boton en utils/CustomToast"

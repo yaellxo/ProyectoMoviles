@@ -57,10 +57,7 @@ class EventoAdapter(
         holder.tvUbicacion.text = evento.ubicacion
         holder.tvDescripcion.text = evento.descripcion
 
-<<<<<<< HEAD
         // Agregar el listener de clics
-=======
->>>>>>> master
         holder.itemView.setOnClickListener {
             listener?.onEventoClick(evento)
         }

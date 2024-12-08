@@ -74,9 +74,9 @@ class EventService : AppCompatActivity() {
         fabMain.setImageResource(fabOpenIcon)
         hideAdditionalButtons()
 
-        additionalButtons[0].setImageResource(R.drawable.ic_event_agregar)
-        additionalButtons[1].setImageResource(R.drawable.ic_event_edit)
-        additionalButtons[2].setImageResource(R.drawable.ic_event_eliminar)
+        additionalButtons[0].setImageResource(R.drawable.agregar_evento)
+        additionalButtons[1].setImageResource(R.drawable.modificar_evento)
+        additionalButtons[2].setImageResource(R.drawable.eliminar_evento)
 
         additionalButtons[0].setOnClickListener {
             val intent = Intent(this, AgregarEventoScreen::class.java)
