@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.R
+import com.example.proyectomoviles.utils.CustomToast
 import org.json.JSONArray
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -51,12 +52,12 @@ class RegisterScreen : AppCompatActivity() {
             Log.d("RegisterScreen", "Datos de Registro: Nombre = $nombre, Alias = $alias, Correo = $correo, Edad = $edadString, Clave = $clave")
 
             if (nombre.isEmpty() || alias.isEmpty() || correo.isEmpty() || edadString.isEmpty() || clave.isEmpty()) {
-                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this, 600)
                 return@setOnClickListener
             }
 
             if (edadString.toIntOrNull() == null || edadString.toInt() !in 1..150) {
-                Toast.makeText(this, "Por favor, ingrese una edad válida", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this, 100)
                 return@setOnClickListener
             }
 
@@ -85,16 +86,11 @@ class RegisterScreen : AppCompatActivity() {
             }
 
             users.put(newUser)
+
             editor.putString("users", users.toString())
             editor.apply()
 
-            val mensaje = "Usuario registrado exitosamente:\n" +
-                    "Nombre: $nombre\n" +
-                    "Alias: $alias\n" +
-                    "Correo: $correo\n" +
-                    "Edad: $edadString\n" +
-                    "Clave: $clave"
-            Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
+            CustomToast.show(this, R.id.btnCrearCuenta)
 
             val intent = Intent(this, LoginScreen::class.java)
             intent.putExtra("usuario", newUser.toString())

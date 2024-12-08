@@ -20,11 +20,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="353dp"
         android:layout_height="78dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="44dp"
         android:background="@drawable/border_shape"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -63,26 +62,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
-        android:layout_width="311dp"
-        android:layout_height="393dp"
-        android:layout_marginTop="196dp"
+        android:layout_width="308dp"
+        android:layout_height="236dp"
+        android:layout_marginTop="292dp"
         android:background="@drawable/border_shape"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/ivLogo2"
-            android:layout_width="53dp"
-            android:layout_height="41dp"
-            android:layout_marginEnd="200dp"
-            android:src="@drawable/ic_manga"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.032" />
 
         <TextView
             android:id="@+id/tvEliminarManga"
@@ -112,7 +100,6 @@
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.701"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -130,7 +117,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvEliminarManga" />
 
         <EditText
-            android:id="@+id/etIdEliminarManga"
+            android:id="@+id/etIdMangaEliminar"
             android:layout_width="268dp"
             android:layout_height="43dp"
             android:layout_marginTop="10dp"
@@ -138,7 +125,7 @@
             android:drawableEnd="@drawable/ic_lupa"
             android:drawablePadding="8dp"
             android:fontFamily="@font/sawarabi"
-            android:hint="Ingresa el ID"
+            android:hint="Escribir código especial."
             android:padding="10dp"
             android:textColor="@color/negro_color"
             android:textColorHint="@color/gris_color"
@@ -147,41 +134,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvId" />
 
-        <Button
-            android:id="@+id/btnEliminar"
-            android:layout_width="235dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button_eliminar_background_selector"
-            android:fontFamily="@font/sawarabi"
-            android:text="@string/boton_eliminar_usuario"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.512"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etIdEliminarManga" />
-
-
-        <Button
-            android:id="@+id/btnRegresarEliminarManga"
-            android:layout_width="212dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button_secundary_background_selector"
-            android:fontFamily="@font/sawarabi"
-            android:gravity="center"
-            android:text="@string/abortar_misi_n_capit_n"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/btnEliminar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabMangaEliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:src="@drawable/ic_inventario_eliminar_mangas"
+        app:backgroundTint="@color/opcion_eliminar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabRegresarMangaEliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/ic_regresar"
+        app:backgroundTint="@color/boton_pressed_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

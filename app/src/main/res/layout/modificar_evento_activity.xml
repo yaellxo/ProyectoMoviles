@@ -20,10 +20,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="354dp"
         android:layout_height="78dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/border_shape"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -61,215 +62,240 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="315dp"
-        android:layout_height="620dp"
-        android:layout_marginTop="108dp"
+        android:layout_width="312dp"
+        android:layout_height="549dp"
+        android:layout_marginTop="144dp"
         android:background="@drawable/border_shape"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvTitleModificar"
-            android:layout_width="229dp"
-            android:layout_height="45dp"
-            android:drawableStart="@drawable/ic_eventos_negro_40"
-            android:fontFamily="@font/sawarabi"
-            android:gravity="center"
-            android:text="Modificar"
-            android:textColor="@color/color_font_principal"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="ID:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.049"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitleModificar" />
+                android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etNombreModificarEvento"
-            android:layout_width="276dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/border_layout"
-            android:drawableEnd="@drawable/ic_lupa_24"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/escribe_tu_verdadero_nombre"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitleModificar" />
+            <TextView
+                android:id="@+id/tvTituloModificarEvento"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:fontFamily="@font/sawarabi"
+                android:gravity="center"
+                android:text="@string/titulo_modificar"
+                android:textColor="@color/color_font_principal"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Nombre:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etNombreModificarEvento" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/sawarabi"
+                android:text="ID:"
+                android:textColor="@color/color_font_principal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.049"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTituloModificarEvento" />
 
-        <EditText
-            android:id="@+id/etAliasRegistro"
-            android:layout_width="276dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/tu_nombre_de_batalla_en_este_mundo"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etNombreModificarEvento" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Fecha de Evento:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.046"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etAliasRegistro" />
+                <EditText
+                    android:id="@+id/etIdEventoModificar"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/border_layout"
+                    android:fontFamily="@font/sawarabi"
+                    android:hint="Escribir código especial."
+                    android:padding="12dp"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/etCorreoRegistro"
-            android:layout_width="276dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/tu_b_ho_mensajero_necesita_una_direcci_n"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etAliasRegistro" />
+                <ImageButton
+                    android:id="@+id/btnBuscarEventoPorIdModificar"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Search"
+                    android:src="@drawable/ic_lupa"
+                    app:layout_constraintBottom_toBottomOf="@id/etIdEventoModificar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/etIdEventoModificar" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Ubicación:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.053"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etCorreoRegistro" />
-
-        <EditText
-            android:id="@+id/etEdadRegistro"
-            android:layout_width="276dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/registra_tu_nivel_de_experiencia"
-            android:inputType="number"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etCorreoRegistro" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/sawarabi"
-            android:text="Descripción:"
-            android:textColor="@color/color_font_principal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.053"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etEdadRegistro" />
-
-        <EditText
-            android:id="@+id/etClaveRegistro"
-            android:layout_width="276dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/border_layout"
-            android:fontFamily="@font/sawarabi"
-            android:hint="@string/protege_tus_secretos_como_un_ninja"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:textColor="@color/color_font_principal"
-            android:textColorHint="@color/color_font_secundario_gris_medio"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etEdadRegistro" />
-
-        <Button
-            android:id="@+id/btnCrearCuenta"
-            android:layout_width="235dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_modificar_background_selector"
-            android:fontFamily="@font/sawarabi"
-            android:text="Modificar"
-            android:textAllCaps="false"
-            android:textColor="@color/color_font_principal_blanco"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.511"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etClaveRegistro" />
-
-        <Button
-            android:id="@+id/btnRegresar"
-            android:layout_width="210dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/button_secundary_background_selector"
-            android:fontFamily="@font/sawarabi"
-            android:text="@string/abortar_misi_n_capit_n"
-            android:textAllCaps="false"
-            android:textColor="@color/color_font_principal_blanco"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnCrearCuenta" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/sawarabi"
+                android:text="Nombre:"
+                android:textColor="@color/color_font_principal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.024"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etIdEventoModificar" />
+
+            <EditText
+                android:id="@+id/etNombreEventoModificar"
+                android:layout_width="276dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/border_layout"
+                android:fontFamily="@font/sawarabi"
+                android:padding="10dp"
+                android:textColor="@color/color_font_principal"
+                android:textColorHint="@color/color_font_secundario_gris_medio"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etIdEventoModificar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/sawarabi"
+                android:text="Fecha de Evento:"
+                android:textColor="@color/color_font_principal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.024"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etNombreEventoModificar" />
+
+            <EditText
+                android:id="@+id/etFechaEventoModificar"
+                android:layout_width="276dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/border_layout"
+                android:fontFamily="@font/sawarabi"
+                android:padding="10dp"
+                android:textColor="@color/color_font_principal"
+                android:textColorHint="@color/color_font_secundario_gris_medio"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etNombreEventoModificar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/sawarabi"
+                android:text="Ubicacion:"
+                android:textColor="@color/color_font_principal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.004"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etFechaEventoModificar" />
+
+            <EditText
+                android:id="@+id/etUbicacionEventoModificar"
+                android:layout_width="276dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/border_layout"
+                android:fontFamily="@font/sawarabi"
+                android:padding="10dp"
+                android:textColor="@color/color_font_principal"
+                android:textColorHint="@color/color_font_secundario_gris_medio"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etFechaEventoModificar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/sawarabi"
+                android:text="Descripcion:"
+                android:textColor="@color/color_font_principal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.01"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etUbicacionEventoModificar" />
+
+            <EditText
+                android:id="@+id/etDescripcionEventoModificar"
+                android:layout_width="276dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/border_layout"
+                android:fontFamily="@font/sawarabi"
+                android:padding="10dp"
+                android:textColor="@color/color_font_principal"
+                android:textColorHint="@color/color_font_secundario_gris_medio"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etUbicacionEventoModificar" />
+
+            <TextView
+                android:id="@+id/textViewImagen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sawarabi"
+                android:text="Agregar Imagen:"
+                android:textColor="@color/color_font_principal"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btnAgregarImagenModificarEvento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/agregar_imagen"
+                android:background="@android:color/transparent"
+                android:contentDescription="Agregar Imagen"
+                android:layout_marginTop="8dp" />
+
+            </LinearLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabEventoModificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:src="@drawable/ic_eventos_admin"
+        app:backgroundTint="@color/opcion_modificar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabRegresarEventoModificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/ic_regresar"
+        app:backgroundTint="@color/boton_pressed_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

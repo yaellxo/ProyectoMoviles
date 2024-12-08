@@ -1,0 +1,80 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_width="120dp"
+    android:layout_height="270dp"
+    android:layout_margin="5dp"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="8dp"
+    android:background="@color/color_font_principal_blanco">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="276dp">
+
+        <ImageView
+            android:id="@+id/mangaImagenView"
+            android:layout_width="117dp"
+            android:layout_height="192dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:scaleType="centerCrop"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/textViewsContainer"
+            android:layout_width="119dp"
+            android:layout_height="74dp"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mangaImagenView">
+
+            <TextView
+                android:id="@+id/nombreTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sawarabi"
+                android:gravity="start"
+                android:text="Titulo"
+                android:textColor="@color/color_font_principal"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/autorTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sawarabi"
+                android:gravity="start"
+                android:text="Autor"
+                android:textColor="@color/color_font_secundario_gris_bajo"
+                android:textSize="8sp" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:progressTint="@color/boton_compra"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:gravity="start"
+                android:numStars="5" />
+
+            <TextView
+                android:id="@+id/precioTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sawarabi"
+                android:gravity="start"
+                android:text="Precio"
+                android:textColor="@color/color_font_principal"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
