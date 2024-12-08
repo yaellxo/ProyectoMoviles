@@ -75,6 +75,11 @@
             android:name=".services.InventoryEliminarService"
             android:theme="@style/Theme.ProyectoMoviles"/>
 
+        <activity
+            android:name=".client.DetalleMangaActivity"
+            android:theme="@style/Theme.ProyectoMoviles"/>
+
+
     </application>
 
 </manifest>

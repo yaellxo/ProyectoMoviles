@@ -1,0 +1,212 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="8dp"
+    android:background="@color/color_font_principal_blanco">
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="818dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/textViewsContainerTitulo"
+                android:layout_width="366dp"
+                android:layout_height="103dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="9dp"
+                android:background="@drawable/border_shape_tienda"
+                android:gravity="start"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/etTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sawarabi"
+                    android:gravity="start"
+                    android:text="Titulo"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/etAutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sawarabi"
+                    android:gravity="start"
+                    android:text="Autor"
+                    android:textColor="@color/color_font_secundario_gris_bajo"
+                    android:textSize="16sp" />
+
+                <RatingBar
+                    android:id="@+id/rbCalificacion"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="0dp"
+                    android:gravity="center"
+                    android:numStars="5"
+                    android:padding="8dp"
+                    android:progressTint="@color/boton_compra"
+                    android:scaleX="2"
+                    android:scaleY="2" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/mangaImagenView"
+                android:layout_width="235dp"
+                android:layout_height="321dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/border_shape_tienda"
+                android:scaleType="centerCrop"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.048"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewsContainerTitulo" />
+
+            <ImageView
+                android:id="@+id/mangaImagenView2"
+                android:layout_width="91dp"
+                android:layout_height="365dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/border_shape_tienda"
+                android:scaleType="centerCrop"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewsContainerDetalles"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.968"
+                app:layout_constraintStart_toEndOf="@+id/mangaImagenView"
+                app:layout_constraintTop_toBottomOf="@+id/textViewsContainerTitulo"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <LinearLayout
+                android:id="@+id/textViewsContainerDetalles"
+                android:layout_width="366dp"
+                android:layout_height="500dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/border_shape_tienda"
+                android:gravity="start"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mangaImagenView">
+
+                <TextView
+                    android:id="@+id/tvPrecio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sawarabi"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:text="Precio"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/tvVolumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sawarabi"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:text="Volumen"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/tvCarrito"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_comprar_background_selector"
+                    android:fontFamily="@font/sawarabi"
+                    android:gravity="center"
+                    android:text="Agregar al Carrito"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvGenero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sawarabi"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:text="Genero"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvEditorial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sawarabi"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:text="Editorial"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvPublicacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sawarabi"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:text="Publicación"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvDescripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/sawarabi"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:text="Descripción"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.cardview.widget.CardView>

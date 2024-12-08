@@ -15,8 +15,10 @@ import com.example.proyectomoviles.R
 import com.example.proyectomoviles.models.Manga
 import java.io.File
 
-class MangaAdapterTienda(private var mMangas: MutableList<Manga>) :
-    RecyclerView.Adapter<MangaAdapterTienda.MangaViewHolder>() {
+class MangaAdapterTienda(
+    private var mMangas: MutableList<Manga>,
+    private val onMangaClick: (Manga) -> Unit
+) : RecyclerView.Adapter<MangaAdapterTienda.MangaViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MangaViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -38,9 +40,11 @@ class MangaAdapterTienda(private var mMangas: MutableList<Manga>) :
         val tituloText = SpannableString(manga.titulo)
         tituloText.setSpan(StyleSpan(Typeface.BOLD), 0, manga.titulo.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         holder.nombreTextView.text = tituloText
-
         holder.autorTextView.text = manga.autor
         holder.precioTextView.text = "$${manga.precio}"
+        holder.itemView.setOnClickListener {
+            onMangaClick(manga)
+        }
     }
 
     override fun getItemCount(): Int = mMangas.size
@@ -52,7 +56,9 @@ class MangaAdapterTienda(private var mMangas: MutableList<Manga>) :
 
 
     class MangaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val mangaImagenView: ImageView = itemView.findViewById(R.id.mangaImagenView)
+        val mangaImagenView: ImageView = itemView.findViewById<ImageView>(R.id.mangaImagenView).apply {
+            scaleType = ImageView.ScaleType.CENTER_CROP
+        }
         val autorTextView: TextView = itemView.findViewById(R.id.autorTextView)
         val nombreTextView: TextView = itemView.findViewById(R.id.nombreTextView)
         val precioTextView: TextView = itemView.findViewById(R.id.precioTextView)
