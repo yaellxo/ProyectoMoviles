@@ -18,7 +18,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ModificarEventoScreen : AppCompatActivity() {
 
-    private lateinit var fabRegresarEvento: FloatingActionButton
     private lateinit var btnModificarImagen: ImageButton
     private var imagenUri: Uri? = null
 
@@ -39,7 +38,6 @@ class ModificarEventoScreen : AppCompatActivity() {
         val ubicacionField = findViewById<EditText>(R.id.etUbicacionEventoModificar)
         val descripcionField = findViewById<EditText>(R.id.etDescripcionEventoModificar)
 
-        fabRegresarEvento = findViewById(R.id.fabRegresarEventoModificar)
         val btnBuscarEventoPorIdModificar = findViewById<ImageButton>(R.id.btnBuscarEventoPorIdModificar)
 
         btnModificar.setOnClickListener{
@@ -93,9 +91,6 @@ class ModificarEventoScreen : AppCompatActivity() {
             startActivityForResult(intent, AgregarEventoScreen.PICK_IMAGE_REQUEST)
         }
 
-        fabRegresarEvento.setOnClickListener{
-            finish()
-        }
     }
 
     fun String.isNotNumber(): Boolean {

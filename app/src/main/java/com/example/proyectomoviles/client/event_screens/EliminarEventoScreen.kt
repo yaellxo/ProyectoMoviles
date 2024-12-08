@@ -13,7 +13,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class EliminarEventoScreen : AppCompatActivity() {
 
-    private lateinit var fabRegresarEvento: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +20,6 @@ class EliminarEventoScreen : AppCompatActivity() {
 
         val idField = findViewById<EditText>(R.id.etIdEventoEliminar)
         val btnElimiar: FloatingActionButton = findViewById(R.id.fabEventoEliminar)
-        fabRegresarEvento = findViewById(R.id.fabRegresarEventoEliminar)
 
         btnElimiar.setOnClickListener{
             val id = idField.text.toString()
@@ -39,9 +37,7 @@ class EliminarEventoScreen : AppCompatActivity() {
             }
         }
 
-        fabRegresarEvento.setOnClickListener{
-            finish()
-        }
+
     }
 
     fun String.isNotNumber(): Boolean {

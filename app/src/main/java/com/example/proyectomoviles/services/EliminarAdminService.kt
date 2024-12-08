@@ -19,7 +19,6 @@ class EliminarAdminService : AppCompatActivity() {
 
         val etIdAdminEliminar: EditText = findViewById(R.id.etIdAdminEliminar)
         val fabAdminEliminar: FloatingActionButton = findViewById(R.id.fabAdminEliminar)
-        val fabRegresarAdminEliminar: FloatingActionButton = findViewById(R.id.fabRegresarAdminEliminar)
 
         val sharedPreferences: SharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val adminsJson = sharedPreferences.getString("admins_data", "[]")
@@ -80,9 +79,7 @@ class EliminarAdminService : AppCompatActivity() {
             finish()
         }
 
-        fabRegresarAdminEliminar.setOnClickListener {
-            finish()
-        }
+
     }
 
     private fun findAdminIndexById(adminId: String, admins: JSONArray): Int {

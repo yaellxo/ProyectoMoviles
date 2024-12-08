@@ -45,7 +45,6 @@ class InventoryModificarService : AppCompatActivity() {
         val etPublicacionMangaModificar: EditText = findViewById(R.id.etPublicacionMangaModificar)
         val btnImagenMangaModificar: TextView = findViewById(R.id.btnImagenMangaModificar)
         val fabMangaModificar: FloatingActionButton = findViewById(R.id.fabMangaModificar)
-        val fabRegresarMangaModificar: FloatingActionButton = findViewById(R.id.fabRegresarMangaModificar)
 
         fabMangaModificar.visibility = View.GONE
 
@@ -157,9 +156,6 @@ class InventoryModificarService : AppCompatActivity() {
             openGallery()
         }
 
-        fabRegresarMangaModificar.setOnClickListener {
-            onBackPressed()
-        }
     }
 
     private fun cargarArbolDesdeArchivo() {

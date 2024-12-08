@@ -20,7 +20,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class EventService : AppCompatActivity() {
 
-    private lateinit var fabRegresarEvento: FloatingActionButton
     private lateinit var additionalButtons: List<FloatingActionButton>
     private lateinit var fabMain: FloatingActionButton
 
@@ -58,7 +57,6 @@ class EventService : AppCompatActivity() {
             }
         }
 
-        fabRegresarEvento = findViewById(R.id.fabRegresarEvento)
         fabMain = findViewById(R.id.fabEvento)
 
         additionalButtons = listOf(
@@ -93,9 +91,6 @@ class EventService : AppCompatActivity() {
             startActivity(intent)
         }
 
-        fabRegresarEvento.setOnClickListener{
-            finish()
-        }
     }
 
     fun String.isNotNumber(): Boolean {

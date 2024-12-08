@@ -28,7 +28,6 @@ class ModificarAdminService : AppCompatActivity() {
         val etAreaAdminModificar: EditText = findViewById(R.id.etAreaAdminModificar)
         val etClaveAdminModificar: EditText = findViewById(R.id.etClaveAdminModificar)
         val fabAdminModificar: FloatingActionButton = findViewById(R.id.fabAdminModificar)
-        val fabRegresarAdminModificar: FloatingActionButton = findViewById(R.id.fabRegresarAdminModificar)
 
         disableFields(etNombreAdminModificar, etAliasAdminModificar, etCorreoAdminModificar, spNivelAccesoAdminModificar, etAreaAdminModificar, etClaveAdminModificar)
 
@@ -137,9 +136,6 @@ class ModificarAdminService : AppCompatActivity() {
             finish()
         }
 
-        fabRegresarAdminModificar.setOnClickListener {
-            finish()
-        }
     }
 
     private fun findAdminIndexById(adminId: String, admins: JSONArray): Int {

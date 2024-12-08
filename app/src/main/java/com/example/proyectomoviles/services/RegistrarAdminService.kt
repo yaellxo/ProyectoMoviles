@@ -30,7 +30,6 @@ class RegistrarAdminService : AppCompatActivity() {
         val etAreaAdminRegistro: EditText = findViewById(R.id.etAreaAdminRegistro)
         val etClaveAdminRegistro: EditText = findViewById(R.id.etClaveAdminRegistro)
         val fabAdminAgregar: FloatingActionButton = findViewById(R.id.fabAdminAgregar)
-        val fabRegresarAdminAgregar: FloatingActionButton = findViewById(R.id.fabRegresarAdminAgregar)
 
         val sharedPreferences: SharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
 
@@ -87,9 +86,6 @@ class RegistrarAdminService : AppCompatActivity() {
             finish()
         }
 
-        fabRegresarAdminAgregar.setOnClickListener {
-            finish()
-        }
     }
 
     private fun generateCustomUserId(alias: String): String {
