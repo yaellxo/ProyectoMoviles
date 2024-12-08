@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.models.ArbolBinarioManga
 import com.example.proyectomoviles.models.Manga
+import com.example.proyectomoviles.utils.CustomToast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.File
 import java.io.FileInputStream
@@ -103,7 +104,7 @@ class InventoryModificarService : AppCompatActivity() {
                 fabMangaModificar.visibility = View.VISIBLE
 
             } ?: run {
-                Toast.makeText(this, "Manga no encontrado", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,760)
 
                 fabMangaModificar.visibility = View.GONE
             }
@@ -143,13 +144,13 @@ class InventoryModificarService : AppCompatActivity() {
                 )
 
                 if (arbolBinarioManga.modificarManga(mangaId, nuevoManga)) {
-                    Toast.makeText(this, "Manga modificado con éxito", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(this,910)
                     guardarArbolEnArchivo()
                 } else {
-                    Toast.makeText(this, "Error al modificar manga", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(this,920)
                 }
             } else {
-                Toast.makeText(this, "Manga no encontrado", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,760)
             }
         }
 

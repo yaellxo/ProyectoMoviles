@@ -32,7 +32,7 @@ class LoginScreen : AppCompatActivity() {
             val claveLogin = etClaveLogin.text.toString()
 
             if (alias.isEmpty() || claveLogin.isEmpty()) {
-                Toast.makeText(this, "Por favor, ingrese todos los campos", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,600)
                 return@setOnClickListener
             }
 
@@ -42,7 +42,7 @@ class LoginScreen : AppCompatActivity() {
                 editor.putString("activeUserAlias", alias)
                 editor.apply()
 
-                Toast.makeText(this, "Inicio de sesión exitoso como super administrador", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,700)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -124,12 +124,12 @@ class LoginScreen : AppCompatActivity() {
                     }
 
                     if (!userFound) {
-                        Toast.makeText(this, "Alias o clave incorrectos", Toast.LENGTH_SHORT).show()
+                        CustomToast.show(this,200)
                     }
                 }
             } catch (e: Exception) {
                 Log.e("LoginScreen", "Error al recuperar administradores: ${e.message}")
-                Toast.makeText(this, "Error al verificar administrador", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,710)
             }
         }
             btnRegistro.setOnClickListener {

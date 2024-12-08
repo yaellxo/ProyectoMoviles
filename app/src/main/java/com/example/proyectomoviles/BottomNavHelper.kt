@@ -9,6 +9,7 @@ import android.view.animation.RotateAnimation
 import android.widget.Toast
 import androidx.core.view.forEach
 import androidx.navigation.NavController
+import com.example.proyectomoviles.utils.CustomToast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BottomNavHelper {
@@ -101,11 +102,7 @@ class BottomNavHelper {
                             navController.navigate(R.id.menu_perfil, bundle)
                         }
                         else -> {
-                            Toast.makeText(
-                                bottomNavigationView.context,
-                                "Error: Tipo de usuario no reconocido",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            CustomToast.show(bottomNavigationView,1400)
                         }
                     }
                 }

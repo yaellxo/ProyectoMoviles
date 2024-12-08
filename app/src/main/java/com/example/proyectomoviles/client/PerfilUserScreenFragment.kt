@@ -18,6 +18,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.proyectomoviles.R
+import com.example.proyectomoviles.utils.CustomToast
 import org.json.JSONArray
 import java.io.File
 import java.io.FileOutputStream
@@ -131,17 +132,17 @@ class PerfilUserScreenFragment : Fragment(R.layout.perfil_activity) {
                     }
 
                     saveProfilePhoto(savedUri, storedAlias)
-                    Toast.makeText(requireContext(), "Imagen actualizada correctamente", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(requireContext(),800)
                 } catch (e: Exception) {
                     Log.e("ImagePicker", "Error al cargar la imagen", e)
-                    Toast.makeText(requireContext(), "Hubo un error al cargar la imagen", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(requireContext(),810)
                 }
             } else {
                 Log.e("ImagePicker", "Alias activo no encontrado")
-                Toast.makeText(requireContext(), "Alias activo no encontrado. No se pudo actualizar la imagen.", Toast.LENGTH_SHORT).show()
+                CustomToast.show(requireContext(),820)
             }
         } else {
-            Toast.makeText(requireContext(), "No se seleccionó ninguna imagen", Toast.LENGTH_SHORT).show()
+            CustomToast.show(requireContext(),830)
         }
     }
 

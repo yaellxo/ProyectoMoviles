@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.example.proyectomoviles.models.ArbolBinarioManga
+import com.example.proyectomoviles.utils.CustomToast
 import java.io.FileInputStream
 import java.io.ObjectInputStream
 import java.io.FileOutputStream
@@ -45,17 +46,17 @@ class InventoryEliminarService : AppCompatActivity() {
                     setResult(RESULT_OK, resultIntent)
                     finish()
 
-                    Toast.makeText(this, "Manga eliminado exitosamente.", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(this,740)
 
                     finish()
                 } else {
-                    Toast.makeText(this, "No se encontró el manga con ese ID.", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(this,750)
                 }
 
                 val mangasEnOrden = arbolBinarioManga.obtenerMangasEnOrden()
                 Log.d("InventoryEliminarService", "Árbol después de la eliminación (en orden): ${mangasEnOrden.joinToString()}")
             } else {
-                Toast.makeText(this, "Por favor ingrese un ID válido.", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,500)
             }
         }
 

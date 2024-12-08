@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.R
+import com.example.proyectomoviles.utils.CustomToast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.itextpdf.text.pdf.PdfReader
 import com.itextpdf.text.pdf.PdfStamper
@@ -50,7 +51,7 @@ class ReportService : AppCompatActivity() {
                     val textoPermitido = currentText.substring(0, MAX_CHARACTERS)
                     etReporteRegistrar.setText(textoPermitido)
                     etReporteRegistrar.setSelection(MAX_CHARACTERS)
-                    Toast.makeText(this@ReportService, "Has alcanzado el límite de caracteres.", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(this@ReportService,1100)
                 }
 
                 isEditing = false
@@ -69,7 +70,7 @@ class ReportService : AppCompatActivity() {
             val reporteTexto = etReporteRegistrar.text.toString().trim()
 
             if (reporteTexto.isEmpty()) {
-                Toast.makeText(this, "Por favor ingrese un reporte", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,1100)
                 return@setOnClickListener
             }
 
@@ -152,9 +153,9 @@ class ReportService : AppCompatActivity() {
                 stamper.close()
                 reader.close()
 
-                Toast.makeText(this, "Reporte guardado como PDF exitosamente.", Toast.LENGTH_LONG).show()
+                CustomToast.show(this,1200)
             } else {
-                Toast.makeText(this, "Error al abrir el archivo.", Toast.LENGTH_LONG).show()
+                CustomToast.show(this,1300)
             }
 
         } catch (e: Exception) {

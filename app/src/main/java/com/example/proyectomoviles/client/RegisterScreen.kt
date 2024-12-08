@@ -64,11 +64,11 @@ class RegisterScreen : AppCompatActivity() {
             for (i in 0 until users.length()) {
                 val user = users.getJSONObject(i)
                 if (user.getString("correo") == correo) {
-                    Toast.makeText(this, "Este correo ya está registrado", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(this,300)
                     return@setOnClickListener
                 }
                 if (user.getString("alias") == alias) {
-                    Toast.makeText(this, "Este alias ya está registrado", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(this,310)
                     return@setOnClickListener
                 }
             }

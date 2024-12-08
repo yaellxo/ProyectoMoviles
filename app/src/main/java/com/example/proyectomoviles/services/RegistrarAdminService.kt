@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.client.LoginScreen
+import com.example.proyectomoviles.utils.CustomToast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONArray
 import org.json.JSONObject
@@ -43,12 +44,12 @@ class RegistrarAdminService : AppCompatActivity() {
             val nivelAcceso = spNivelAccesoAdminRegistro.selectedItem.toString()
 
             if (nombre.isEmpty() || alias.isEmpty() || correo.isEmpty() || area.isEmpty() || clave.isEmpty()) {
-                Toast.makeText(this, "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,600)
                 return@setOnClickListener
             }
 
             if (!android.util.Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
-                Toast.makeText(this, "Correo electrónico no válido.", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,320)
                 return@setOnClickListener
             }
 
@@ -58,7 +59,7 @@ class RegistrarAdminService : AppCompatActivity() {
             for (i in 0 until admins.length()) {
                 val admin = admins.getJSONObject(i)
                 if (admin.getString("alias") == alias) {
-                    Toast.makeText(this, "Este alias ya está registrado.", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(this,310)
                     return@setOnClickListener
                 }
             }

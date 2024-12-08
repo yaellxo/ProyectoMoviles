@@ -20,6 +20,7 @@ import android.content.Context
 import android.content.Intent
 import com.example.proyectomoviles.client.LoginScreen
 import com.example.proyectomoviles.models.AdminConstants
+import com.example.proyectomoviles.utils.CustomToast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.File
 import java.io.FileOutputStream
@@ -160,7 +161,7 @@ class PerfilSuperAdminScreenFragment : Fragment(R.layout.perfil_superadmin_activ
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
 
-        Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show()
+        CustomToast.show(this,1000)
     }
 }
 

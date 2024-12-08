@@ -11,6 +11,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.R
+import com.example.proyectomoviles.utils.CustomToast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONArray
 
@@ -40,13 +41,13 @@ class ModificarAdminService : AppCompatActivity() {
             if (event != null && event.keyCode == KeyEvent.KEYCODE_ENTER || actionId == KeyEvent.KEYCODE_ENTER) {
                 val adminId = etIdAdminModificar.text.toString().trim()
                 if (adminId.isEmpty()) {
-                    Toast.makeText(this, "Por favor, ingrese el ID del administrador.", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(this,610)
                     return@setOnEditorActionListener true
                 }
 
                 val adminIndex = findAdminIndexById(adminId, admins)
                 if (adminIndex == -1) {
-                    Toast.makeText(this, "Administrador no encontrado.", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(this,720)
                     return@setOnEditorActionListener true
                 }
 
@@ -68,7 +69,7 @@ class ModificarAdminService : AppCompatActivity() {
 
                 enableFields(etNombreAdminModificar, etAliasAdminModificar, etCorreoAdminModificar, spNivelAccesoAdminModificar, etAreaAdminModificar, etClaveAdminModificar)
 
-                Toast.makeText(this, "Datos cargados. Puede realizar modificaciones.", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,400)
                 true
             } else {
                 false
@@ -98,9 +99,9 @@ class ModificarAdminService : AppCompatActivity() {
 
                     enableFields(etNombreAdminModificar, etAliasAdminModificar, etCorreoAdminModificar, spNivelAccesoAdminModificar, etAreaAdminModificar, etClaveAdminModificar)
 
-                    Toast.makeText(this, "Datos cargados. Puede realizar modificaciones.", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(this,400)
                 } else {
-                    Toast.makeText(this, "Administrador no encontrado.", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(this,720)
                 }
             }
         }
@@ -109,13 +110,13 @@ class ModificarAdminService : AppCompatActivity() {
             val adminId = etIdAdminModificar.text.toString().trim()
 
             if (adminId.isEmpty()) {
-                Toast.makeText(this, "Por favor, ingrese el ID del administrador.", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,610)
                 return@setOnClickListener
             }
 
             val adminIndex = findAdminIndexById(adminId, admins)
             if (adminIndex == -1) {
-                Toast.makeText(this, "Administrador no encontrado.", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,720)
                 return@setOnClickListener
             }
 
@@ -128,7 +129,7 @@ class ModificarAdminService : AppCompatActivity() {
             admin.put("nivelAcceso", spNivelAccesoAdminModificar.selectedItem.toString())
 
             sharedPreferences.edit().putString("admins_data", admins.toString()).apply()
-            Toast.makeText(this, "Administrador modificado con éxito.", Toast.LENGTH_SHORT).show()
+            CustomToast.show(this,780)
 
             Log.d("ModificarAdminService", "Administrador modificado: $admin")
 

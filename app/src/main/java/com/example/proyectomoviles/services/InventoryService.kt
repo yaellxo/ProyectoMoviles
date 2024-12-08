@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.models.ArbolBinarioManga
 import com.example.proyectomoviles.models.Manga
+import com.example.proyectomoviles.utils.CustomToast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.File
 import java.io.FileInputStream
@@ -102,7 +103,7 @@ class InventoryService : AppCompatActivity() {
                     mangaAdapter.notifyDataSetChanged()
 
                     if (mangasFiltrados.isEmpty()) {
-                        Toast.makeText(this@InventoryService, "No se encontraron mangas", Toast.LENGTH_SHORT).show()
+                        CustomToast.show(this,770)
                     }
                 } else {
                     val mangas = arbolBinarioManga.obtenerMangasEnOrden()
@@ -174,7 +175,7 @@ class InventoryService : AppCompatActivity() {
 
                 mangaAdapter.notifyDataSetChanged()
 
-                Toast.makeText(this, "Manga eliminado exitosamente", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,740)
             }
         }
 

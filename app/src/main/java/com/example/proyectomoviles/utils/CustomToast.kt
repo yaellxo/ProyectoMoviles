@@ -115,7 +115,42 @@ object CustomToast {
                 imageView.setImageResource(R.drawable.advertencia)
                 background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
             }
-
+            //Alias o clave incorrectos
+            200 -> {
+                textView.text = "Alias o clave incorrectos."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Correo ya registrado
+            300 -> {
+                textView.text = "Este correo ya está registrado."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Alias ya registrado
+            310 -> {
+                textView.text = "Este alias ya está registrado."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Correo no valido
+            320 -> {
+                textView.text = "Correo electrónico no válido."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Datos cargados, puede realizar modificaciones
+            400 -> {
+                textView.text = "Datos cargados. Puede realizar modificaciones."
+                imageView.setImageResource(R.drawable.ic_modificar_blanco)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_modificar))
+            }
+            //Has alcanzado el limite de caracteres
+            410 -> {
+                textView.text = "Has alcanzado el límite de caracteres."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
             //ID INVÁLIDO
             500 -> {
                 textView.text = "Ingresa un ID válido."
@@ -128,8 +163,144 @@ object CustomToast {
                 imageView.setImageResource(R.drawable.advertencia)
                 background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
             }
-
-
+            //Ingresar el ID del admin
+            610 -> {
+                textView.text = "Por favor, ingrese el ID del administrador."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Completar todos los campos incluyendo la imagen
+            620 -> {
+                textView.text = "Por favor, complete todos los campos, incluyendo la imagen."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Inicio de sesion como super administrador
+            700 -> {
+                textView.text = "Inicio de sesión exitoso como super administrador."
+                imageView.setImageResource(R.drawable.ic_perfil)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_agregar))
+            }
+            //Error al verificar administrador
+            710 -> {
+                textView.text = "Error al verificar administrador."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Administrador no encontrado
+            720 -> {
+                textView.text = "Administrador no encontrado."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Administrador eliminado con exito
+            730 -> {
+                textView.text = "Administrador eliminado con éxito."
+                imageView.setImageResource(R.drawable.ic_perfil)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Manga eliminado con exito
+            740 -> {
+                textView.text = "Manga eliminado exitosamente."
+                imageView.setImageResource(R.drawable.ic_inventario_admin)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Manga no encontrado con ese ID
+            750 -> {
+                textView.text = "No se encontró el manga con ese ID."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Manga no encontrado
+            760 -> {
+                textView.text = "Manga no encontrado."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //No se encontraron mangas
+            770 -> {
+                textView.text = "No se encontraron mangas."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Administrador modificado con exito
+            780 -> {
+                textView.text = "Administrador modificado con éxito."
+                imageView.setImageResource(R.drawable.ic_modificar_blanco)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_modificar))
+            }
+            //Imagen actualizada
+            800 -> {
+                textView.text = "Imagen actualizada correctamente"
+                imageView.setImageResource(R.drawable.ic_modificar_blanco)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_modificar))
+            }
+            //Error al cargar la imagen
+            810 -> {
+                textView.text = "Hubo un error al cargar la imagen."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Alias activo no encontrado
+            820 -> {
+                textView.text = "Alias activo no encontrado. No se pudo actualizar la imagen."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //No se selecciono ninguna imagen
+            830 -> {
+                textView.text = "No se seleccionó ninguna imagen."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Manga agregado con exito
+            900 -> {
+                textView.text = "Manga agregado con éxito!"
+                imageView.setImageResource(R.drawable.ic_inventario_admin)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_agregar))
+            }
+            //Manga modificado con exito
+            910 -> {
+                textView.text = "Manga modificado con éxito!"
+                imageView.setImageResource(R.drawable.ic_modificar_blanco)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_modificar))
+            }
+            //Error al modificar manga
+            920 -> {
+                textView.text = "Error al modificar manga."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Sesion cerrada
+            1000 -> {
+                textView.text = "Sesión cerrada."
+                imageView.setImageResource(R.drawable.ic_todogood)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_agregar))
+            }
+            //Por favor ingrese un reporte
+            1100 -> {
+                textView.text = "Por favor, ingrese un reporte."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Reporte guardado exitosamente como PDF
+            1200 -> {
+                textView.text = "Reporte guardado exitosamente como PDF."
+                imageView.setImageResource(R.drawable.ic_todogood)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_reporte))
+            }
+            //Error al abrir el archivo
+            1300 -> {
+                textView.text = "Error al abrir el archivo."
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
+            //Error: Tipo de usuario no reconocido
+            1400 -> {
+                textView.text = "Error: Tipo de usuario no reconocido :("
+                imageView.setImageResource(R.drawable.advertencia)
+                background.setColor(ContextCompat.getColor(context, R.color.opcion_eliminar))
+            }
             else -> {
                 textView.text = "Registra el id de este boton en utils/CustomToast"
                 imageView.setImageResource(R.drawable.ic_launcher_background)

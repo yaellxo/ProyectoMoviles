@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.R
+import com.example.proyectomoviles.utils.CustomToast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONArray
 
@@ -30,13 +31,13 @@ class EliminarAdminService : AppCompatActivity() {
                 val adminId = etIdAdminEliminar.text.toString().trim()
 
                 if (adminId.isEmpty()) {
-                    Toast.makeText(this, "Por favor, ingrese el ID del administrador.", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(this,610)
                     return@setOnEditorActionListener true
                 }
 
                 val adminIndex = findAdminIndexById(adminId, admins)
                 if (adminIndex == -1) {
-                    Toast.makeText(this, "Administrador no encontrado.", Toast.LENGTH_SHORT).show()
+                    CustomToast.show(this, 720)
                     return@setOnEditorActionListener true
                 }
 
@@ -44,7 +45,7 @@ class EliminarAdminService : AppCompatActivity() {
 
                 sharedPreferences.edit().putString("admins_data", admins.toString()).apply()
 
-                Toast.makeText(this, "Administrador eliminado con éxito.", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,730)
 
                 etIdAdminEliminar.text.clear()
 
@@ -59,13 +60,13 @@ class EliminarAdminService : AppCompatActivity() {
             val adminId = etIdAdminEliminar.text.toString().trim()
 
             if (adminId.isEmpty()) {
-                Toast.makeText(this, "Por favor, ingrese el ID del administrador.", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,610)
                 return@setOnClickListener
             }
 
             val adminIndex = findAdminIndexById(adminId, admins)
             if (adminIndex == -1) {
-                Toast.makeText(this, "Administrador no encontrado.", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this,720)
                 return@setOnClickListener
             }
 
@@ -73,7 +74,7 @@ class EliminarAdminService : AppCompatActivity() {
 
             sharedPreferences.edit().putString("admins_data", admins.toString()).apply()
 
-            Toast.makeText(this, "Administrador eliminado con éxito.", Toast.LENGTH_SHORT).show()
+            CustomToast.show(this,730)
 
             etIdAdminEliminar.text.clear()
 

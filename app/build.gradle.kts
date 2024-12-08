@@ -55,6 +55,7 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.9")
     implementation("com.itextpdf:itextpdf:5.5.13.2")
     implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation(libs.androidx.recyclerview)
     kapt("com.github.bumptech.glide:compiler:4.15.1")
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)

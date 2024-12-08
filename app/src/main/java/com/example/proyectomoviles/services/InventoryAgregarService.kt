@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.models.ArbolBinarioManga
 import com.example.proyectomoviles.models.Manga
+import com.example.proyectomoviles.utils.CustomToast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.File
 import java.io.FileOutputStream
@@ -56,7 +57,7 @@ class InventoryAgregarService : AppCompatActivity() {
             if (titulo.isEmpty() || precio == 0f || stock == 0 || descripcion.isEmpty() || volumen == 0.0 ||
                 autor.isEmpty() || genero.isEmpty() || editorial.isEmpty() || publicacion.isEmpty() || selectedImageUri == null) {
 
-                Toast.makeText(this, "Por favor, complete todos los campos, incluyendo la imagen.", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this, 620)
                 return@setOnClickListener
             }
 
@@ -83,7 +84,7 @@ class InventoryAgregarService : AppCompatActivity() {
 
             Log.d("InventoryAgregarService", "Manga agregado: ${manga.titulo}, ID: ${manga.mangaId}")
 
-            Toast.makeText(this, "Manga agregado con éxito!", Toast.LENGTH_SHORT).show()
+            CustomToast.show(this,900)
 
             val resultIntent = Intent()
             resultIntent.putExtra("nuevo_manga", manga)
