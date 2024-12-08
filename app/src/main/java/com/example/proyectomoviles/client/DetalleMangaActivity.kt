@@ -24,12 +24,10 @@ class DetalleMangaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle_manga)
 
-        // Obtener los datos del manga y usuario
         val manga = intent.getSerializableExtra("manga") as Manga
-        val userId = intent.getStringExtra("userId") ?: ""  // Asegúrate de pasar el userId correctamente
+        val userId = intent.getStringExtra("userId") ?: ""
         Log.d("DetalleMangaActivity", "User ID recibido: $userId")
 
-        // Referencias a las vistas
         val tituloTextView: TextView = findViewById(R.id.etTitulo)
         val autorTextView: TextView = findViewById(R.id.etAutor)
         val calificacionRatingBar: RatingBar = findViewById(R.id.rbCalificacion)
@@ -42,7 +40,6 @@ class DetalleMangaActivity : AppCompatActivity() {
         val descripcionTextView: TextView = findViewById(R.id.tvDescripcion)
         val btnCarrito: Button = findViewById(R.id.btnCarrito)
 
-        // Mostrar información del manga en los TextViews
         tituloTextView.text = manga.titulo
         autorTextView.text = manga.autor
         precioTextView.text = "$${manga.precio}"
@@ -52,7 +49,6 @@ class DetalleMangaActivity : AppCompatActivity() {
         publicacionTextView.text = "Publicación: ${manga.publicacion}"
         descripcionTextView.text = manga.descripcion
 
-        // Cargar la imagen del manga
         val file = File(manga.imagenUrl)
         if (file.exists()) {
             val bitmap = BitmapFactory.decodeFile(file.absolutePath)
@@ -63,17 +59,14 @@ class DetalleMangaActivity : AppCompatActivity() {
 
         calificacionRatingBar.rating = 4.5f
 
-        // Acción al hacer clic en el botón "Agregar al carrito"
         btnCarrito.setOnClickListener {
             Log.d("DetalleMangaActivity", "Botón 'Agregar al carrito' presionado")
 
-            // Recuperar los usuarios desde SharedPreferences
             val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
             val usersJson = sharedPreferences.getString("users", "[]")  // Obtener la lista de usuarios desde SharedPreferences
             val usersArray = JSONArray(usersJson)
 
             var usuario: Usuario? = null
-            // Buscar al usuario con el userId recibido
             for (i in 0 until usersArray.length()) {
                 val user = usersArray.getJSONObject(i)
                 val currentUserId = user.getString("userId")
@@ -93,11 +86,9 @@ class DetalleMangaActivity : AppCompatActivity() {
             }
 
             if (usuario != null) {
-                // Si se encuentra el usuario, agregar el manga al carrito
                 Log.d("DetalleMangaActivity", "Agregando manga al carrito para el usuario ${usuario.nombre}")
                 usuario.carrito.add(manga)  // Agregar el manga al carrito del usuario
 
-                // Actualizar la lista de usuarios en SharedPreferences
                 val updatedUsersArray = JSONArray()
                 for (i in 0 until usersArray.length()) {
                     val user = usersArray.getJSONObject(i)
@@ -133,22 +124,18 @@ class DetalleMangaActivity : AppCompatActivity() {
 
                 sharedPreferences.edit().putString("users", updatedUsersArray.toString()).apply()
 
-                // Crear el fragmento y pasar el userId como argumento
                 val fragment = CarritoScreenFragment()
                 val bundle = Bundle()
-                bundle.putString("userId", usuario.userId)  // Usar el userId del usuario encontrado
+                bundle.putString("userId", usuario.userId)
                 fragment.arguments = bundle
 
-                // Mostrar un mensaje de éxito
                 Toast.makeText(this, "Manga agregado al carrito", Toast.LENGTH_SHORT).show()
             } else {
-                // Si no se encuentra el usuario
                 Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    // Función para cargar el carrito del usuario
     fun cargarCarrito(carritoJson: JSONArray?): MutableList<Manga> {
         val carrito = mutableListOf<Manga>()
         if (carritoJson != null && carritoJson.length() > 0) {

@@ -55,7 +55,6 @@ class LoginScreen : AppCompatActivity() {
             }
 
             try {
-                // Verificar si el alias y la clave corresponden a un usuario normal
                 val usersJson = sharedPreferences.getString("users", "[]")
                 val usersArray = JSONArray(usersJson)
                 var userFound = false
@@ -72,9 +71,10 @@ class LoginScreen : AppCompatActivity() {
                         editor.putString("nombre", user.getString("nombre"))
                         editor.putString("correo", user.getString("correo"))
                         editor.putString("edad", user.getString("edad"))
-                        editor.putString("userId", user.optString("userId", null))
+                        editor.putString("userId", user.getString("userId"))  // Guardar el userId del usuario
                         editor.apply()
 
+                        // Almacenar la URL de la foto si está disponible
                         val photoUriString = user.optString("photoUri", "")
                         editor.putString("userPhotoUri", photoUriString)
                         editor.apply()

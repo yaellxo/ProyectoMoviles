@@ -14,13 +14,11 @@ class CarritoDeCompras(private val context: Context, private val userId: String)
         val usersJson = sharedPreferences.getString("users", "[]")
         val usersArray = JSONArray(usersJson)
 
-        // Buscar al usuario por userId
         for (i in 0 until usersArray.length()) {
             val userJson = usersArray.getJSONObject(i)
             if (userJson.getString("userId") == usuario.userId) {
                 val carritoArray = userJson.optJSONArray("carrito") ?: JSONArray()
 
-                // Crear un objeto JSON con la información del manga
                 val mangaJson = JSONObject().apply {
                     put("titulo", manga.titulo)
                     put("autor", manga.autor)
@@ -35,17 +33,14 @@ class CarritoDeCompras(private val context: Context, private val userId: String)
                     put("stock", manga.stock)
                 }
 
-                // Agregar el manga al carrito del usuario
                 carritoArray.put(mangaJson)
                 userJson.put("carrito", carritoArray)
 
-                // Guardar el usuario actualizado en SharedPreferences
                 guardarUsuarioEnSharedPreferences(userJson)
                 break
             }
         }
 
-        // Guardar los cambios en SharedPreferences
         sharedPreferences.edit()
             .putString("users", usersArray.toString())
             .apply()
@@ -56,7 +51,6 @@ class CarritoDeCompras(private val context: Context, private val userId: String)
         val usersJson = sharedPreferences.getString("users", "[]")
         val usersArray = JSONArray(usersJson)
 
-        // Actualizar el usuario en la lista de usuarios
         for (i in 0 until usersArray.length()) {
             val user = usersArray.getJSONObject(i)
             if (user.getString("userId") == userJson.getString("userId")) {
@@ -65,7 +59,6 @@ class CarritoDeCompras(private val context: Context, private val userId: String)
             }
         }
 
-        // Guardar los usuarios actualizados
         editor.putString("users", usersArray.toString())
         editor.apply()
     }
@@ -75,7 +68,6 @@ class CarritoDeCompras(private val context: Context, private val userId: String)
         val usersArray = JSONArray(usersJson)
         val carrito = mutableListOf<Manga>()
 
-        // Buscar al usuario y obtener su carrito
         for (i in 0 until usersArray.length()) {
             val userJson = usersArray.getJSONObject(i)
             if (userJson.getString("userId") == userId) {

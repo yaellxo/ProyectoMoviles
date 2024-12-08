@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -37,7 +36,6 @@ class MangaAdapterCarrito(
         holder.tvAutor.text = manga.autor
         holder.tvPrecioManga.text = context.getString(R.string.precio_template)
 
-        // Cargar la imagen
         val file = File(manga.imagenUrl)
         if (file.exists()) {
             holder.ivMangaImagen.setImageBitmap(BitmapFactory.decodeFile(file.absolutePath))
@@ -45,9 +43,8 @@ class MangaAdapterCarrito(
             holder.ivMangaImagen.setImageResource(android.R.drawable.ic_menu_report_image)
         }
 
-        // Log para ver qué manga está siendo mostrado
         Log.d("MangaAdapterCarrito", "Mostrando manga: ${manga.titulo}, Autor: ${manga.autor}, Precio: ${manga.precio}")
-        Log.d("MangaAdapterCarrito", "UserId del carrito: $userId")  // Usar el userId aquí
+        Log.d("MangaAdapterCarrito", "UserId del carrito: $userId")
     }
 
 
