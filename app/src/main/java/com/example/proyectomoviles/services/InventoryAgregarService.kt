@@ -41,7 +41,6 @@ class InventoryAgregarService : AppCompatActivity() {
         val etPublicacionMangaRegistrar: EditText = findViewById(R.id.etPublicacionMangaRegistrar)
         val btnImagenMangaRegistrar: TextView = findViewById(R.id.btnImagenMangaRegistrar)
         val fabAgregarManga: FloatingActionButton = findViewById(R.id.fabAgregarManga)
-        val fabRegresarMangaAgregar: FloatingActionButton = findViewById(R.id.fabRegresarMangaAgregar)
 
         fabAgregarManga.setOnClickListener {
             val titulo = etNombreMangaRegistrar.text.toString()
@@ -96,9 +95,6 @@ class InventoryAgregarService : AppCompatActivity() {
             openGallery()
         }
 
-        fabRegresarMangaAgregar.setOnClickListener {
-            onBackPressed()
-        }
     }
 
 

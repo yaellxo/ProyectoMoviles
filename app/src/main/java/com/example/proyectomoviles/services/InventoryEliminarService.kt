@@ -28,7 +28,6 @@ class InventoryEliminarService : AppCompatActivity() {
 
         val etIdMangaEliminar: EditText = findViewById(R.id.etIdMangaEliminar)
         val fabMangaEliminar: FloatingActionButton = findViewById(R.id.fabMangaEliminar)
-        val fabRegresarMangaEliminar: FloatingActionButton = findViewById(R.id.fabRegresarMangaEliminar)
 
         fabMangaEliminar.setOnClickListener {
             val mangaId = etIdMangaEliminar.text.toString().trim()
@@ -61,9 +60,6 @@ class InventoryEliminarService : AppCompatActivity() {
         }
 
 
-        fabRegresarMangaEliminar.setOnClickListener {
-            finish()
-        }
     }
 
     private fun cargarArbolDesdeArchivo() {

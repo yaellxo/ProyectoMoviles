@@ -17,7 +17,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class AgregarEventoScreen : AppCompatActivity() {
 
-    private lateinit var fabRegresarEvento: FloatingActionButton
     private lateinit var btnAgregarImagen: ImageButton
     private var imagenUri: Uri? = null
 
@@ -34,7 +33,6 @@ class AgregarEventoScreen : AppCompatActivity() {
         val ubicacionField = findViewById<EditText>(R.id.etUbicacionEventoRegistro)
         val descripcionField = findViewById<EditText>(R.id.etDescripcionEventoRegistro)
 
-        fabRegresarEvento = findViewById(R.id.fabRegresarEventoAgregar)
         val btnRegistrar: FloatingActionButton = findViewById(R.id.fabEventoAgregar)
         btnAgregarImagen = findViewById(R.id.btnAgregarImagenRegistrarEvento)
 
@@ -61,9 +59,7 @@ class AgregarEventoScreen : AppCompatActivity() {
             startActivityForResult(intent, PICK_IMAGE_REQUEST)
         }
 
-        fabRegresarEvento.setOnClickListener{
-            finish()
-        }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

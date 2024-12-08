@@ -41,7 +41,6 @@ class InventoryService : AppCompatActivity() {
 
         val et_search: EditText = findViewById(R.id.et_search)
         recyclerViewMangas = findViewById(R.id.recyclerViewMangas)
-        fabRegresarInventario = findViewById(R.id.fabRegresarInventario)
         fabMain = findViewById(R.id.fab)
         additionalButtons = listOf(
             findViewById(R.id.agregarManga),
