@@ -87,7 +87,6 @@ class ModificarAdminService : AppCompatActivity() {
                     etAreaAdminModificar.setText(admin.getString("area"))
                     etClaveAdminModificar.setText(admin.getString("clave"))
 
-                    // Configurar el Spinner para seleccionar el nivel de acceso correspondiente
                     val nivelAcceso = admin.getString("nivelAcceso")
                     val spinnerAdapter = spNivelAccesoAdminModificar.adapter
                     for (i in 0 until spinnerAdapter.count) {

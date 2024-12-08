@@ -29,8 +29,8 @@ class ReportService : AppCompatActivity() {
         setContentView(R.layout.registrar_reporte_activity)
 
         val etReporteRegistrar: EditText = findViewById(R.id.etReporteRegistrar)
-        val fabRegistrarReporte: FloatingActionButton = findViewById(R.id.fabRegistrarReporte)
-        val fabRegresarReporteModificar: FloatingActionButton = findViewById(R.id.fabRegresarReporteModificar)
+        val fabRegistrarReporte: FloatingActionButton = findViewById(R.id.fabReporteAgregar)
+        val fabRegresarReporteModificar: FloatingActionButton = findViewById(R.id.fabRegresarReporteAgregar)
         val tvCaracteresRestantes: TextView = findViewById(R.id.tvCaracteresRestantes)
 
         tvCaracteresRestantes.text = "Caracteres restantes: $MAX_CHARACTERS"

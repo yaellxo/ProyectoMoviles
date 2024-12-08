@@ -81,6 +81,19 @@
             android:name=".client.DetalleMangaActivity"
             android:theme="@style/Theme.ProyectoMoviles"/>
 
+        <activity
+            android:name=".client.event_screens.AgregarEventoScreen"
+            android:theme="@style/Theme.ProyectoMoviles"/>
+
+        <activity
+            android:name=".client.event_screens.ModificarEventoScreen"
+            android:theme="@style/Theme.ProyectoMoviles"/>
+
+        <activity
+            android:name=".client.event_screens.EliminarEventoScreen"
+            android:theme="@style/Theme.ProyectoMoviles"/>
+
+
 
     </application>
 

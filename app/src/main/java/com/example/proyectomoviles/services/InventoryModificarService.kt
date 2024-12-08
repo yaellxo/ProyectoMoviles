@@ -89,7 +89,6 @@ class InventoryModificarService : AppCompatActivity() {
                     btnImagenMangaModificar.text = "Imagen seleccionada: ${it.imagenUrl}"
                 }
 
-                // Activar campos para edición
                 etNombreMangaModificar.isEnabled = true
                 etPrecioMangaModificar.isEnabled = true
                 etStockMangaModificar.isEnabled = true
@@ -101,13 +100,11 @@ class InventoryModificarService : AppCompatActivity() {
                 etPublicacionMangaModificar.isEnabled = true
                 btnImagenMangaModificar.isEnabled = true
 
-                // Mostrar el FloatingActionButton solo si el manga fue encontrado
                 fabMangaModificar.visibility = View.VISIBLE
 
             } ?: run {
                 Toast.makeText(this, "Manga no encontrado", Toast.LENGTH_SHORT).show()
 
-                // Ocultar el FloatingActionButton si el manga no fue encontrado
                 fabMangaModificar.visibility = View.GONE
             }
             true
