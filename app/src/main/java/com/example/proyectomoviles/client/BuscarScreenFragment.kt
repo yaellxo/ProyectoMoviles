@@ -1,5 +1,6 @@
 package com.example.proyectomoviles.client
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.adapters.MangaAdapterTienda
 import com.example.proyectomoviles.models.ArbolBinarioManga
+import com.example.proyectomoviles.models.Manga
 import java.io.File
 import java.io.FileInputStream
 import java.io.ObjectInputStream
@@ -21,6 +23,7 @@ class BuscarScreenFragment : Fragment(R.layout.buscar_activity) {
 
     private lateinit var mangaAdapter: MangaAdapterTienda
     private lateinit var arbolBinarioManga: ArbolBinarioManga
+    private lateinit var mangas: MutableList<Manga>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,8 +31,15 @@ class BuscarScreenFragment : Fragment(R.layout.buscar_activity) {
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewMangas)
         val et_search = view.findViewById<EditText>(R.id.et_search)
 
-        mangaAdapter = MangaAdapterTienda(mutableListOf())
+        mangas = mutableListOf()
+
+        mangaAdapter = MangaAdapterTienda(mangas) { manga ->
+            val intent = Intent(requireContext(), DetalleMangaActivity::class.java)
+            intent.putExtra("manga", manga)
+            startActivity(intent)
+        }
         recyclerView.adapter = mangaAdapter
+
 
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
 

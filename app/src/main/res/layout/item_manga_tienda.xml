@@ -57,6 +57,7 @@
 
             <RatingBar
                 android:id="@+id/ratingBar"
+                android:progressTint="@color/boton_compra"
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

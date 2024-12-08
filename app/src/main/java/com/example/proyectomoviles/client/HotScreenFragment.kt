@@ -1,5 +1,6 @@
 package com.example.proyectomoviles.client
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -51,7 +52,11 @@ class HotScreenFragment : Fragment(R.layout.hot_activity) {
                 val listaMangas = mutableListOf<Manga>()
                 recorrerArbolEnOrden(arbolBinarioManga.raiz, listaMangas)
 
-                mangaAdapter = MangaAdapterTienda(listaMangas)
+                mangaAdapter = MangaAdapterTienda(listaMangas) { manga ->
+                    val intent = Intent(requireContext(), DetalleMangaActivity::class.java)
+                    intent.putExtra("manga", manga)
+                    startActivity(intent)
+                }
                 recyclerViewMangas.adapter = mangaAdapter
             } else {
                 arbolBinarioManga = ArbolBinarioManga()
