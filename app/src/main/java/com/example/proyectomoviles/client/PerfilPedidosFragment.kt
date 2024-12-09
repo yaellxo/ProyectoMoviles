@@ -32,12 +32,10 @@ import java.io.File
 import java.io.FileOutputStream
 import org.json.JSONException
 
-class PerfilUserScreenFragment : Fragment(R.layout.perfil_activity) {
+class PerfilPedidosFragment : Fragment(R.layout.perfil_activity_pedidos) {
 
     private lateinit var tvAlias: TextView
-    private lateinit var tvEdad: TextView
     private lateinit var tvNombre: TextView
-    private lateinit var ivUserPhoto: ImageView
     private lateinit var btnCerrarSesion: ImageView
     private lateinit var pedidosRecyclerView: RecyclerView
     private lateinit var pedidosAdapter: PedidosAdapter
@@ -47,9 +45,7 @@ class PerfilUserScreenFragment : Fragment(R.layout.perfil_activity) {
         super.onViewCreated(view, savedInstanceState)
 
         tvAlias = view.findViewById(R.id.tvAliasUser)
-        tvEdad = view.findViewById(R.id.tvEdadUser)
         tvNombre = view.findViewById(R.id.tvNombreUser)
-        ivUserPhoto = view.findViewById(R.id.ivUserPhoto)
         btnCerrarSesion = view.findViewById(R.id.btnCerrarSesion)
         pedidosRecyclerView = view.findViewById(R.id.pedidosRecyclerView)
 
@@ -112,10 +108,6 @@ class PerfilUserScreenFragment : Fragment(R.layout.perfil_activity) {
             Log.e("PerfilScreenFragment", "Alias no encontrado en los argumentos")
         }
 
-        ivUserPhoto.setOnClickListener {
-            getImageLauncher.launch("image/*")
-        }
-
         btnCerrarSesion.setOnClickListener {
             onCerrarSesionClick()
         }
@@ -150,8 +142,6 @@ class PerfilUserScreenFragment : Fragment(R.layout.perfil_activity) {
             if (alias.equals(storedAlias, ignoreCase = true)) {
                 Log.d("PerfilScreenFragment", "Cargando datos del usuario: $storedAlias")
                 tvAlias.text = user.getString("alias")
-                tvEdad.text = "Edad: ${user.getString("edad")}"
-                tvNombre.text = "Nombre: ${user.getString("nombre")}"
 
                 val photoUriString = user.optString("photoUri", null)
                 if (!photoUriString.isNullOrEmpty()) {
@@ -159,9 +149,7 @@ class PerfilUserScreenFragment : Fragment(R.layout.perfil_activity) {
                     val bitmap = BitmapFactory.decodeFile(photoUri.path)
 
                     val circularBitmap = getCircularBitmap(bitmap)
-                    ivUserPhoto.setImageBitmap(circularBitmap)
                 } else {
-                    ivUserPhoto.setImageResource(R.drawable.ic_perfil_user)
                 }
                 break
             }
@@ -200,10 +188,6 @@ class PerfilUserScreenFragment : Fragment(R.layout.perfil_activity) {
                     val inputStream = requireActivity().contentResolver.openInputStream(userPhotoUri)
                     val bitmap = BitmapFactory.decodeStream(inputStream)
                     val circularBitmap = getCircularBitmap(bitmap)
-
-                    activity?.runOnUiThread {
-                        ivUserPhoto.setImageBitmap(circularBitmap)
-                    }
 
                     saveProfilePhoto(savedUri, storedAlias)
                     CustomToast.show(requireContext(),800)

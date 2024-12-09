@@ -40,7 +40,6 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
         super.onCreate(savedInstanceState)
 
         val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-
         userId = sharedPreferences.getString("userId", "defaultUserId") ?: "defaultUserId"
 
         Log.d("CarritoScreen", "UserId recuperado: $userId")
@@ -177,13 +176,20 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
             if (carrito.isNotEmpty()) {
                 val animatorList = mutableListOf<Animator>()
 
+                val bundle = Bundle().apply {
+                    putSerializable("carritoMangas", ArrayList(carrito))
+                    putSerializable("usuario", usuario)
+                    putString("alias", usuario?.alias)
+                    Log.d("Carrito", "Carrito antes de enviar: ${carrito.size} items")
+                }
+
                 for (i in carrito.indices) {
                     val itemView = carritoRecyclerView.findViewHolderForAdapterPosition(i)?.itemView
 
                     itemView?.let {
                         val desplazamiento = it.width.toFloat() * 2
                         val animator = ObjectAnimator.ofFloat(it, "translationX", desplazamiento)
-                        animator.duration = 200
+                        animator.duration = 500
                         animatorList.add(animator)
                     }
                 }
@@ -197,24 +203,14 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
                             carrito.clear()
                             carritoRecyclerView.adapter?.notifyDataSetChanged()
 
-                            carritoRecyclerView.isEnabled = false
-                            carritoRecyclerView.alpha = 0.5f
-
-                            carritoRecyclerView.layoutManager?.let {
-                                if (it is LinearLayoutManager) {
-                                    carritoRecyclerView.setOnTouchListener { _, _ -> true }
-                                }
-                            }
-
                             usuario.carrito = carrito
                             guardarCarrito(usuario)
 
                             actualizarResumenCompra(carrito, requireView().findViewById(R.id.etResumenCompraSumatoria))
-                            val bundle = Bundle()
-                            bundle.putString("userId", userId)
 
                             val navController = findNavController()
-                            navController.navigate(R.id.menu_perfil, bundle)
+                            navController.popBackStack(R.id.perfil_pedido, false)
+                            navController.navigate(R.id.perfil_pedido, bundle)
                         }
                     })
 

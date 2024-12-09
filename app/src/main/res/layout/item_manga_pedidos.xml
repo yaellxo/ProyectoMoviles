@@ -1,0 +1,72 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="285dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="285dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_shape_delgado">
+
+        <ImageView
+            android:id="@+id/ivMangaImagen"
+            android:layout_width="81dp"
+            android:layout_height="104dp"
+            android:layout_marginBottom="2dp"
+            android:scaleType="centerCrop"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/textViewsContainer"
+            app:layout_constraintHorizontal_bias="0.235"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <LinearLayout
+            android:id="@+id/textViewsContainer"
+            android:layout_width="177dp"
+            android:layout_height="102dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="8dp"
+            android:gravity="start"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvTituloManga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sawarabi"
+                android:text="Nombre"
+                android:textColor="@color/color_font_principal"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvVolumen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sawarabi"
+                android:text="Volumen"
+                android:textColor="@color/color_font_principal"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvAutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sawarabi"
+                android:text="Autor"
+                android:textColor="@color/gris_color"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

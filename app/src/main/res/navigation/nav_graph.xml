@@ -39,4 +39,9 @@
         android:name="com.example.proyectomoviles.client.EventDetailsFragment"
         android:label="Event Detail"
         tools:layout="@layout/event_detail_activity" />
+    <fragment
+        android:id="@+id/perfil_pedido"
+        android:name="com.example.proyectomoviles.client.PerfilPedidosFragment"
+        android:label="Perfil Pedido"
+        tools:layout="@layout/perfil_activity_pedidos" />
 </navigation>

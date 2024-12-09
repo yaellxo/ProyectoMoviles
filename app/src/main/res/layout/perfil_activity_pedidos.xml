@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/background4"
+        android:src="@drawable/background2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,11 +20,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="354dp"
         android:layout_height="78dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/border_shape"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -58,85 +57,112 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/match_parent"
-        android:layout_width="319dp"
-        android:layout_height="181dp"
-        android:layout_marginTop="148dp"
+        android:layout_width="297dp"
+        android:layout_height="183dp"
+        android:layout_marginTop="104dp"
         android:background="@drawable/border_shape_delgado"
-        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <ImageView
-            android:id="@+id/ivUserPhoto"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/circular_border"
-            android:gravity="center"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_perfil_user"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvAliasUser"
             android:layout_width="147dp"
             android:layout_height="35dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="1dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center"
             android:text="User"
             android:textColor="@android:color/black"
-            android:textSize="30sp"
+            android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/ivUserPhoto" />
-
-        <TextView
-            android:id="@+id/tvEdadUser"
-            android:layout_width="147dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="8dp"
-            android:drawablePadding="8dp"
-            android:fontFamily="@font/sawarabi"
-            android:gravity="center_vertical"
-            android:text="Edad:"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvAliasUser" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvNombreUser"
-            android:layout_width="147dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="262dp"
+            android:layout_height="128dp"
+            android:layout_marginTop="36dp"
             android:drawablePadding="8dp"
             android:fontFamily="@font/sawarabi"
+            android:foregroundGravity="center"
             android:gravity="center_vertical"
-            android:text="Nombre:"
+            android:justificationMode="inter_word"
+            android:padding="1dp"
+            android:text="¡Gracias por tu compra! Como Luffy en su viaje, ahora comienzas una nueva aventura con tus mangas. Te agradecemos por elegirnos, ¡tu apoyo es nuestra fuerza, como el espíritu de Naruto! Disfruta cada página como si fuera una victoria, y nos vemos en la próxima saga. ¡Hasta pronto!"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvEdadUser" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="295dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/border_shape_delgado"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/match_parent">
+
+        <TextView
+            android:id="@+id/Titulo"
+            android:layout_width="278dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            android:fontFamily="@font/sawarabi"
+            android:gravity="center"
+            android:text="Pedido Realizado"
+            android:textColor="@color/color_font_principal"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.583" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Pedidos"
+        android:layout_width="318dp"
+        android:layout_height="383dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="37dp"
+        android:background="@drawable/border_shape_delgado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pedidosRecyclerView"
+            android:layout_width="302dp"
+            android:layout_height="361dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
