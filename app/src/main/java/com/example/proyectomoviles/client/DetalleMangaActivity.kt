@@ -1,6 +1,8 @@
 package com.example.proyectomoviles.client
 
 import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Typeface
 import android.os.Bundle
@@ -13,6 +15,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.models.Manga
 import com.example.proyectomoviles.models.Usuario
@@ -48,6 +51,7 @@ class DetalleMangaActivity : AppCompatActivity() {
             }
         }
 
+        var compartirButton: ImageView = findViewById(R.id.btnCompartir)
         val tituloTextView: TextView = findViewById(R.id.etTitulo)
         val autorTextView: TextView = findViewById(R.id.etAutor)
         val imagenImageView: ImageView = findViewById(R.id.mangaImagenView)
@@ -93,6 +97,27 @@ class DetalleMangaActivity : AppCompatActivity() {
             imagenImageView.setImageBitmap(bitmap)
         } else {
             imagenImageView.setImageResource(R.drawable.ic_deafaultmanga)
+        }
+
+        compartirButton.setOnClickListener {
+            val bitmap = takeScreenshot()
+
+            val file = File(getExternalFilesDir(null), "screenshot.png")
+            file.outputStream().use {
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, it)
+            }
+
+            val uri = FileProvider.getUriForFile(
+                this,
+                "com.example.proyectomoviles.provider",
+                file
+            )
+
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "image/png"
+            intent.putExtra(Intent.EXTRA_STREAM, uri)
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            startActivity(Intent.createChooser(intent, "Compartir imagen"))
         }
 
         btnCarrito.setOnClickListener {
@@ -191,6 +216,14 @@ class DetalleMangaActivity : AppCompatActivity() {
 
         editor.putFloat(clave, calificacion)
         editor.apply()
+    }
+
+    private fun takeScreenshot(): Bitmap {
+        val view = window.decorView.rootView
+        view.isDrawingCacheEnabled = true
+        val bitmap = Bitmap.createBitmap(view.drawingCache)
+        view.isDrawingCacheEnabled = false
+        return bitmap
     }
 
     fun calcularPromedioCalificacion(mangaId: String): Float {

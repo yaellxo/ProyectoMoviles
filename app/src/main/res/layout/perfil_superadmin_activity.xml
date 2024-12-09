@@ -82,9 +82,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/ic_perfil_adminsuper"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tvAliasUser"
-            android:layout_width="197dp"
+            android:layout_width="255dp"
             android:layout_height="49dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/sawarabi"
@@ -99,7 +108,7 @@
 
         <TextView
             android:id="@+id/tvEdadUser"
-            android:layout_width="212dp"
+            android:layout_width="255dp"
             android:layout_height="42dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/sawarabi"
@@ -114,7 +123,7 @@
 
         <TextView
             android:id="@+id/tvNombreUser"
-            android:layout_width="212dp"
+            android:layout_width="255dp"
             android:layout_height="42dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/sawarabi"
@@ -129,7 +138,7 @@
 
         <TextView
             android:id="@+id/tvCorreoAdmin"
-            android:layout_width="212dp"
+            android:layout_width="255dp"
             android:layout_height="42dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/sawarabi"
@@ -144,7 +153,7 @@
 
         <TextView
             android:id="@+id/tvAreaAdmin"
-            android:layout_width="212dp"
+            android:layout_width="255dp"
             android:layout_height="42dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/sawarabi"
@@ -159,7 +168,7 @@
 
         <TextView
             android:id="@+id/tvRangoAdmin"
-            android:layout_width="212dp"
+            android:layout_width="255dp"
             android:layout_height="42dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/sawarabi"

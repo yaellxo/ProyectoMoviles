@@ -26,8 +26,17 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-
             android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/btnCompartir"
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="316dp"
+                android:layout_marginTop="148dp"
+                android:src="@drawable/ic_compartir"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:id="@+id/textViewsContainerTitulo"

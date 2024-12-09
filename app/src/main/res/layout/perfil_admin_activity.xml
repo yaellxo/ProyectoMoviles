@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/background_admin"
+        android:src="@drawable/background4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,11 +82,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <TextView
             android:id="@+id/tvAliasUser"
-            android:layout_width="197dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="293dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center"
             android:text="Admin"
@@ -94,13 +95,23 @@
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ivAdminPhoto" />
 
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/ic_perfile_admin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tvEdadUser"
-            android:layout_width="212dp"
-            android:layout_height="42dp"
+            android:layout_width="255dp"
+            android:layout_height="41dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center_vertical"
@@ -114,8 +125,8 @@
 
         <TextView
             android:id="@+id/tvNombreUser"
-            android:layout_width="212dp"
-            android:layout_height="42dp"
+            android:layout_width="255dp"
+            android:layout_height="39dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center_vertical"
@@ -129,8 +140,8 @@
 
         <TextView
             android:id="@+id/tvCorreoAdmin"
-            android:layout_width="212dp"
-            android:layout_height="42dp"
+            android:layout_width="255dp"
+            android:layout_height="39dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center_vertical"
@@ -144,8 +155,8 @@
 
         <TextView
             android:id="@+id/tvAreaAdmin"
-            android:layout_width="212dp"
-            android:layout_height="42dp"
+            android:layout_width="255dp"
+            android:layout_height="39dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center_vertical"
@@ -159,8 +170,8 @@
 
         <TextView
             android:id="@+id/tvRangoAdmin"
-            android:layout_width="212dp"
-            android:layout_height="42dp"
+            android:layout_width="255dp"
+            android:layout_height="39dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/sawarabi"
             android:gravity="center_vertical"
@@ -173,44 +184,44 @@
             app:layout_constraintTop_toBottomOf="@id/tvAreaAdmin" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/agregarReporte"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:src="@drawable/ic_reporteventa_admin"
-                app:backgroundTint="@color/opcion_reporte"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+            android:id="@+id/agregarReporte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:src="@drawable/ic_reporteventa_admin"
+            app:backgroundTint="@color/opcion_reporte"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/agregarManga"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:src="@drawable/ic_inventario_blanco"
-                app:backgroundTint="@color/opcion_inventario"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/agregarManga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:src="@drawable/ic_inventario_blanco"
+            app:backgroundTint="@color/opcion_inventario"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/agregarEvento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:src="@drawable/ic_eventos_admin"
-                app:backgroundTint="@color/boton_compra"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/agregarEvento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:src="@drawable/ic_eventos_admin"
+            app:backgroundTint="@color/boton_compra"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:src="@drawable/ic_plus_admin"
-                app:backgroundTint="@color/negro_color"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:src="@drawable/ic_plus_admin"
+            app:backgroundTint="@color/negro_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
