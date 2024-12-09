@@ -37,4 +37,9 @@
         android:id="@+id/menu_super_admin"
         android:name="com.example.proyectomoviles.services.PerfilSuperAdminScreenFragment"
         android:label="Admin" />
+    <fragment
+        android:id="@+id/eventoDetalleFragment"
+        android:name="com.example.proyectomoviles.client.EventDetailsFragment"
+        android:label="Event Detail"
+        tools:layout="@layout/event_detail_activity" />
 </navigation>
