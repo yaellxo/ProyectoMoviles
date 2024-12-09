@@ -14,6 +14,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -29,6 +30,7 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
 
     var userId: String = "defaultUserId"
     private lateinit var carritoRecyclerView: RecyclerView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +51,11 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val btnPaypal: Button = view.findViewById(R.id.btnPaypal)
+        btnPaypal.setOnClickListener {
+            procesarCompra()
+        }
 
         carritoRecyclerView = view.findViewById(R.id.carritoRecyclerView)
         val etResumenCompraSumatoria: TextView = view.findViewById(R.id.etResumenCompraSumatoria)
@@ -155,6 +162,30 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
         spannable.setSpan(StyleSpan(Typeface.BOLD), totalStart, totalEnd, 0)
 
         etResumenCompraSumatoria.text = spannable
+    }
+
+    private fun procesarCompra() {
+        val usuario = obtenerUsuarioPorId(userId)
+        if (usuario != null) {
+            val carrito = usuario.carrito
+
+            if (carrito.isNotEmpty()) {
+                carrito.forEach { manga ->
+                    manga.stock = (manga.stock - 1).coerceAtLeast(0)
+                }
+
+                guardarCarrito(usuario)
+
+                actualizarResumenCompra(carrito, requireView().findViewById(R.id.etResumenCompraSumatoria))
+                carritoRecyclerView.adapter?.notifyDataSetChanged()
+
+                Log.d("CarritoScreen", "Compra procesada, stock actualizado.")
+            } else {
+                Log.d("CarritoScreen", "No hay mangas en el carrito para procesar la compra.")
+            }
+        } else {
+            Log.d("CarritoScreen", "Usuario no encontrado.")
+        }
     }
 
     private fun obtenerUsuarioPorId(userId: String): Usuario? {
