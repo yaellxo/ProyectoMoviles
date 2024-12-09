@@ -50,9 +50,6 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
     private val fabCloseIcon = R.drawable.ic_cerrar_menu_admin
 
     private lateinit var dialog: Dialog
-    private lateinit var btnDialogCancelar: FloatingActionButton
-    private lateinit var btnDialogAceptar: FloatingActionButton
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -67,7 +64,7 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
         btnCerrarSesion = view.findViewById(R.id.btnCerrarSesion)
         fabMain = view.findViewById(R.id.fab)
 
-        val dialog = Dialog(requireContext())
+        dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.logout)
         dialog.window?.setLayout(
             ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -78,8 +75,8 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
         )
         dialog.setCancelable(false)
 
-        val btnDialogLogout = dialog.findViewById<FloatingActionButton>(R.id.cancelarDialog)
-        val btnDialogCancel = dialog.findViewById<FloatingActionButton>(R.id.cerrarSesionDialog)
+        val btnDialogCancel= dialog.findViewById<FloatingActionButton>(R.id.cancelarDialog)
+        val btnDialogLogout = dialog.findViewById<FloatingActionButton>(R.id.cerrarSesionDialog)
 
         btnDialogCancel.setOnClickListener {
             dialog.dismiss()
@@ -134,7 +131,7 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
             val intent = Intent(activity, EventService::class.java)
             startActivity(intent)
         }
-        
+
         btnCerrarSesion.setOnClickListener {
             onCerrarSesionClick()
         }
@@ -206,4 +203,3 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
         dialog.show()
     }
 }
-
