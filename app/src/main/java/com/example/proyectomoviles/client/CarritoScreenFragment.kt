@@ -4,6 +4,9 @@ import android.text.SpannableString
 import android.text.style.StyleSpan
 import android.graphics.Typeface
 import MangaAdapterCarrito
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Build
@@ -17,6 +20,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -166,25 +170,63 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
 
     private fun procesarCompra() {
         val usuario = obtenerUsuarioPorId(userId)
+
         if (usuario != null) {
             val carrito = usuario.carrito
 
             if (carrito.isNotEmpty()) {
-                carrito.forEach { manga ->
-                    manga.stock = (manga.stock - 1).coerceAtLeast(0)
+                val animatorList = mutableListOf<Animator>()
+
+                for (i in carrito.indices) {
+                    val itemView = carritoRecyclerView.findViewHolderForAdapterPosition(i)?.itemView
+
+                    itemView?.let {
+                        val desplazamiento = it.width.toFloat() * 2
+                        val animator = ObjectAnimator.ofFloat(it, "translationX", desplazamiento)
+                        animator.duration = 200
+                        animatorList.add(animator)
+                    }
                 }
 
-                guardarCarrito(usuario)
+                if (animatorList.isNotEmpty()) {
+                    val animatorSet = AnimatorSet()
+                    animatorSet.playTogether(animatorList)
 
-                actualizarResumenCompra(carrito, requireView().findViewById(R.id.etResumenCompraSumatoria))
-                carritoRecyclerView.adapter?.notifyDataSetChanged()
+                    animatorSet.addListener(object : AnimatorListenerAdapter() {
+                        override fun onAnimationEnd(animation: Animator) {
+                            carrito.clear()
+                            carritoRecyclerView.adapter?.notifyDataSetChanged()
 
-                Log.d("CarritoScreen", "Compra procesada, stock actualizado.")
+                            carritoRecyclerView.isEnabled = false
+                            carritoRecyclerView.alpha = 0.5f
+
+                            carritoRecyclerView.layoutManager?.let {
+                                if (it is LinearLayoutManager) {
+                                    carritoRecyclerView.setOnTouchListener { _, _ -> true }
+                                }
+                            }
+
+                            usuario.carrito = carrito
+                            guardarCarrito(usuario)
+
+                            actualizarResumenCompra(carrito, requireView().findViewById(R.id.etResumenCompraSumatoria))
+                            val bundle = Bundle()
+                            bundle.putString("userId", userId)
+
+                            val navController = findNavController()
+                            navController.navigate(R.id.menu_perfil, bundle)
+                        }
+                    })
+
+                    animatorSet.start()
+                }
             } else {
-                Log.d("CarritoScreen", "No hay mangas en el carrito para procesar la compra.")
+                Log.d("CarritoScreen", "El carrito está vacío después de la compra.")
+                val etResumenCompraSumatoria: TextView = requireView().findViewById(R.id.etResumenCompraSumatoria)
+                etResumenCompraSumatoria.text = "El carrito está vacío."
             }
         } else {
-            Log.d("CarritoScreen", "Usuario no encontrado.")
+            Log.d("CarritoScreen", "No se encontró al usuario para limpiar el carrito.")
         }
     }
 
