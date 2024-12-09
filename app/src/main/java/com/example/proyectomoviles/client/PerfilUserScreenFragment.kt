@@ -1,5 +1,6 @@
 package com.example.proyectomoviles.client
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -11,14 +12,17 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.utils.CustomToast
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONArray
 import java.io.File
 import java.io.FileOutputStream
@@ -32,6 +36,8 @@ class PerfilUserScreenFragment : Fragment(R.layout.perfil_activity) {
     private lateinit var ivUserPhoto: ImageView
     private lateinit var btnCerrarSesion: Button
 
+    private lateinit var dialog: Dialog
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -40,6 +46,34 @@ class PerfilUserScreenFragment : Fragment(R.layout.perfil_activity) {
         tvNombre = view.findViewById(R.id.tvNombreUser)
         ivUserPhoto = view.findViewById(R.id.ivUserPhoto)
         btnCerrarSesion = view.findViewById(R.id.btnCerrarSesion)
+
+        dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.logout)
+        dialog.window?.setLayout(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        dialog.window?.setBackgroundDrawable(
+            ContextCompat.getDrawable(requireContext(), R.drawable.custom_dialog_bg)
+        )
+        dialog.setCancelable(false)
+
+        val btnDialogCancel= dialog.findViewById<FloatingActionButton>(R.id.cancelarDialog)
+        val btnDialogLogout = dialog.findViewById<FloatingActionButton>(R.id.cerrarSesionDialog)
+
+        btnDialogCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnDialogLogout.setOnClickListener {
+            val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.remove("userType")
+            editor.apply()
+            val intent = Intent(activity, LoginScreen::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
 
         val storedAlias = arguments?.getString("alias")
 
@@ -214,13 +248,6 @@ class PerfilUserScreenFragment : Fragment(R.layout.perfil_activity) {
     }
 
     private fun onCerrarSesionClick() {
-        val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-        sharedPreferences.edit().remove("alias").apply()
-
-        val intent = Intent(requireContext(), LoginScreen::class.java)
-        startActivity(intent)
-        requireActivity().finish()
+        dialog.show()
     }
 }
-
-

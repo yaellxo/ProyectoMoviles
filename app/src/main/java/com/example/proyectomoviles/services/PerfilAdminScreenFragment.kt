@@ -1,5 +1,6 @@
 package com.example.proyectomoviles.services
 
+import android.app.Dialog
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
@@ -18,7 +19,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.example.proyectomoviles.R
 import android.content.Context
 import android.content.Intent
+import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.example.proyectomoviles.client.LoginScreen
+import com.example.proyectomoviles.client.PerfilUserScreenFragment
 import com.example.proyectomoviles.models.AdminConstants
 import com.example.proyectomoviles.utils.CustomToast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -45,6 +49,8 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
     private val fabOpenIcon = R.drawable.ic_plus_admin
     private val fabCloseIcon = R.drawable.ic_cerrar_menu_admin
 
+    private lateinit var dialog: Dialog
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -57,6 +63,37 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
         ivAdminPhoto = view.findViewById(R.id.ivAdminPhoto)
         btnCerrarSesion = view.findViewById(R.id.btnCerrarSesion)
         fabMain = view.findViewById(R.id.fab)
+
+        dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.logout)
+        dialog.window?.setLayout(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        dialog.window?.setBackgroundDrawable(
+            ContextCompat.getDrawable(requireContext(), R.drawable.custom_dialog_bg)
+        )
+        dialog.setCancelable(false)
+
+        val btnDialogCancel= dialog.findViewById<FloatingActionButton>(R.id.cancelarDialog)
+        val btnDialogLogout = dialog.findViewById<FloatingActionButton>(R.id.cerrarSesionDialog)
+
+        btnDialogCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnDialogLogout.setOnClickListener {
+            val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.remove("userType")
+            editor.apply()
+            val intent = Intent(activity, LoginScreen::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
+
+
 
         val storedAlias = arguments?.getString("alias")
 
@@ -94,7 +131,7 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
             val intent = Intent(activity, EventService::class.java)
             startActivity(intent)
         }
-        
+
         btnCerrarSesion.setOnClickListener {
             onCerrarSesionClick()
         }
@@ -163,14 +200,6 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
     }
 
     private fun onCerrarSesionClick() {
-        val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.remove("userType")
-        editor.apply()
-        val intent = Intent(activity, LoginScreen::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-
+        dialog.show()
     }
 }
-
