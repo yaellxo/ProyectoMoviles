@@ -32,9 +32,24 @@ class DetalleMangaActivity : AppCompatActivity() {
         val userId = intent.getStringExtra("userId") ?: ""
         Log.d("DetalleMangaActivity", "User ID recibido: $userId")
 
+        val calificacionRatingBar: RatingBar = findViewById(R.id.rbCalificacion)
+
+        val currentRating = obtenerCalificacion(manga.mangaId, userId)
+        calificacionRatingBar.rating = currentRating
+
+        val promedioCalificacion = calcularPromedioCalificacion(manga.mangaId)
+        calificacionRatingBar.rating = promedioCalificacion
+
+        calificacionRatingBar.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
+            if (fromUser) {
+                guardarCalificacionEnPreferencias(userId, manga.mangaId, rating)
+
+                Toast.makeText(this, "Calificación guardada: $rating", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         val tituloTextView: TextView = findViewById(R.id.etTitulo)
         val autorTextView: TextView = findViewById(R.id.etAutor)
-        val calificacionRatingBar: RatingBar = findViewById(R.id.rbCalificacion)
         val imagenImageView: ImageView = findViewById(R.id.mangaImagenView)
         val precioTextView: TextView = findViewById(R.id.tvPrecio)
         val volumenTextView: TextView = findViewById(R.id.tvVolumen)
@@ -155,6 +170,46 @@ class DetalleMangaActivity : AppCompatActivity() {
                 Toast.makeText(this, "Función no disponible.", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun obtenerCalificacion(mangaId: String, userId: String): Float {
+        val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val calificacionesJson = sharedPreferences.getString("calificaciones", "{}")
+        val calificaciones = JSONObject(calificacionesJson)
+        return if (calificaciones.has(mangaId) && calificaciones.getJSONObject(mangaId).has(userId)) {
+            calificaciones.getJSONObject(mangaId).getDouble(userId).toFloat()
+        } else {
+            0f
+        }
+    }
+
+    fun guardarCalificacionEnPreferencias(userId: String, mangaId: String, calificacion: Float) {
+        val sharedPreferences = getSharedPreferences("MangaPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
+        val clave = "$userId-$mangaId"
+
+        editor.putFloat(clave, calificacion)
+        editor.apply()
+    }
+
+    fun calcularPromedioCalificacion(mangaId: String): Float {
+        val sharedPreferences = getSharedPreferences("MangaPrefs", Context.MODE_PRIVATE)
+        val allEntries = sharedPreferences.all
+
+        var totalCalificaciones = 0f
+        var numUsuarios = 0
+
+        for (entry in allEntries) {
+            val clave = entry.key
+            if (clave.endsWith("-$mangaId")) {
+                val calificacion = sharedPreferences.getFloat(clave, 0.0f)
+                totalCalificaciones += calificacion
+                numUsuarios++
+            }
+        }
+
+        return if (numUsuarios > 0) totalCalificaciones / numUsuarios else 0.0f
     }
 
     fun cargarCarrito(carritoJson: JSONArray?): MutableList<Manga> {

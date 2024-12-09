@@ -72,6 +72,7 @@
                     android:layout_margin="5dp"
                     android:layout_marginStart="0dp"
                     android:gravity="center"
+                    android:isIndicator="false"
                     android:numStars="5"
                     android:padding="8dp"
                     android:progressTint="@color/boton_compra"
