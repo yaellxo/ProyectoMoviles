@@ -47,6 +47,5 @@ class EventScreenFragment : Fragment(R.layout.event_activity), EventoAdapter.OnE
         val bundle = Bundle().apply {
             putSerializable("evento", evento)
         }
-        findNavController().navigate(R.id.action_eventScreenFragment_to_eventoDetalleFragment, bundle)
     }
 }
