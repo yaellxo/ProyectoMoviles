@@ -2,6 +2,7 @@ package com.example.proyectomoviles.utils
 
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
@@ -13,7 +14,7 @@ import com.example.proyectomoviles.R
 
 object CustomToast {
 
-    fun show(context: Context, buttonId: Int) {
+    fun show(context: Context, buttonId: Int, gravity: Int = Gravity.BOTTOM, xOffset: Int = 0, yOffset: Int = 200) {
         val inflater = LayoutInflater.from(context)
         val customView: View = inflater.inflate(R.layout.toast, null)
 
@@ -319,28 +320,8 @@ object CustomToast {
         toast.view = customView
         toast.show()
 
-        //  CASO 1: GENERAR TOAST DESPUES DE HACER CLICK EN UN BOTÓN ESPECÍFICO
-        //  En este archivo:
-        //  R.id.<IDENTIFICADOR DEL BOTÓN> -> {
-        //    textView.text = "<MENSAJE A MOSTRAR>"
-        //    imageView.setImageResource(R.drawable.<ICONO O IMAGEN A MOSTRAR>)
-        //    background.setColor(ContextCompat.getColor(context, R.color.<COLOR DEL TOAST>))
-        //}
-        //  En donde lo llames:
-        //  val btnRegitro : Button = findViewById (R.id.btnRegitro)
-        //  btnRegitro.setOnClickListener {
-        //    CustomToast.show(this, R.id.btnRegitro)
-        //  }
+        toast.setGravity(gravity, xOffset, yOffset)
 
-        //  CASO 2: GENERAR TOAST SIN VENIR DE UN BOTÓN:
-        //  En este archivo:
-        //  <NUMERO QUE IDENTIFICARA AL TOAST> -> {
-        //    textView.text = "<MENSAJE A MOSTRAR>"
-        //    imageView.setImageResource(R.drawable.<ICONO O IMAGEN A MOSTRAR>)
-        //    background.setColor(ContextCompat.getColor(context, R.color.<COLOR DEL TOAST>))
-        //}
-        //  En donde lo llamas:
-        //  CustomToast.show(this, 100)
-        //
+        toast.show()
     }
 }

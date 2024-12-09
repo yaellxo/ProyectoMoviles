@@ -34,7 +34,6 @@ class BuscarScreenFragment : Fragment(R.layout.buscar_activity) {
 
         mangas = mutableListOf()
 
-        // Obtener los datos del Bundle
         val bundle = arguments
         val userId = bundle?.getString("userId") ?: ""
         val nombre = bundle?.getString("nombre")
@@ -45,13 +44,12 @@ class BuscarScreenFragment : Fragment(R.layout.buscar_activity) {
         val area = bundle?.getString("area")
         val nivelAcceso = bundle?.getString("nivelAcceso")
 
-        // Inicializar el adaptador con los datos del usuario
         mangaAdapter = MangaAdapterTienda(
             mangas,
             { manga, userId ->
                 val intent = Intent(requireContext(), DetalleMangaActivity::class.java)
                 intent.putExtra("manga", manga)
-                intent.putExtra("userId", userId) // Pasar userId a la actividad de detalle
+                intent.putExtra("userId", userId)
                 startActivity(intent)
             },
             userId,
@@ -96,7 +94,7 @@ class BuscarScreenFragment : Fragment(R.layout.buscar_activity) {
                     }
 
                     if (mangasFiltrados.isEmpty()) {
-                        Toast.makeText(requireContext(), "No se encontraron mangas", Toast.LENGTH_SHORT).show()
+
                     } else {
                         recyclerView.visibility = View.VISIBLE
                     }
@@ -213,7 +211,7 @@ class BuscarScreenFragment : Fragment(R.layout.buscar_activity) {
         mangaAdapter.notifyDataSetChanged()
 
         if (mangasFiltrados.isEmpty()) {
-            Toast.makeText(requireContext(), "No se encontraron mangas de género $genero", Toast.LENGTH_SHORT).show()
+
         } else {
             val recyclerView = requireView().findViewById<RecyclerView>(R.id.recyclerViewMangas)
             recyclerView.visibility = View.VISIBLE
