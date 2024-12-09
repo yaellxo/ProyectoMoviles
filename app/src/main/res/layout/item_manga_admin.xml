@@ -5,12 +5,13 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardElevation="8dp"
-    app:cardCornerRadius="12dp"
+    app:cardCornerRadius="17dp"
     android:background="@color/color_font_principal_blanco">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/border_shape_delgado"
         android:padding="8dp">
 
         <ImageView

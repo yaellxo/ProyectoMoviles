@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.adapters.EventoAdapter
-import com.example.proyectomoviles.client.event_screens.AgregarEventoScreen
-import com.example.proyectomoviles.client.event_screens.EliminarEventoScreen
-import com.example.proyectomoviles.client.event_screens.ModificarEventoScreen
+import com.example.proyectomoviles.services.event_screens.AgregarEventoScreen
+import com.example.proyectomoviles.services.event_screens.EliminarEventoScreen
+import com.example.proyectomoviles.services.event_screens.ModificarEventoScreen
 import com.example.proyectomoviles.models.EventosManager
 import com.example.proyectomoviles.utils.CustomToast
 import com.google.android.material.floatingactionbutton.FloatingActionButton

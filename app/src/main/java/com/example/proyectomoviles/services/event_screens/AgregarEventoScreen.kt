@@ -1,4 +1,4 @@
-package com.example.proyectomoviles.client.event_screens
+package com.example.proyectomoviles.services.event_screens
 
 import android.content.Intent
 import android.net.Uri

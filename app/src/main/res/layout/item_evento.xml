@@ -5,13 +5,14 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:elevation="4dp"
-    app:cardCornerRadius="12dp">
+    app:cardCornerRadius="17dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:background="@drawable/border_shape_delgado"
+        android:padding="17dp">
 
         <!-- Imagen del evento -->
         <ImageView

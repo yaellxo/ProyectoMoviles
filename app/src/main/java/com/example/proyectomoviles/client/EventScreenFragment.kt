@@ -44,9 +44,6 @@ class EventScreenFragment : Fragment(R.layout.event_activity), EventoAdapter.OnE
     }
 
     override fun onEventoClick(evento: Evento) {
-        val bundle = Bundle().apply {
-            putSerializable("evento", evento)
-        }
-        findNavController().navigate(R.id.action_eventScreenFragment_to_eventoDetalleFragment, bundle)
+
     }
 }
