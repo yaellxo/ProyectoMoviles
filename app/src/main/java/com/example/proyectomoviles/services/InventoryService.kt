@@ -1,6 +1,5 @@
 package com.example.proyectomoviles.services
 
-import MangaAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -13,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectomoviles.R
+import com.example.proyectomoviles.adapters.MangaAdapter
 import com.example.proyectomoviles.models.ArbolBinarioManga
 import com.example.proyectomoviles.models.Manga
 import com.example.proyectomoviles.utils.CustomToast

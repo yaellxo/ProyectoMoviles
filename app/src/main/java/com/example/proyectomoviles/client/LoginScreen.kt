@@ -32,7 +32,7 @@ class LoginScreen : AppCompatActivity() {
             val claveLogin = etClaveLogin.text.toString()
 
             if (alias.isEmpty() || claveLogin.isEmpty()) {
-                CustomToast.show(this,600)
+                Toast.makeText(this, "Por favor, ingrese todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -40,9 +40,13 @@ class LoginScreen : AppCompatActivity() {
                 val editor = sharedPreferences.edit()
                 editor.putString("userType", "superAdmin")
                 editor.putString("activeUserAlias", alias)
+                editor.putString("nombre", AdminConstants.ADMIN_NOMBRE)
+                editor.putString("correo", AdminConstants.ADMIN_EMAIL)
+                editor.putString("edad", AdminConstants.ADMIN_AREA)
+                editor.putString("userId", AdminConstants.ADMIN_ID)
                 editor.apply()
 
-                CustomToast.show(this,700)
+                Toast.makeText(this, "Inicio de sesión exitoso como super administrador", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -54,10 +58,8 @@ class LoginScreen : AppCompatActivity() {
                 val adminsArray = JSONArray(adminsJson)
                 var adminFound = false
 
-                Log.d("LoginScreen", "Datos de administradores:")
                 for (i in 0 until adminsArray.length()) {
                     val admin = adminsArray.getJSONObject(i)
-                    Log.d("LoginScreen", "Admin $i: alias = ${admin.getString("alias")}, nombre = ${admin.getString("nombre")}, correo = ${admin.getString("correo")}, area = ${admin.getString("area")}, nivelAcceso = ${admin.getString("nivelAcceso")}")
                     if (admin.getString("alias") == alias && admin.getString("clave") == claveLogin) {
                         adminFound = true
 
@@ -68,12 +70,13 @@ class LoginScreen : AppCompatActivity() {
                         editor.putString("correo", admin.getString("correo"))
                         editor.putString("area", admin.getString("area"))
                         editor.putString("nivelAcceso", admin.getString("nivelAcceso"))
-                        editor.putString("adminId", admin.optString("adminId", null))
+                        editor.putString("userId", admin.getString("adminId"))
                         editor.apply()
 
+                        val nivelAcceso = admin.getString("nivelAcceso")
                         Toast.makeText(
                             this,
-                            "Inicio de sesión exitoso como administrador\nNombre: ${admin.getString("nombre")}",
+                            "Inicio de sesión exitoso como administrador con nivel de acceso: $nivelAcceso",
                             Toast.LENGTH_LONG
                         ).show()
 
@@ -85,57 +88,63 @@ class LoginScreen : AppCompatActivity() {
                 }
 
                 if (!adminFound) {
-                    val usersJson = sharedPreferences.getString("users", "[]")
-                    val usersArray = JSONArray(usersJson)
-
-                    var userFound = false
-
-                    for (i in 0 until usersArray.length()) {
-                        val user = usersArray.getJSONObject(i)
-                        if (user.getString("alias") == alias && user.getString("clave") == claveLogin) {
-                            userFound = true
-
-                            val editor = sharedPreferences.edit()
-                            editor.putString("userType", "user")
-                            editor.putString("activeUserAlias", alias)
-                            editor.putString("nombre", user.getString("nombre"))
-                            editor.putString("correo", user.getString("correo"))
-                            editor.putString("edad", user.getString("edad"))
-                            editor.putString("userId", user.optString("userId", null))
-                            editor.apply()
-
-                            val photoUriString = user.optString("photoUri", "")
-                            editor.putString("userPhotoUri", photoUriString)
-                            editor.apply()
-
-                            Log.d("LoginScreen", "URL de la imagen de perfil: $photoUriString")
-
-                            Toast.makeText(
-                                this,
-                                "Inicio de sesión exitoso\nNombre: ${user.getString("nombre")}",
-                                Toast.LENGTH_LONG
-                            ).show()
-
-                            val intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
-                            finish()
-                            return@setOnClickListener
-                        }
-                    }
-
-                    if (!userFound) {
-                        CustomToast.show(this,200)
-                    }
+                    Toast.makeText(this, "Alias o clave incorrectos", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
-                Log.e("LoginScreen", "Error al recuperar administradores: ${e.message}")
-                CustomToast.show(this,710)
+                Log.e("LoginScreen", "Error al recuperar los administradores: ${e.message}")
+                Toast.makeText(this, "Error al verificar administrador", Toast.LENGTH_SHORT).show()
+            }
+
+            try {
+                val usersJson = sharedPreferences.getString("users", "[]")
+                val usersArray = JSONArray(usersJson)
+                var userFound = false
+
+                for (i in 0 until usersArray.length()) {
+                    val user = usersArray.getJSONObject(i)
+                    if (user.getString("alias") == alias && user.getString("clave") == claveLogin) {
+                        userFound = true
+
+                        val editor = sharedPreferences.edit()
+                        editor.putString("userType", "user")
+                        editor.putString("activeUserAlias", alias)
+                        editor.putString("nombre", user.getString("nombre"))
+                        editor.putString("correo", user.getString("correo"))
+                        editor.putString("edad", user.getString("edad"))
+                        editor.putString("userId", user.getString("userId"))
+                        editor.apply()
+
+                        val photoUriString = user.optString("photoUri", "")
+                        editor.putString("userPhotoUri", photoUriString)
+                        editor.apply()
+
+                        Log.d("LoginScreen", "URL de la imagen de perfil: $photoUriString")
+
+                        Toast.makeText(
+                            this,
+                            "Inicio de sesión exitoso\nNombre: ${user.getString("nombre")}",
+                            Toast.LENGTH_LONG
+                        ).show()
+
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                        return@setOnClickListener
+                    }
+                }
+
+                if (!userFound) {
+                    Toast.makeText(this, "Alias o clave incorrectos", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Log.e("LoginScreen", "Error al recuperar los usuarios: ${e.message}")
+                Toast.makeText(this, "Error al verificar usuario", Toast.LENGTH_SHORT).show()
             }
         }
-            btnRegistro.setOnClickListener {
+
+        btnRegistro.setOnClickListener {
             val intent = Intent(this, RegisterScreen::class.java)
             startActivity(intent)
         }
     }
 }
-

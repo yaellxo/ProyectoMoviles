@@ -1,5 +1,6 @@
 package com.example.proyectomoviles.client
 
+import MangaAdapterTienda
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -12,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectomoviles.R
-import com.example.proyectomoviles.adapters.MangaAdapterTienda
 import com.example.proyectomoviles.models.ArbolBinarioManga
 import com.example.proyectomoviles.models.Manga
 import java.io.File
@@ -28,16 +28,42 @@ class BuscarScreenFragment : Fragment(R.layout.buscar_activity) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewMangas)
         val et_search = view.findViewById<EditText>(R.id.et_search)
 
         mangas = mutableListOf()
 
-        mangaAdapter = MangaAdapterTienda(mangas) { manga ->
-            val intent = Intent(requireContext(), DetalleMangaActivity::class.java)
-            intent.putExtra("manga", manga)
-            startActivity(intent)
-        }
+        // Obtener los datos del Bundle
+        val bundle = arguments
+        val userId = bundle?.getString("userId") ?: ""
+        val nombre = bundle?.getString("nombre")
+        val correo = bundle?.getString("correo")
+        val edad = bundle?.getString("edad")
+        val userType = bundle?.getString("userType")
+        val photoBase64 = bundle?.getString("photoBase64")
+        val area = bundle?.getString("area")
+        val nivelAcceso = bundle?.getString("nivelAcceso")
+
+        // Inicializar el adaptador con los datos del usuario
+        mangaAdapter = MangaAdapterTienda(
+            mangas,
+            { manga, userId ->
+                val intent = Intent(requireContext(), DetalleMangaActivity::class.java)
+                intent.putExtra("manga", manga)
+                intent.putExtra("userId", userId) // Pasar userId a la actividad de detalle
+                startActivity(intent)
+            },
+            userId,
+            nombre,
+            correo,
+            edad,
+            userType,
+            photoBase64,
+            area,
+            nivelAcceso
+        )
+
         recyclerView.adapter = mangaAdapter
 
 

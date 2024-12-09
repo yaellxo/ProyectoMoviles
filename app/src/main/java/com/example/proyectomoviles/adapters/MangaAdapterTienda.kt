@@ -1,4 +1,3 @@
-package com.example.proyectomoviles.adapters
 
 import android.graphics.BitmapFactory
 import android.graphics.Typeface
@@ -17,7 +16,15 @@ import java.io.File
 
 class MangaAdapterTienda(
     private var mMangas: MutableList<Manga>,
-    private val onMangaClick: (Manga) -> Unit
+    private val onMangaClick: (Manga, String) -> Unit,
+    private val userId: String,
+    private val nombre: String?,
+    private val correo: String?,
+    private val edad: String?,
+    private val userType: String?,
+    private val photoBase64: String?,
+    private val area: String?,
+    private val nivelAcceso: String?
 ) : RecyclerView.Adapter<MangaAdapterTienda.MangaViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MangaViewHolder {
@@ -43,7 +50,7 @@ class MangaAdapterTienda(
         holder.autorTextView.text = manga.autor
         holder.precioTextView.text = "$${manga.precio}"
         holder.itemView.setOnClickListener {
-            onMangaClick(manga)
+            onMangaClick(manga, userId)
         }
     }
 

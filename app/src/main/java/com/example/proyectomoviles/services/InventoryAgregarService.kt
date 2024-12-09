@@ -75,7 +75,7 @@ class InventoryAgregarService : AppCompatActivity() {
                 editorial = editorial,
                 publicacion = publicacion,
                 imagenUrl = imagenUrl,
-                mangaId = mangaId
+                mangaId = mangaId,
             )
 
             arbolManga.agregarManga(manga)

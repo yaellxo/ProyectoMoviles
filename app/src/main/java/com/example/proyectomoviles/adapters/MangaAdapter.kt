@@ -1,3 +1,5 @@
+package com.example.proyectomoviles.adapters
+
 import android.animation.ObjectAnimator
 import android.graphics.BitmapFactory
 import android.graphics.Typeface
@@ -20,7 +22,7 @@ class MangaAdapter(private val mMangas: MutableList<Manga>) : RecyclerView.Adapt
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MangaViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_manga, parent, false)
+            .inflate(R.layout.item_manga_admin, parent, false)
         return MangaViewHolder(itemView)
     }
 
