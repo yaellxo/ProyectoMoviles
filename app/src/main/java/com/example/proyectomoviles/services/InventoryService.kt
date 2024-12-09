@@ -25,7 +25,6 @@ import java.io.ObjectOutputStream
 
 class InventoryService : AppCompatActivity() {
 
-    private lateinit var fabRegresarInventario: FloatingActionButton
     private lateinit var additionalButtons: List<FloatingActionButton>
     private lateinit var fabMain: FloatingActionButton
     private lateinit var arbolBinarioManga: ArbolBinarioManga

@@ -46,7 +46,7 @@ class LoginScreen : AppCompatActivity() {
                 editor.putString("userId", AdminConstants.ADMIN_ID)
                 editor.apply()
 
-                Toast.makeText(this, "Inicio de sesión exitoso como super administrador", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this, R.id.btnInicioSesion)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -73,12 +73,7 @@ class LoginScreen : AppCompatActivity() {
                         editor.putString("userId", admin.getString("adminId"))
                         editor.apply()
 
-                        val nivelAcceso = admin.getString("nivelAcceso")
-                        Toast.makeText(
-                            this,
-                            "Inicio de sesión exitoso como administrador con nivel de acceso: $nivelAcceso",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        CustomToast.show(this, R.id.btnInicioSesion)
 
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
@@ -88,7 +83,6 @@ class LoginScreen : AppCompatActivity() {
                 }
 
                 if (!adminFound) {
-                    Toast.makeText(this, "Alias o clave incorrectos", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
                 Log.e("LoginScreen", "Error al recuperar los administradores: ${e.message}")
@@ -120,11 +114,7 @@ class LoginScreen : AppCompatActivity() {
 
                         Log.d("LoginScreen", "URL de la imagen de perfil: $photoUriString")
 
-                        Toast.makeText(
-                            this,
-                            "Inicio de sesión exitoso\nNombre: ${user.getString("nombre")}",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        CustomToast.show(this, R.id.btnInicioSesion)
 
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
@@ -134,7 +124,6 @@ class LoginScreen : AppCompatActivity() {
                 }
 
                 if (!userFound) {
-                    Toast.makeText(this, "Alias o clave incorrectos", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
                 Log.e("LoginScreen", "Error al recuperar los usuarios: ${e.message}")

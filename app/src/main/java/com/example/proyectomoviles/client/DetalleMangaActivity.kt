@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.models.Manga
 import com.example.proyectomoviles.models.Usuario
+import com.example.proyectomoviles.utils.CustomToast
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -149,9 +150,9 @@ class DetalleMangaActivity : AppCompatActivity() {
                 bundle.putString("userId", usuario.userId)
                 fragment.arguments = bundle
 
-                Toast.makeText(this, "Manga agregado al carrito", Toast.LENGTH_SHORT).show()
+                CustomToast.show(this, R.id.btnCarrito)
             } else {
-                Toast.makeText(this, "Función no disponible en modo Adminstrador", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Función no disponible.", Toast.LENGTH_SHORT).show()
             }
         }
     }

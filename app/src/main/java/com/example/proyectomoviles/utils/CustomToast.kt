@@ -24,16 +24,22 @@ object CustomToast {
         val background = layout.background as GradientDrawable
         when (buttonId) {
             //Registrar usuario-----------------------------
-            R.id.btnCrearCuenta -> {
-                textView.text = "Usuario registrado exitosamente."
-                imageView.setImageResource(R.drawable.ic_perfil)
-                background.setColor(ContextCompat.getColor(context, R.color.opcion_agregar))
+            R.id.btnInicioSesion -> {
+                textView.text = "¡Ya era hora! El universo te esperaba."
+                imageView.setImageResource(R.drawable.ic_iniciodesesion)
+                background.setColor(ContextCompat.getColor(context, R.color.color_font_principal))
+            }
+            //Agregar Manga al Carrito-----------------------------
+            R.id.btnCarrito -> {
+                textView.text = "¡Lo has agregado! La aventura está a un clic de comenzar."
+                imageView.setImageResource(R.drawable.ic_agregarmangacarrito)
+                background.setColor(ContextCompat.getColor(context, R.color.boton_compra))
             }
             //Inicio de sesion exitoso-----------------------------
             R.id.btnCrearCuenta -> {
-                textView.text = "Inicio de sesión exitoso."
-                imageView.setImageResource(R.drawable.ic_perfil)
-                background.setColor(ContextCompat.getColor(context, R.color.opcion_agregar))
+                textView.text = "Bienvenido a la Sociedad de Almas."
+                imageView.setImageResource(R.drawable.ic_registrarse)
+                background.setColor(ContextCompat.getColor(context, R.color.color_font_principal))
             }
             //ELIMINAR-----------------------------
             R.id.fabEventoEliminar -> {
@@ -231,9 +237,9 @@ object CustomToast {
             }
             //Imagen actualizada
             800 -> {
-                textView.text = "Imagen actualizada correctamente"
-                imageView.setImageResource(R.drawable.ic_modificar_blanco)
-                background.setColor(ContextCompat.getColor(context, R.color.opcion_modificar))
+                textView.text = "¡La nueva versión de ti está lista para luchar!"
+                imageView.setImageResource(R.drawable.ic_cambioimagen)
+                background.setColor(ContextCompat.getColor(context, R.color.negro_color))
             }
             //Error al cargar la imagen
             810 -> {

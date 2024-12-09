@@ -129,7 +129,7 @@
                     android:gravity="center"
                     android:text="Agregar al Carrito"
                     android:textAllCaps="false"
-                    android:textColor="@color/color_font_principal"
+                    android:textColor="@color/color_font_principal_blanco"
                     android:textSize="26sp"/>
 
                 <TextView

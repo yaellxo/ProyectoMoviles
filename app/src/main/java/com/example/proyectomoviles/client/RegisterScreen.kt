@@ -59,7 +59,6 @@ class RegisterScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Verificar si el correo o alias ya están registrados
             for (i in 0 until users.length()) {
                 val user = users.getJSONObject(i)
                 if (user.getString("correo") == correo) {
@@ -74,22 +73,19 @@ class RegisterScreen : AppCompatActivity() {
 
             val userId = generateCustomUserId(alias)
 
-            // Crear el nuevo usuario como JSONObject
             val newUser = JSONObject().apply {
-                put("userId", userId) // El userId es seguro, ya que se genera de manera confiable
+                put("userId", userId)
                 put("nombre", nombre)
                 put("alias", alias)
                 put("correo", correo)
                 put("edad", edadString)
                 put("clave", clave)
-                put("userPhotoUri", "") // Suponiendo que se mantendrá vacío
-                put("carrito", JSONArray()) // Carrito vacío al registrarse
+                put("userPhotoUri", "")
+                put("carrito", JSONArray())
             }
 
-            // Añadir el nuevo usuario a la lista de usuarios
             users.put(newUser)
 
-            // Guardar los usuarios en SharedPreferences
             val editor = sharedPreferences.edit()
             editor.putString("users", users.toString())
             editor.apply()
@@ -97,7 +93,7 @@ class RegisterScreen : AppCompatActivity() {
             CustomToast.show(this, R.id.btnCrearCuenta)
 
             val intent = Intent(this, LoginScreen::class.java)
-            intent.putExtra("usuario", newUser.toString()) // Enviar el usuario a la pantalla de login
+            intent.putExtra("usuario", newUser.toString())
             startActivity(intent)
             finish()
         }
