@@ -123,7 +123,6 @@ class BottomNavHelper {
                             navController.navigate(R.id.menu_perfil, bundle)
                         }
                         else -> {
-                            CustomToast.show(bottomNavigationView,1400)
                         }
                     }
                 }

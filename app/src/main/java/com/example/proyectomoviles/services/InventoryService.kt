@@ -102,7 +102,6 @@ class InventoryService : AppCompatActivity() {
                     mangaAdapter.notifyDataSetChanged()
 
                     if (mangasFiltrados.isEmpty()) {
-                        CustomToast.show(this,770)
                     }
                 } else {
                     val mangas = arbolBinarioManga.obtenerMangasEnOrden()
