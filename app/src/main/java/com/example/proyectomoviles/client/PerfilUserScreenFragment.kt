@@ -34,7 +34,7 @@ class PerfilUserScreenFragment : Fragment(R.layout.perfil_activity) {
     private lateinit var tvEdad: TextView
     private lateinit var tvNombre: TextView
     private lateinit var ivUserPhoto: ImageView
-    private lateinit var btnCerrarSesion: Button
+    private lateinit var btnCerrarSesion: ImageView
 
     private lateinit var dialog: Dialog
 

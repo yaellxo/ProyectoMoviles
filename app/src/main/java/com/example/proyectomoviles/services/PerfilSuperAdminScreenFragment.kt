@@ -39,7 +39,7 @@ class PerfilSuperAdminScreenFragment : Fragment(R.layout.perfil_superadmin_activ
     private lateinit var tvAreaAdmin: TextView
     private lateinit var tvRangoAdmin: TextView
     private lateinit var ivAdminPhoto: ImageView
-    private lateinit var btnCerrarSesion: Button
+    private lateinit var btnCerrarSesion: ImageView
     private lateinit var fabMain: FloatingActionButton
     private lateinit var additionalButtons: List<FloatingActionButton>
 

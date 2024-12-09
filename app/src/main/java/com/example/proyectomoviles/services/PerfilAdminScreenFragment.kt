@@ -42,7 +42,7 @@ class PerfilAdminScreenFragment : Fragment(R.layout.perfil_admin_activity) {
     private lateinit var tvAreaAdmin: TextView
     private lateinit var tvRangoAdmin: TextView
     private lateinit var ivAdminPhoto: ImageView
-    private lateinit var btnCerrarSesion: Button
+    private lateinit var btnCerrarSesion: ImageView
     private lateinit var fabMain: FloatingActionButton
     private lateinit var additionalButtons: List<FloatingActionButton>
 
