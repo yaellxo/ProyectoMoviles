@@ -2,7 +2,10 @@ package com.example.proyectomoviles.client
 
 import android.content.Context
 import android.graphics.BitmapFactory
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.StyleSpan
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
@@ -43,11 +46,30 @@ class DetalleMangaActivity : AppCompatActivity() {
         tituloTextView.text = manga.titulo
         autorTextView.text = manga.autor
         precioTextView.text = "$${manga.precio}"
-        volumenTextView.text = "Volumen: ${manga.volumen}"
-        generoTextView.text = "Género: ${manga.genero}"
-        editorialTextView.text = "Editorial: ${manga.editorial}"
-        publicacionTextView.text = "Publicación: ${manga.publicacion}"
-        descripcionTextView.text = manga.descripcion
+        val volumenText = "Volumen: ${manga.volumen}"
+        val volumenSpannable = SpannableString(volumenText)
+        volumenSpannable.setSpan(StyleSpan(Typeface.BOLD), 0, volumenText.indexOf(":") + 1, 0)
+        volumenTextView.text = volumenSpannable
+
+        val generoText = "Género: ${manga.genero}"
+        val generoSpannable = SpannableString(generoText)
+        generoSpannable.setSpan(StyleSpan(Typeface.BOLD), 0, generoText.indexOf(":") + 1, 0)
+        generoTextView.text = generoSpannable
+
+        val editorialText = "Editorial: ${manga.editorial}"
+        val editorialSpannable = SpannableString(editorialText)
+        editorialSpannable.setSpan(StyleSpan(Typeface.BOLD), 0, editorialText.indexOf(":") + 1, 0)
+        editorialTextView.text = editorialSpannable
+
+        val publicacionText = "Publicación: ${manga.publicacion}"
+        val publicacionSpannable = SpannableString(publicacionText)
+        publicacionSpannable.setSpan(StyleSpan(Typeface.BOLD), 0, publicacionText.indexOf(":") + 1, 0)
+        publicacionTextView.text = publicacionSpannable
+
+        val descripcionText = "Descripción:\n${manga.descripcion}"
+        val descripcionSpannable = SpannableString(descripcionText)
+        descripcionSpannable.setSpan(StyleSpan(Typeface.BOLD), 0, descripcionText.indexOf(":") + 1, 0)
+        descripcionTextView.text = descripcionSpannable
 
         val file = File(manga.imagenUrl)
         if (file.exists()) {
@@ -57,13 +79,11 @@ class DetalleMangaActivity : AppCompatActivity() {
             imagenImageView.setImageResource(R.drawable.ic_deafaultmanga)
         }
 
-        calificacionRatingBar.rating = 4.5f
-
         btnCarrito.setOnClickListener {
             Log.d("DetalleMangaActivity", "Botón 'Agregar al carrito' presionado")
 
             val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-            val usersJson = sharedPreferences.getString("users", "[]")  // Obtener la lista de usuarios desde SharedPreferences
+            val usersJson = sharedPreferences.getString("users", "[]")
             val usersArray = JSONArray(usersJson)
 
             var usuario: Usuario? = null
@@ -79,7 +99,7 @@ class DetalleMangaActivity : AppCompatActivity() {
                         edad = user.getString("edad"),
                         clave = user.getString("clave"),
                         userPhotoUri = user.getString("userPhotoUri"),
-                        carrito = cargarCarrito(user.getJSONArray("carrito")) // Cargar el carrito existente si lo hay
+                        carrito = cargarCarrito(user.getJSONArray("carrito"))
                     )
                     break
                 }
@@ -87,7 +107,7 @@ class DetalleMangaActivity : AppCompatActivity() {
 
             if (usuario != null) {
                 Log.d("DetalleMangaActivity", "Agregando manga al carrito para el usuario ${usuario.nombre}")
-                usuario.carrito.add(manga)  // Agregar el manga al carrito del usuario
+                usuario.carrito.add(manga)
 
                 val updatedUsersArray = JSONArray()
                 for (i in 0 until usersArray.length()) {
@@ -131,7 +151,7 @@ class DetalleMangaActivity : AppCompatActivity() {
 
                 Toast.makeText(this, "Manga agregado al carrito", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Función no disponible en modo Adminstrador", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -153,7 +173,7 @@ class DetalleMangaActivity : AppCompatActivity() {
                         editorial = mangaJson.getString("editorial"),
                         publicacion = mangaJson.getString("publicacion"),
                         imagenUrl = mangaJson.getString("imagenUrl"),
-                        mangaId = mangaJson.getString("mangaId")
+                        mangaId = mangaJson.getString("mangaId"),
                     )
                     carrito.add(manga)
                 } catch (e: JSONException) {

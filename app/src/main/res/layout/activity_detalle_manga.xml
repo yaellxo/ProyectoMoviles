@@ -82,41 +82,24 @@
 
             <ImageView
                 android:id="@+id/mangaImagenView"
-                android:layout_width="235dp"
-                android:layout_height="321dp"
+                android:layout_width="219dp"
+                android:layout_height="365dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="15dp"
-                android:background="@drawable/border_shape_tienda"
                 android:scaleType="centerCrop"
                 app:cardCornerRadius="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.048"
+                app:layout_constraintHorizontal_bias="0.517"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewsContainerTitulo" />
-
-            <ImageView
-                android:id="@+id/mangaImagenView2"
-                android:layout_width="91dp"
-                android:layout_height="365dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/border_shape_tienda"
-                android:scaleType="centerCrop"
-                app:cardCornerRadius="12dp"
-                app:layout_constraintBottom_toTopOf="@+id/textViewsContainerDetalles"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.968"
-                app:layout_constraintStart_toEndOf="@+id/mangaImagenView"
-                app:layout_constraintTop_toBottomOf="@+id/textViewsContainerTitulo"
-                app:layout_constraintVertical_bias="0.0" />
 
             <LinearLayout
                 android:id="@+id/textViewsContainerDetalles"
                 android:layout_width="366dp"
                 android:layout_height="500dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/border_shape_tienda"
                 android:gravity="start"
@@ -135,18 +118,7 @@
                     android:padding="8dp"
                     android:text="Precio"
                     android:textColor="@color/color_font_principal"
-                    android:textSize="30sp" />
-
-                <TextView
-                    android:id="@+id/tvVolumen"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/sawarabi"
-                    android:gravity="start"
-                    android:padding="8dp"
-                    android:text="Volumen"
-                    android:textColor="@color/color_font_principal"
-                    android:textSize="18sp" />
+                    android:textSize="36sp" />
 
                 <Button
                     android:id="@+id/btnCarrito"
@@ -158,7 +130,18 @@
                     android:text="Agregar al Carrito"
                     android:textAllCaps="false"
                     android:textColor="@color/color_font_principal"
-                    android:textSize="20sp" />
+                    android:textSize="26sp"/>
+
+                <TextView
+                    android:id="@+id/tvVolumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sawarabi"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:text="Volumen"
+                    android:textColor="@color/color_font_principal"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tvGenero"

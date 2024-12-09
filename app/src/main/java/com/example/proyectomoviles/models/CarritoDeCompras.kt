@@ -85,7 +85,7 @@ class CarritoDeCompras(private val context: Context, private val userId: String)
                         editorial = mangaJson.getString("editorial"),
                         publicacion = mangaJson.getString("publicacion"),
                         descripcion = mangaJson.getString("descripcion"),
-                        stock = mangaJson.getInt("stock")
+                        stock = mangaJson.getInt("stock"),
                     ))
                 }
                 break

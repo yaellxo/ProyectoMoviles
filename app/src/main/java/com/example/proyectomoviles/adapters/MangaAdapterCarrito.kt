@@ -23,6 +23,7 @@ class MangaAdapterCarrito(
         val tvAutor: TextView = view.findViewById(R.id.tvAutor)
         val tvPrecioManga: TextView = view.findViewById(R.id.tvPrecioManga)
         val ivMangaImagen: ImageView = view.findViewById(R.id.ivMangaImagen)
+        val tvVolumen: TextView = view.findViewById(R.id.tvVolumen)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,7 +35,10 @@ class MangaAdapterCarrito(
         val manga = mangas[position]
         holder.tvTituloManga.text = manga.titulo
         holder.tvAutor.text = manga.autor
-        holder.tvPrecioManga.text = context.getString(R.string.precio_template)
+        holder.tvVolumen.text = "Volumen: ${manga.volumen}"
+
+        val precioFormateado = String.format("%.2f", manga.precio)
+        holder.tvPrecioManga.text = context.getString(R.string.precio_template, precioFormateado)
 
         val file = File(manga.imagenUrl)
         if (file.exists()) {
@@ -43,10 +47,9 @@ class MangaAdapterCarrito(
             holder.ivMangaImagen.setImageResource(android.R.drawable.ic_menu_report_image)
         }
 
-        Log.d("MangaAdapterCarrito", "Mostrando manga: ${manga.titulo}, Autor: ${manga.autor}, Precio: ${manga.precio}")
+        Log.d("MangaAdapterCarrito", "Mostrando manga: ${manga.titulo}, Autor: ${manga.autor}, Precio: ${precioFormateado}")
         Log.d("MangaAdapterCarrito", "UserId del carrito: $userId")
     }
-
 
     override fun getItemCount(): Int = mangas.size
 }

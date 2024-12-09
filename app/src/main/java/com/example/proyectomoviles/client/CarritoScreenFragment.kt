@@ -1,14 +1,22 @@
 package com.example.proyectomoviles.client
 
+import android.text.SpannableString
+import android.text.style.StyleSpan
+import android.graphics.Typeface
 import MangaAdapterCarrito
+import android.animation.ObjectAnimator
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
-import android.util.Log  // Importamos Log
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectomoviles.R
@@ -43,6 +51,7 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
         super.onViewCreated(view, savedInstanceState)
 
         carritoRecyclerView = view.findViewById(R.id.carritoRecyclerView)
+        val etResumenCompraSumatoria: TextView = view.findViewById(R.id.etResumenCompraSumatoria)
 
         val usuario = obtenerUsuarioPorId(userId)
 
@@ -55,14 +64,72 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
                 }.toMutableList()
 
                 if (mangasFiltrados.isNotEmpty()) {
-                    Log.d("CarritoScreen", "Carrito cargado con ${mangasFiltrados.size} mangas.")
+                    val nombresMangas = mangasFiltrados.joinToString("\n") { it.titulo }
+                    val totalCompra = mangasFiltrados.sumOf { it.precio.toDouble() }.toFloat()
+                    val resumen = "Mangas en tu carrito:\n$nombresMangas\n\nTotal: \$${totalCompra}"
+
+                    val spannable = SpannableString(resumen)
+                    val totalStart = resumen.indexOf("Total:")
+                    val totalEnd = totalStart + "Total:".length
+                    spannable.setSpan(StyleSpan(Typeface.BOLD), totalStart, totalEnd, 0)
+
+                    etResumenCompraSumatoria.text = spannable
+
                     carritoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-                    carritoRecyclerView.adapter = MangaAdapterCarrito(
+                    val adapter = MangaAdapterCarrito(
                         context = requireContext(),
                         mangas = mangasFiltrados,
                         userId = userId
                     )
-                    carritoRecyclerView.adapter?.notifyDataSetChanged()
+                    carritoRecyclerView.adapter = adapter
+
+                    val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
+                        override fun getMovementFlags(
+                            recyclerView: RecyclerView,
+                            viewHolder: RecyclerView.ViewHolder
+                        ): Int {
+                            val swipeFlags = ItemTouchHelper.RIGHT
+                            return makeMovementFlags(0, swipeFlags)
+                        }
+
+                        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                            val position = viewHolder.adapterPosition
+                            val mangaEliminado = mangasFiltrados[position]
+                            mangasFiltrados.removeAt(position)
+                            adapter.notifyItemRemoved(position)
+
+                            val usuarioActualizado = obtenerUsuarioPorId(userId)
+                            usuarioActualizado?.carrito = mangasFiltrados
+                            guardarCarrito(usuarioActualizado!!)
+
+                            actualizarResumenCompra(mangasFiltrados, etResumenCompraSumatoria)
+
+                            val vibrator = requireContext().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE))
+                            } else {
+                                vibrator.vibrate(50)
+                            }
+
+                            Log.d("CarritoScreen", "Manga eliminado: ${mangaEliminado.titulo}")
+                        }
+
+                        override fun onMove(
+                            recyclerView: RecyclerView,
+                            viewHolder: RecyclerView.ViewHolder,
+                            target: RecyclerView.ViewHolder
+                        ): Boolean {
+                            return false
+                        }
+
+                        override fun isItemViewSwipeEnabled(): Boolean {
+                            return true
+                        }
+                    })
+
+                    itemTouchHelper.attachToRecyclerView(carritoRecyclerView)
+
+                    adapter.notifyDataSetChanged()
                 } else {
                     Log.d("CarritoScreen", "No se encontraron mangas válidos en el carrito.")
                 }
@@ -74,6 +141,21 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
         }
     }
 
+    private fun actualizarResumenCompra(mangasFiltrados: List<Manga>, etResumenCompraSumatoria: TextView) {
+        val nombresMangas = mangasFiltrados.joinToString("\n") { it.titulo }
+        val totalCompra = mangasFiltrados.sumOf { it.precio.toDouble() }.toFloat()
+
+        val resumen = "Mangas en tu carrito:\n$nombresMangas\n\nTotal: \$${totalCompra}"
+
+        val spannable = SpannableString(resumen)
+
+        val totalStart = resumen.indexOf("Total:")
+        val totalEnd = totalStart + "Total:".length
+
+        spannable.setSpan(StyleSpan(Typeface.BOLD), totalStart, totalEnd, 0)
+
+        etResumenCompraSumatoria.text = spannable
+    }
 
     private fun obtenerUsuarioPorId(userId: String): Usuario? {
         val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
@@ -117,7 +199,7 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
                 editorial = mangaJson.getString("editorial"),
                 publicacion = mangaJson.getString("publicacion"),
                 imagenUrl = mangaJson.getString("imagenUrl"),
-                mangaId = mangaJson.getString("mangaId")
+                mangaId = mangaJson.getString("mangaId"),
             )
             carrito.add(manga)
         }
@@ -161,13 +243,6 @@ class CarritoScreenFragment : Fragment(R.layout.carrito_activity) {
         editor.apply()
 
         Log.d("CarritoScreen", "Carrito actualizado en SharedPreferences.")
-    }
-
-    fun actualizarVista() {
-        val usuario = obtenerUsuarioPorId(userId)
-        usuario?.let {
-            carritoRecyclerView.adapter?.notifyDataSetChanged()
-        }
     }
 
 }
