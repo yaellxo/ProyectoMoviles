@@ -1,7 +1,6 @@
 package com.example.proyectomoviles.client
 
 import MangaAdapterTienda
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.models.ArbolBinarioManga
@@ -41,7 +39,6 @@ class HotScreenFragment : Fragment(R.layout.hot_activity) {
     ): View? {
         val view = inflater.inflate(R.layout.hot_activity, container, false)
 
-        // Recuperar los datos pasados por el Bundle
         val bundle = arguments
         if (bundle != null) {
             userId = bundle.getString("userId")
@@ -54,7 +51,6 @@ class HotScreenFragment : Fragment(R.layout.hot_activity) {
             nivelAcceso = bundle.getString("nivelAcceso")
         }
 
-        // Log para verificar los datos recibidos
         Log.d("HotScreenFragment", "User ID: $userId, Nombre: $nombre, Correo: $correo, Edad: $edad, Tipo de Usuario: $userType")
 
         recyclerViewMangas = view.findViewById(R.id.recyclerViewMangasTienda)
@@ -78,11 +74,10 @@ class HotScreenFragment : Fragment(R.layout.hot_activity) {
                 val listaMangas = mutableListOf<Manga>()
                 recorrerArbolEnOrden(arbolBinarioManga.raiz, listaMangas)
                 Log.d("HotScreenFragment", "userId: $userId")
-                // Al crear el adaptador, pasamos el userId
                 mangaAdapter = MangaAdapterTienda(listaMangas, { manga, userId ->
                     val intent = Intent(requireContext(), DetalleMangaActivity::class.java)
                     intent.putExtra("manga", manga)
-                    intent.putExtra("userId", userId)  // Pasamos el userId
+                    intent.putExtra("userId", userId)
                     startActivity(intent)
                 }, userId ?: "", nombre, correo, edad, userType, photoBase64, area, nivelAcceso)
 
